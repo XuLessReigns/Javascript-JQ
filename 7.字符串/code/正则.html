@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		正则表达式
+			规定字符串之后，就可以使用正则对象所提供的工具匹配所符合规则字符串
+	*/
+	/*
+		扩展：
+			定义正则：
+			var 正则名 = /规则/;
+	*/
+	//var reg = /w3school/;
+	//var str = "Visit w3school";
+	//var result = str.search(reg);
+	//alert(result);//6
+
+	
+	//match();接收的结果是一个数组
+	var str = "没有情人的情人节";
+	//var reg = /情人/;
+	//var result = str.match(reg);
+	//document.write(result + "<br/>");
+	var reg = /情人/g;
+	var result = str.match(reg);
+	document.write(result + "<br/>");
+
+	//str.replace(规则,数据);替换
+	//i忽列大小写
+	//g全局
+	var str = "afbANDNfakfAmf";
+	var reg1 = /a/g;
+	var reg = /a/ig;
+	alert(str.replace(reg1,"恩") );
+	alert(str.replace(reg,"恩") );
+
+	/*
+	var str = "好好学习，天天向上";
+	var result = str.replace(/好/,"坏");
+	document.write(result + "<br/>");
+	var result = str.replace(/好/g,"坏");
+	document.write(result + "<br/>");
+	*/
+
+
+	//concat()连接两个或多个字符串
+	var str1 = "H";
+	var str2 = "e";
+	var str3 = "l";
+	var str4 = "l";
+	var str5 = "o World";
+	var result = str1.concat(str2,str3,str4,str5);
+	alert(result);
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

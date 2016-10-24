@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var str = "abc";
+	var reg = /./;
+	var result = reg.test(str);
+	//alert(result);
+
+	var str2 = ",,,我爱你1";
+	var str3 = "abc我";
+	var reg2 = /\w/; //  \w 匹配字母和数字
+	var reg3 = /\W/;
+	var result2 = reg2.test(str2);
+	var result3 = reg3.test(str3);
+	//alert(result3);
+
+
+	var str4 = "88888881a";
+	//var reg = /\d/;  
+	var reg = /\D/;
+	result4 = reg.test(str4);
+	//alert(result4);
+
+
+	var str5 = "abcd";
+	var reg = /\s/;
+	//\S
+	//alert(reg.test(str5));
+
+
+	var str6 = "I Love yhappy too";
+	var reg = /\by/;
+	alert(reg.test(str6));
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

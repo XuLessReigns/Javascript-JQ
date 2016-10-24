@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				border: 1px solid #ccc;
+				font:bold 22px/30px "微软雅黑";
+			}
+			i{
+				background-color: red;
+				font-style: normal;
+			};
+			
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box">
+			因为信仰能使人更有智慧的来看待世间万物，宽容的态度面对错综复杂的人际关系，无比坚定的信念奔走人生之路，从容淡定的直面人性的黑暗和世间的悲剧。愿我们每个人在信望爱中，找到温暖，找到安慰，找到答案。
+		</div>
+		<br/>
+		<input type="text" id="txt" />
+		<button id="btn">查找</button>
+		<br/>
+		<br/>
+		<input type="text" id="txt1" />
+		<button id="btn1">替换</button>
+		<script>
+			var box = document.getElementById("box");
+			var btn = document.getElementById("btn");
+			var btn1 = document.getElementById("btn1");
+			var txt = document.getElementById("txt");
+			var txt1 = document.getElementById("txt1");
+			btn.onclick = function(){
+				if(txt.value){
+					var tit = txt.value;
+					var str = box.innerHTML;
+					var reg = new RegExp(tit,"g");
+					var reg1 = new RegExp("<i>|</i>","g");
+					str = str.replace(reg1,"");
+					box.innerHTML = str.replace(reg,"<i>" + tit + "</i>");
+					var flag = reg.test(str);
+					if(!flag){
+						alert("没找到你所要匹配的字符！！！")
+					}
+				}else{
+					alert("输入不能为空！！！");
+				}	
+			}
+			btn1.onclick = function(){
+				if(txt1.value&&txt.value){
+					var oldTit = txt.value;
+					var	newTit = txt1.value;
+					var str = box.innerHTML;
+					var reg = new RegExp(oldTit,"g");
+					var reg1 = new RegExp("<i>|</i>","g");	
+					str = str.replace(reg1,"");
+					box.innerHTML = str.replace(reg,"<i>" + newTit + "</i>");
+					var flag = reg.test(str);
+					if(!flag){
+						alert("没找到你所要匹配的字符！！！")
+					}
+				}else{
+					alert("输入不能为空！！！");
+				}	
+			}
+		</script>
+	</body>
+</html>

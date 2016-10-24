@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	a{text-decoration:none;color:#000;}
+	#box{
+		height:250px;
+		width:260px;
+		margin:0 auto;
+		position:relative;
+	}
+	#box img{
+		height:250px;
+		width:260px;
+	}
+	#smallbox{
+		height:20px;
+		width:260px;
+		position:absolute;
+		right:0;
+		bottom:0;
+		text-align:center;
+	}
+	#smallbox a{
+		float:left;
+		height:20px;
+		width:20px;
+		background:#000;
+		color:#fff;
+		opacity:.5;
+		filter:alpha(opacity=50);
+		margin:0 5px;
+	}
+ </style>
+
+ <script>
+	var arr = ["../images/awe.jpg","../images/dream1.png","../images/dream2.png","../images/dream3.png","../images/dream4.png","../images/dream5.png","../images/dream6.png"];
+	window.onload = function(){
+		var change = document.getElementById("change");
+		/*
+		var i = 0 ;
+		var termId = setInterval(function(){
+			i = i>6?i-7:i;
+			change.src = arr[i];
+			i++;
+		},800);
+		*/
+		var termId;
+		function changePhoto(i){
+			termId = setInterval(function(){
+			i = i>6?i-7:i;
+			change.src = arr[i];
+			i++;
+			},800);
+		}
+		changePhoto(0);
+		//alert(termId);//1
+		var stop = document.querySelectorAll("a");
+		//alert(stop.length);
+		//var flag = false;
+		for(var j = 0;j<stop.length;j++){
+			stop[j].index = j;
+			stop[j].onmouseenter = function(){
+				this.parentNode.parentNode.firstElementChild.src = arr[this.index];
+				clearInterval(termId);	
+			}
+			stop[j].onmouseleave = function(){
+				//alert(this.index);
+				changePhoto(this.index);
+			}
+		}
+		
+	}
+ </script>
+ </head>
+ <body>
+	<div id="box">
+		<img id="change" src="../images/awe.jpg"/>
+		<div id="smallbox">
+			<a href="#">1</a>
+			<a href="#">2</a>
+			<a href="#">3</a>
+			<a href="#">4</a>
+			<a href="#">5</a>
+			<a href="#">6</a>
+			<a href="#">7</a>
+		</div>
+	</div>
+	
+ </body>
+</html>

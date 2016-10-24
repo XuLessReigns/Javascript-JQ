@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+	document.write("1" + " ");
+	document.write("1" + " ");
+	
+	function add(){
+		var i = 1;
+		var j = 1;
+		for(var num = 1;num<=18;num++){
+			var sum = i + j;
+			document.write(sum + " ");			
+			i = j;
+			j = sum;
+		}
+	}	
+	add();
+	*/
+	//1,2,6,24,120,720….第n个位置的数字的值是多少？
+	function jx(index){
+		if(index==1){
+			return 1;
+		}else{
+			return jx(index-1)*index;
+		}
+	}
+	document.write(jx(6) + "<br/>");
+	//斐波那契数列1,1,2,3,5,8,13,21….n计算出第n个位置的数字的值
+	
+	function add(index){
+		if(index==1||index==2){
+			return 1;
+		}else{
+			return add(index-1) + add(index-2);
+		}
+	}
+	document.write(add(8) + "<br/>");
+
+	//用递归实现 输出斐波那契额数列数列的前20项  写出实现代码
+	function add(index){
+		if(index==1||index==2){
+			return 1;
+		}else{
+			return add(index-1) + add(index-2);
+		}
+	}
+	for(var i = 1;i<=20;i++){
+		document.write(add(i) + " ");
+	}
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

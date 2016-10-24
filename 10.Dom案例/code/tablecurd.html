@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	table{
+		width:800px;
+	}
+
+  </style>
+  <script>
+	window.onload = function(){
+		var edits = document.querySelectorAll(".edit");
+		var dels = document.querySelectorAll(".del");
+		//删除
+		for(var i = 0;i<dels.length;i++){
+			dels[i].onclick = function(){
+				var tbody = this.parentNode.parentNode.parentNode;
+				var tr = this.parentNode.parentNode;
+				tbody.removeChild(tr);
+			}
+		}
+		//修改
+		for(var i = 0;i<edits.length;i++){
+			//alert(edits.length);
+			edits[i].onclick = function(){
+				var tr = this.parentNode.parentNode;
+				//alert(tr.nodeName);//tr
+				var td = tr.children;
+				//alert(td.length);//4
+				if(this.innerHTML=="修改"){
+					this.innerHTML = "确定";
+					for(var j = 0;j<td.length-1;j++){
+						var txt = td[j].innerHTML;
+						//alert(txt);
+						td[j].innerHTML = '<input type="text" value="' + txt + '" />';
+					}
+				}else{
+					this.innerHTML = "修改";
+					for(var j = 0;j<td.length-1;j++){
+						var txt = td[j].firstElementChild.value;
+						//alert(txt);
+						td[j].innerHTML = txt;
+					}
+				}
+			}
+		}
+	}
+  </script>
+
+	
+ </head>
+ <body>
+	<table border="1">
+		<thead>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>性别</th>
+			<th>操作</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>小明</td>
+				<td>18</td>
+				<td>男</td>
+				<td class="control">
+					<button class="del">删除</button>
+					<button class="edit">修改</button>
+				</td>
+			</tr>
+			<tr>
+				<td>小明</td>
+				<td>16</td>
+				<td>男</td>
+				<td class="control">
+					<button class="del">删除</button>
+					<button class="edit">修改</button>
+				</td>
+			</tr>
+			<tr>
+				<td>小明</td>
+				<td>13</td>
+				<td>男</td>
+				<td class="control">
+					<button class="del">删除</button>
+					<button class="edit">修改</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+ </body>
+</html>

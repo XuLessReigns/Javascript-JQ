@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//var time = new Date(2000,1,1);
+	//alert(time);//参数里的时间
+	//alert(Date() );//当前时间
+	//如何创建对象
+	//var d = new Date;//无参，括号可以省略
+	//alert(d);
+	//var d = new Date("2016/08/10");
+	//alert(d);
+	//var d = new Date("2016-8-10 8:58:30");
+	//alert(d)
+	//var d = new Date(2016,7,10,8,58,30,998);//7是索引，所以结果跟上面一样
+	//alert(d);
+	//var date = new Date("2018/1/13");
+	//alert(date);
+	var date = new Date();
+	var year = date.getFullYear();//获取年份
+	alert(year);//2016
+	var month = date.getMonth();//索引0-11
+	alert(month);//7
+	var day = date.getDate();//获取日
+	alert(day);//10
+	var xingqi = date.getDay();//获取星期几0-6,0是星期天
+	alert(xingqi);//3
+	var hours = date.getHours();//获取小时
+	alert(hours);
+	var minutes = date.getMinutes();//获取分钟
+	alert(minutes);
+	var seconds = date.getSeconds();//获取秒
+	alert(seconds);
+	var a = date.getTime();//获取设置毫秒1970年1月1日至今的毫秒
+	document.write(a + "<br/>");//1470793185050
+	var b = 1470793185050/1000/60/60/24/365//46.6...年
+	document.write(b + "<br/>");
+
+	//修改时间
+	//setFullYear();setMonth();setDate();setTime();setHours()...
+	var date = new Date();
+	//document.write(date.getFullYear() + "<br/>");
+	//date.setFullYear(2012);//设置 Date 对象中的年份（四位数字）
+	//document.write(date.getFullYear() + "<br/>");
+	//document.write(date.getFullYear() + "<br/>");//2016
+	//document.write(date.getMonth() + "<br/>");//7
+
+	//document.write(date.setMonth(12) + "<br/>");//1484016646712
+	
+	//document.write(date.getFullYear() + "<br/>");//2017
+	//document.write(date.getMonth() + "<br/>");//0
+
+	//获取设置毫秒1970年1月1日至今的毫秒
+	//document.write(date.getTime() + "<br/>");
+	//设置1970年1月1日至今的总毫秒
+	//document.write(date.getFullYear() + "<br/>")//2016
+	date.setTime(0);//设置1970年1月1日至今的总毫秒
+	//document.write(date.getFullYear() + "<br/>")//1970
+
+	
+	//求时间差
+	var date1 = new Date();
+	var date2 = new Date("2016/8/11");
+	var min = date2.getTime()-date1.getTime();
+	document.write(min);
+
+	//join
+	var arr = [2016,8,10];
+	//var result = arr[0] + "/" + arr[1] + "/" + arr[2];
+	var result = arr.join("/");
+	document.write(result);
+	
+	//window
+	/*
+		全局的变量或全局的函数是属于window的
+	*/
+	var num = 123;
+	function say(){
+		alert("我是window的人");
+	}
+
+	//alert(window.num);
+	window.say();
+	//say();
+
+	//navigator对象可以帮助我们检测浏览器的信息以及浏览器所在的操作系统的信息
+	var bName = navigator.appName;//浏览器名称
+	var v = navigator.appVersion;//浏览器版本
+	var p = navigator.platform;//操作系统
+	var ua = navigator.userAgent;//用户代理信息，通过该属性可以获取浏览器及操作系统信息
+	document.write(bName + "<br/>");
+	document.write(v + "<br/>");
+	document.write(p + "<br/>");
+	document.write(ua + "<br/>");
+
+	//screen
+	/*
+		通过screen对象来引用，可以用它来获取当前屏幕的高度和宽度。
+		width:获取屏幕的宽度;
+		height;
+		h5:视口（view）
+	*/
+	//alert(screen.width);
+	//alert(screen.height);
+
+	//document.write("可用宽度：" + screen.availWidth);
+	
+	//document.write("可用高度：" + screen.availHeight);
+	
+	//setTimeout
+	function fn(){
+		alert("你的幸福到了！");
+	}
+	//var fn2 = function(){
+	//	alert("你要走桃花运了！");
+	//}
+	//window.setTimeout(fn,3000);//你的幸福到了！
+	//setTimeout(fn2,3000);//你要走桃花运了！
+	setTimeout(function(){
+		alert("你要走桃花运了！");
+	},3000);//你要走桃花运了！
+
+	//clearTimeout
+	//a这个变量接收的是  对应定时器的标识  用于清除定时器而使用
+	var a = setTimeout(function(){
+		alert("爆炸了！！！！！");
+	},5000);
+	var a2 = setTimeout(function(){
+		alert("屌爆了！！！！！");
+	},5000);
+	window.onload = function(){
+		var btn3 = document.getElementById("btn3");
+		btn3.onclick = function(){
+			clearTimeout(a);
+			clearTimeout(a2);
+		}
+	}
+
+	//setInterval
+	var num = 0;
+	var a = setInterval(function(){
+		console.log(num);
+		num++;
+	},100);
+	//clearInterval
+	//alert(a);
+	window.onload = function(){
+		var btn4 = document.getElementById("btn4");
+		btn4.onclick = function(){
+			clearInterval(a);
+		}
+	}
+
+	//location
+	//等页面加载完成之后，再执行onload函数
+	window.onload = function(){
+		//通过id名获取跳转按钮
+		var btn = document.getElementById("btn");
+		//btn.onclick 这个函数会在点击跳转按钮的时候执行
+		btn.onclick = function(){
+			//location.href = "http://www.baidu.com";
+			//location.href = "baidu.html";
+			location = "baidu.html";//这里默认的隐藏式把地址赋值给了href
+		}
+		//通过id名获取刷新按钮
+		var btn2 = document.getElementById("btn2");
+		//btn2.onclick 这个函数会在点击刷新按钮的时候执行
+		btn2.onclick = function(){
+			location.reload();//刷新页面（有可能会使用缓存）缓存也是优化程序的手段之一
+			//location.reload(true);//刷新页面  
+			/*与上面的区别：
+				不使用缓存（绝对的），重新请求服务器
+			*/
+		}
+	}
+
+	//confirm弹出对话框，但会有返回值，点击确定是true,点击取消返回false
+	var flag = confirm("你是土豪吗？");
+	if(flag){
+		alert("嫁个你");
+	}else{
+		alert("去你的");
+	}
+	//prompt弹出对话框，显示提示信息，并提供用户输入的一个文本框，并且可以预先设定默认的输入内容
+	var result = prompt("您的年收入是多少？","20")
+	if(result>2000000){
+		alert("嫁给你");
+	}else{
+		alert("自己过吧");
+	}
+  </script>
+ </head>
+ <body>
+    <button id="btn">跳转</button>
+	<button id="btn2">刷新</button>
+	<button>红线</button>
+	<button id="btn3">爆炸线</button>
+	<button>蓝线</button>
+	<button id="btn4">停止数数</button>
+ </body>
+</html>

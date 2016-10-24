@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background-color: green;
+				position: absolute;
+				left:0px;
+				top:50px
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn">运动</button>
+		<div class="box" id="dv"></div>
+		<script>
+			var  btn = document.getElementById("btn");
+			var dv = document.getElementById("dv");
+			btn.onclick = function(){
+				//step
+				var step = 10;  //步长
+				setInterval(function(){
+				  	dv.style.left=dv.offsetLeft + step + "px";
+				},100)
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var num = 0;
+	var termId = setInterval(function(){
+		console.log(num);
+		num++;
+	},100);
+
+	//alert(termId);
+	//clearInterval(定时器标识);
+
+	window.onload = function(){
+		var btn = document.getElementById("btn");
+		btn.onclick = function(){
+			clearInterval(termId);
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<button id="btn">停止数数</button>
+ </body>
+</html>

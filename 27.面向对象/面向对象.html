@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+  /*
+	var arr = [1,2,3];
+	var str = arr.toString();
+	Array.prototype.mypush = function(data1,data2){
+		for(var i = 1;i<this.length;i++){
+			var data = "data" + i;
+			var datas = eval(data);
+			str = str + "," + datas;
+		}
+		var arr = str.split(",");
+		return arr;
+	}
+	console.log(arr.mypush(1,2,[1,2]));
+	*/
+
+	/*
+	var arr = [1,2,3];
+	Array.prototype.mypush = function(){
+		for(var i = 0;i<arguments.length;i++){
+			this[this.length] = arguments[i];
+		}
+	}
+	arr.mypush(1,2,3);
+	console.log(arr);
+	*/
+	//自己写的push方法
+	/*
+	var arr = [1,2,3];
+	Array.prototype.mypush = function(){
+		for(var i = 0;i<arguments.length;i++){
+			if(arguments[i] instanceof Array){
+				for(var j = 0;j<arguments[i].length;j++){
+					this[this.length] = arguments[i][j];
+				}
+			}else{
+				this[this.length] = arguments[i];
+			}
+		}
+	}
+	arr.mypush(1,2,3,[1,2],true,{name:"admin"});
+	console.log(arr);
+	*/
+	//数组去重
+	/*
+	var arr = [1,2,3,4,4,5,2,3,1,1,1,666,6,4,4,4,9,1];
+	for(var i = 0;i<arr.length-1;i++){
+		for(var j = i+1;j<arr.length;j++){
+			if(arr[i]==arr[j]){
+				arr.splice(j,1);
+				j = j-1;
+			}
+		}
+	}
+	console.log(arr);
+	arr.sort();
+	console.log(arr);
+	arr.sort(function(a,b){
+		return a-b;
+	});
+	console.log(arr);
+	*/
+	//数组去重
+	var arr = [1,2,3,4,4,5,2,3,1,1,1,666,6,4,4,4,9,1];
+	Array.prototype.unique = function(){
+		console.time("去重1");
+		var obj = {};
+		var arr = [];
+		for(var i = 0;i<this.length;i++){
+			if(!obj[this[i]]){
+				arr.push(this[i]);
+				obj[this[i]] = 1;
+			}	
+		}
+		console.timeEnd("去重1");
+		return arr;
+	}
+	console.log(arr.unique());
+  </script>
+ </body>
+</html>

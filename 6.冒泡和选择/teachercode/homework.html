@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//一个数组，[9,8,7,6,5,4]，把7改成0，用代码实现？
+//	var a = [9,8,7,6,5,4];
+//	a.splice(2,1,0);
+//	document.write(a + "<br/>");
+	/*
+		[
+		{name:"雷哥哥",age:18},
+		{name:"Bruce.Lee",age:15},
+		{name:"Andy",age:28},
+		{name:"Nike",age:19},
+		{name:"雨哥哥",age:18},
+	]
+按年龄排序，若年龄相同则按名字排序，排序完后，把排序的结果打印到页面中
+
+	*/
+	//var s = "雷哥哥" ;
+	//var s1 = "雨哥哥" ;
+	//alert(s.charCodeAt(0) );//38647
+	//alert(s1.charCodeAt(0) );//38632
+	var b = [{name:"雷哥哥",age:18},
+		{name:"Bruce.Lee",age:15},
+		{name:"Andy",age:28},
+		{name:"Nike",age:19},
+		{name:"雨哥哥",age:18}];
+
+//		document.write("------排序前---------" + "<br/>");
+//		for(var i = 0;i<b.length;i++){
+//			document.write("姓名：" + b[i].name + "---" + "年龄：" + b[i].age + "<br/>");
+//		}
+
+		b.sort(function(a,b){
+			if(a.age==b.age){
+				return getValue(a.name)-getValue(b.name);
+			}else{
+				return a.age-b.age;
+			}
+		});
+
+
+		document.write("------排序后---------" + "<br/>");
+		for(var i = 0;i<b.length;i++){
+			document.write("姓名：" + b[i].name + "---" + "年龄：" + b[i].age + "<br/>");
+		}
+		/*
+			写一个工具用来算ascc码
+		*/
+		
+		function getValue(a){
+			var sum = 0;
+			for(var j = 0;j<a.length;j++){
+				sum+=a.charCodeAt(i);
+			}
+			return sum;
+		}
+		
+		/*
+		数组去重
+	如：[1,2,3,4,1,2,5,6,7,3,6]  把重复的 1,2,3,6去除掉
+		*/
+/*
+		var c = [1,2,3,4,1,2,5,6,7,3,6,6];
+		var num = 0;
+		for(var n = 0;n<c.length-1;n++){
+			for(var m = (n+1);m<c.length;m++){
+				if(c[n]==c[m]){
+					num = m;
+					m = m-1;
+					c.splice(num,1);
+				}
+				//console.log(c + "<br/>");
+			}
+		}
+		document.write(c);
+*/
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

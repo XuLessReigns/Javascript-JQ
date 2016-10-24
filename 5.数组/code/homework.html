@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//求数组中所有元素的和；
+	var arr = [1,2,3,4,5,6,7,8,9,10];
+	var sum = 0;
+	for(var i = 0,len = arr.length;i<arr.length;i++){
+		sum+=arr[i];
+	}
+	document.write("和:" + sum + "<br/>");
+	//求数组的最大数和最小数；
+	var arr1 = [10,2,11,4,23,6,45,8,19,29];
+	for(var i = 0,len = arr1.length;i<len;i++){
+		/*
+		for(var j = len-1;j>i;j--){
+			if(arr1[i]<=arr1[j]){
+			var temp=arr1[j];
+				arr1[j]=arr1[i];
+				arr1[i]=temp;
+			}	
+		}
+		*/
+		for(var j = 1;j<len;j++){
+			if(arr1[i]<=arr1[i+j]){
+			var temp=arr1[i+j];
+				arr1[j+i]=arr1[i];
+				arr1[i]=temp;
+			}	
+		}
+		
+	}
+	document.write("最大值" + arr1[0] + "<br/>");
+	document.write("最小值" + arr1[arr1.length-1] + "<br/>");
+	//求数组的最小数的下标；
+	var a = [10,2,11,4,23,1,45,8,19,29];
+	var min = a[0];
+	var max = a[0];
+	var k = 0;
+	var j = 0;
+	for(var m = 1;m<a.length;m++){
+		if(min>a[m]){
+			min = a[m];
+			k = m;
+		}
+		if(max<a[m]){
+			max = a[m];
+			j = m;
+		}
+	}
+	document.write("最小数的下标是" + k + "<br/>");
+	document.write("最小值" + min + "<br/>");
+	document.write("最大数的下标是" + j + "<br/>");
+	document.write("最大值" + max + "<br/>");
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

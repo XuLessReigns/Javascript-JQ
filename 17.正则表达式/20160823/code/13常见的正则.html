@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var str = "   123 456 789     末尾"; 
+	//alert(str);
+	var result = str.replace(/\s+/g,'');
+	//alert(result);
+
+	var str = "  李 小 龙  ";
+	//console.log(str);
+	var result = str.replace(/^\s+|\s+$/g,'');
+	//console.log(result+"11");
+
+	//str.replace(/[^\u4e00-\u9fa5]/g,'');
+	var str = "1";
+	var reg = /[\u4e00-\u9fa5]/;
+	//alert(reg.test(str));
+
+	var str = "foo(a,b,c)";  //"foo(b,a,c)"
+	var result = str.replace(/foo\(([a-zA-Z]+),([a-zA-Z]+),([a-zA-Z]+)\)/,"foo($2,$1,$3)");
+	//alert(result);
+
+	var str = "Billy tried really hard Sally tried really really hard Timmy tried really really really hard Johnny tried really really really really hard";
+	var reg = /(really\s)+/gi;
+	var result = str.replace(reg,"very ");
+	document.write(result);
+
+
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

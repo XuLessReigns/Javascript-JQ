@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+ 	<script>
+ 	/*var n = 1;
+ 	function count(i){
+ 		n*=i;
+ 		return count;
+ 	}
+
+ 	count.toString = function(){
+ 		return i;
+ 	}
+ 	alert(count(1)(2)(3)(4));*/
+
+ 	var n=3;
+ 	var obj = {
+ 		n:2,
+ 		fn:(function(){
+ 			this.n += 2;
+ 			n = n * 3;
+ 			var n = 4;
+ 			return function(){
+ 				this.n *= 3;
+ 				n *= 2;
+ 				console.log(n);
+ 			}
+ 		})()
+ 	};
+
+ 	var fn1 = obj.fn;
+ 	console.log(n);//5
+ 	fn1();//8
+ 	obj.fn();//16
+ 	console.log(window.n);//15
+ 	console.log(obj.n);//6
+ 	
+
+
+
+ 	</script>
+ </body>
+</html>

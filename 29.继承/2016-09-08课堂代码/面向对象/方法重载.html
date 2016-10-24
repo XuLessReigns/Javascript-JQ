@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //重载的概念：通过参数的类型不同或者参数的个数不同可以让方法实现的功能不同
+        //注意：JS中没有真正意义上的重载，但是可以用typeof 或 arguments来进行模拟
+        //从而体现出JS面向对象思想中的重载特点
+        var fn1 = function(field){
+            if(typeof field == "string"){
+                console.log("执行代码1");
+            }
+            else if(typeof field == "number"){
+                console.log("执行代码2");
+            }
+        }
+        fn1("OK");
+        fn1(123);
+
+        var fn2 = function(){
+            if(arguments.length == 1){
+                console.log("取值");
+            }
+            else{
+                console.log("赋值");
+            }
+        }
+        fn2("color");
+        fn2("color","#fff");
+    </script>
+</body>
+</html>

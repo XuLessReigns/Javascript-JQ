@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//var obj = {};
+	//var obj = {happy:"看美女",weight:"55公斤"};
+	//obj.name = "张国伟";
+	//obj.talk = "好好学习天天向上";
+	//alert(obj.name);
+	//alert(obj.happy);
+	var obj = {};
+	obj["name"] = "张国伟";
+	obj.talk = "好好学习天天向上";
+	obj.say = function (){
+		alert("I love You");
+	}
+	var a = "talk";
+	alert(obj[a]);
+	//alert(obj.name);
+	var b = "say";
+	obj[b]();
+	var c;
+	obj[c] = "你好";
+	alert(obj[c]);
+	var d = "say";
+	//alert(obj.d);//undefined//不会报错
+	//obj.d();//会报错
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

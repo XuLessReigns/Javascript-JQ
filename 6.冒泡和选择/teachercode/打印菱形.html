@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var n = 9; //从上至中间或从中间至下，数7行
+	var totalLine = 2*n-1;  //总行数
+	//空格从上至中间是 n-当前行数
+	//空格从中间至下是 当前行-n
+
+	//打印字符的个数 totalLine-空格数*2
+
+	for(var i = 1;i<=totalLine;i++){
+		var temp = 0; //空格数
+		if(i>n){
+			temp =i-n;
+		}else{
+			temp = n-i;
+		}
+		//console.log(temp);
+		for(var j = 1;j<=temp;j++){
+			document.write("★");
+			//document.write("&nbsp;");
+		}
+		for(var k = 1;k<=totalLine-temp*2;k++){
+			document.write("☆");
+		}
+
+		document.write("<br/>");
+	}
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

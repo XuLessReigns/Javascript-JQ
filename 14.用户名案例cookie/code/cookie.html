@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	  /*
+		完整形式：[]中是可选项
+	document.cookie  = “name=value[;expires=date][;path=path-to-resource][;domain=域名][;secure]”
+	  */
+	//var date = new Date("2016/8/19");
+		var date = new Date();
+	//document.cookie = "age=10";
+	document.cookie = "age=11;path=" + "/D:/mysite/second/day14/";
+	//document.cookie = "age=11;expires=" + date + ";path=/D:/mysite/second/day14/";
+	//document.cookie = "uName=Bruce";
+	//document.cookie = "gender=boy";
+	alert(document.cookie);//这种读取方式会把所有的cookie给返回
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

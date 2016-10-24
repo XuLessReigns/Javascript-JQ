@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	 var str = "123456";
+	 /*
+		str.length
+		首先，将str转换成 对象类型 new String("123456");
+		然后，对象就可以访问其属性 length;
+		最后，将结果返回之后，对象释放掉重新转换为 字符串类型
+
+		这个过程当中所转换后的对象，被称之为 “临时对象”
+	 */
+
+
+	 str.name = "张三";
+	 /*
+		首先，将str转换成 对象类型 new String("123456");
+		然后，给对象添加了一个name属性
+		最后，这个属性随着临时“对象”的销毁而销毁
+
+		这个过程当中所转换后的对象，被称之为 “临时对象”
+	 */
+
+	 alert(str.name)
+
+	 /*
+	   str.name
+	   此时在内存里有会重新创建了一个新的 “临时对象”，这个新的“临时对象” 和 之前被销毁掉的临时对象 是两个不同的独立的 个体
+	 */
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	html,body,div,button,span{margin:0;padding:0;}
+	#dv{height:30px;width:1000px;border:1px dashed black;margin:50px auto;line-height:30px;text-align:center;position:relative;}
+	#dv1{height:30px;width:0;background:green;}
+	span{height:30px;width:30px;position:absolute;left:50%;top:50%;margin-left:-15px;margin-top:-15px;}
+	button{height:30px;width:50px;background:#ccc;margin:50px auto;line-height:30px;text-align:center;display:block;border:0;}
+  </style>
+  <script>
+	window.onload = function(){
+		var dv = document.getElementById("dv");
+		var divWidth = parseInt(getStylePropertyValue(dv,"width") );
+		var dv1 = document.getElementById("dv1");
+		var btn = document.getElementById("btn");
+		var spa = document.getElementById("spa");
+		var progressBar = 0;
+		var a = setInterval(function(){
+			var div1Width = parseInt(getStylePropertyValue(dv1,"width") );
+			progressBar++;
+			dv1.style.width = divWidth/100*progressBar + "px";
+			//dv1.style.width = divWidth/100*progressBar + "px";
+			spa.innerHTML = progressBar + "%";
+			if(progressBar==100){
+				clearInterval(a);
+			}
+		},10)
+		
+	
+	/*
+		//用按钮控制进度条
+
+		btn.onclick = function(){
+			if(btn.innerHTML=="开始"){
+				btn.innerHTML = "停止";
+				a = setInterval(function(){
+					progressBar++;
+					dv1.style.width = 10*progressBar + "px";
+					spa.innerHTML = progressBar + "%";
+				},10);		
+			}else{
+				btn.innerHTML = "开始";
+				clearInterval(a);
+			}
+		}
+
+
+	*/	
+	}
+	/*
+		功能：获取指定节点对象的指定样式属性的值！
+		参数：
+			dom:所操作节点对象
+			property:指定样式的属性
+	*/
+	function getStylePropertyValue(dom,property){
+		if(window.getComputedStyle){
+			return getComputedStyle(dom,null)[property];
+		}else{
+			return dom.currentStyle.property;
+		}
+	}
+
+
+  </script>
+ </head>
+ <body>
+	<div id="dv">
+		<div id="dv1">
+		</div>
+		<span id="spa">0%
+		</span>
+	</div>
+	<button id="btn">开始</button>
+ </body>
+</html>

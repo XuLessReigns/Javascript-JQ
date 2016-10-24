@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            //链式调用
+            // $("div").css("width","100px")
+            // .css("height","100px")
+            // .css("background","red");
+
+            //在对属性进行操作时建议使用JSON形式控制样式
+            var isHide = true;
+            $("#mybtn").css({
+                width:"100px",
+                height:"40px",
+                "background-color":"red"
+            }).click(function(){
+                //$("#mybtn").html("你好");
+                //JQ中若对某元素进行取值操作，如果匹配的元素为多个该方法
+                //只针对第一个元素进行取值操作
+                //console.log($("#mybtn").html())
+
+
+                //控制元素的显示或隐藏
+                // if(isHide){
+                //     //200  400  600
+                //     $("div:eq(1)").hide(400);
+                //     isHide = false;
+                // }
+                // else{
+                //     $("div:eq(1)").show(400);
+                //     isHide = true;
+                // }
+
+
+                //事件中this的指向
+                //JQuery中提供了一个方法，该方法可以将原生JS元素对象转换成JQ对象
+                //语法结构：$(原生JS元素对象)
+                //console.log($(this).html());
+            });
+
+
+            //css方法若传递一个参数可以获取给定属性名的属性值
+            //当使用JQ中的方法取值时一般都无法进行链式调用，
+            //原因是方法内部return的已经不是JQ实例本身了
+            // var $result1 = $("div").css("width");
+            // console.log($result1);
+
+
+            //使用val方法时若传递参数相当于对元素的value属性进行赋值
+            //$(":text").val("hello");
+            //取出可输入元素的value值
+            //console.log($(":text").val());
+
+            //可以获取或设置匹配元素中的文本内容（一个参数是赋值，没参数是取值）
+            //text与html方法的区别是：text仅获取设置文本,html获取设置文本及标签
+            //赋值
+            // $("#mybtn").text("<b>你好</b>");
+            //取值
+            // var $result = $("#mybtn").text();
+            // console.log($result);
+
+            //获取匹配元素的索引位置，使用时要注意该元素是否被其他元素所包含，
+            //若被其他元素包含则从0开始重新计数
+            //console.log($("span").index())
+
+            //eq()方法可以针对匹配元素的包装集进行索引过滤，索引值从0开始
+            //var num = 2;
+            //console.log($("ul>li").eq(num));
+        });
+
+
+        //以下是链式调用原理
+        // var MyJQ = function(){
+        //
+        // }
+        // MyJQ.prototype = {
+        //     css:function(){
+        //         console.log("设置CSS样式");
+        //         return this;
+        //     },
+        //     show:function(){
+        //         console.log("将元素显示");
+        //         return this;
+        //     },
+        //     hide:function(){
+        //         console.log("将元素隐藏");
+        //         return this;
+        //     }
+        // };
+        //
+        // var myjq = new MyJQ();
+        // myjq.css().css().show().hide();
+    </script>
+</head>
+<body>
+    <div id="mybtn"></div>
+    <div id="div1" style="width:300px; height:300px; background:green; margin-top:50px;"></div>
+    <input type="text" value="你好">
+    <div class="d1">我是第三个div</div>
+    <ul>
+        <li class="l1"></li>
+        <li class="l2">我是第二个LI</li>
+        <li class="l3"></li>
+        <li class="l4"></li>
+        <li class="l5"></li>
+        <li class="l6"></li>
+    </ul>
+    <div>
+        <span></span>
+    </div>
+</body>
+</html>

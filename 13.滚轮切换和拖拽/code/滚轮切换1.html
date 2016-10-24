@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	html,body{
+		width:100%;
+		height:100%;
+		overflow:hidden;
+	}
+	.big-box{
+		width:100%;
+		height:500%;
+		color:white;
+		position:absolute;
+		left:0;
+		top:0;
+	}
+	.box{
+		width:100%;
+		height:20%;
+	}
+	.box1{
+		background-color:blue;
+	}
+
+	.box2{
+		background-color:yellow;
+	}
+
+	.box3{
+		background-color:red;
+	}
+
+	.box4{
+		background-color:purple;
+	}
+
+	.box5{
+		background-color:black;
+	}
+
+	.controls{
+		position:absolute;
+		right:20px;
+		top:20%;
+
+	}
+	ul{
+		list-style:none;
+	}
+
+	li{
+		width:50px;
+		height:50px;
+		background-color:pink;
+		margin-bottom:10px;
+		font:bold 22px/50px "宋体";
+		text-align:center;
+	}
+	li.active{
+		background-color:white;
+	}
+
+  </style>
+  <script>
+		window.onload = function(){
+			//工具
+			function addEvent(dom,type,fn){
+				if(dom.addEventListener){
+					dom.addEventListener(type,fn);
+				}else{
+					dom.attachEvent("on" + type,fn);
+				}
+			}
+			//添加滚轮事件并处理兼容问题
+			addEvent(document,"mousewheel",handler);
+			addEvent(document,"DOMMouseScroll",handler);
+			//事件处理函数
+			var index = 0;//初始时的索引
+			var flag = true;
+			var height = document.body.clientHeight;
+			var lis = document.getElementsByTagName("li");
+			//alert(lis.length);//5
+			//alert(height);//699
+			function handler(e){//创建事件对象
+				var e = window.event||e;//处理兼容问题
+				if(flag){
+					flag = false;
+					if(e.wheelDelta==120||e.detail==-3){
+						//console.log("上");
+						if(index<=0){//控制索引
+							index = 0;
+							flag = true;//当超出范围的时候，改变flag为了下次可以发生滚轮事件
+							return;//结束函数运行不让执行以下操作
+						}
+					index--;
+					}else{
+						//console.log("下");
+						if(index>=lis.length-1){//控制索引
+							index = lis.length-1;
+							flag = true;//当超出范围的时候，改变flag为了下次可以发生滚轮事件
+							return;//结束函数运行不让执行以下操作
+						}
+					index++;
+					}		
+					//更改li的样式先清除所有样式在单独给lis[index]添加样式
+					for(var i = 0;i<lis.length;i++){
+						lis[i].className = "";
+					}
+					lis[index].className = "active";
+					console.log(index);
+					//更换内容
+					big_box.style.top = -index*height + "px";
+					//一秒之后执行函数
+					setTimeout(function(){
+						flag = true;
+					},1000);
+				}
+			}
+		}
+  </script>
+ </head>
+ <body>
+	<div class="big-box" id="big_box">
+		<div class="box box1">
+			<h1>box01</h1>
+		</div>
+
+		<div class="box box2">
+			<h1>box02</h1>
+		</div>
+
+		<div class="box box3">
+			<h1>box03</h1>
+		</div>
+
+		<div class="box box4">
+			<h1>box04</h1>
+		</div>
+
+		<div class="box box5">
+			<h1>box05</h1>
+		</div>
+	</div>
+
+	<div class="controls">
+		<ul>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+ </body>
+</html>

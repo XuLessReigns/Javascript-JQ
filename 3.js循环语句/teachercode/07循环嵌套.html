@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		循环嵌套：
+		打印
+			☆
+			☆☆
+			☆☆☆
+			☆☆☆☆
+			☆☆☆☆☆
+	*/
+
+	/*
+		思路：
+			第一步：循环遍历行数
+			第二步：确定行数和当前行的星星个数的关系  星星的个数=行数
+			第三步：循环遍历打印当前行的星星
+			第四步：换行
+	*/
+
+	var currentLine = 1; //当前行
+	var lineCount = 5; //总行数
+	while(currentLine<=lineCount){  //外层循环遍历行数
+		var currentXing = 1; //第几个星星
+		while(currentXing<=currentLine){ //内层循环打印星星的个数
+			document.write("☆");
+			currentXing++; //改变要打印的星星
+		}
+		document.write("<br/>"); //换行
+		currentLine++;//改变行
+		
+	}
+
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

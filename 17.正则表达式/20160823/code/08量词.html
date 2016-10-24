@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var str = "aab";
+	var reg = /[a-z]{2}/;
+	//alert(reg.test(str));
+	var str = "abc123,,,214abcd";
+	var reg = /\d{4,5}/;
+	//alert(reg.test(str));
+
+	//^表示以什么为开头     $表示以什么结尾   
+	var str = "老虎真雷爆了";
+	//var reg = /^雷/;
+	var reg = /雷$/;
+	//^$
+	//alert(reg.test(str));
+
+	var reg = /^雷.{4,7}虎$/;
+	var str = "雷aa虎";
+
+	//leigege123@126.com
+	//转义符   \
+	//alert(reg.test(str));
+
+	//var str = "a";
+	//var reg = /\./;
+	//alert(reg.test(str));
+
+	/*
+		@符号之前，必须是数字、字母或_   3 到 22
+		@符号 和 .之间 必须是 数字或字母 3 到 8
+		.之后是字母 2到3个     com  cn net
+	*/
+	var reg = /^[0-9a-z_]{3,22}@[0-9a-z]{3,8}\.[a-z]{2,3}$/i;
+
+	var email = "leigege@126.com";
+	//alert(reg.test(email));
+
+
+	//http://www.baidu.com/ShangCheng/images/p4.jpg
+	//http://www.baidu.com/p4.jpg
+	//http://www.baidu.com/ShangCheng/p4.jpg
+	//var reg = /^http\:\/\/www\.[0-9a-z]{3,20}\.[a-z]{2,3}\/[0-9a-z_\/]{1,20}\.jpg$/i;
+	//var str = "http://www.baidu.com/ShangCheng/images/p4.jpg";
+	//alert(reg.test(str));
+
+
+	//var reg = /^雷.{4,}虎$/;
+	//var reg = /^雷.+虎$/; //   ^雷.{1,}虎$
+	//var reg = /^雷.*虎$/; //   ^雷.{0,}虎$
+	//var reg = /^雷.?虎$/;
+	//var str = "雷aa虎";    //^雷.{0,1}虎$
+
+	// a|b    
+	//分组 (a|b)  组 集体 整体
+	/*
+	var str = "vippenglei@126163.com";
+	// 126  163  leigege
+	var reg = /^[0-9a-z_]{3,22}@(126|163|leigege)\.(com|cn)$/i;
+	alert(reg.test(str));
+	*/
+
+	/*
+	var pattern = /g..gle/; //.匹配一个任意字符
+	var str = 'google';
+	alert(pattern.test(str));
+	*/
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

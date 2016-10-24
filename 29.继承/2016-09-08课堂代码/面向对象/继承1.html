@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var fn1 = function(name,age){
+            this.name = name;
+            this.age = age;
+        }
+
+        fn1.prototype = {
+            eat:function(){
+                console.log("OK");
+            }
+        }
+
+
+        //call()方法存在于Function对象实例中的原型对象属性中
+        //call()方法作用：
+        //1、可以让调用call方法的对象实例执行 （分辨是谁调用就看.前面的对象是谁）
+        //2、call方法会用其第一个实参替换被调用函数内部中的this指向
+        //3、call方法可以将其除第一个实参以外的参数传递给被调用函数中
+
+        //call和apply方法的区别：
+        //1、call向被调用函数中传递参数需要将参数逐个传递
+        //2、apply向被调用函数中传递参数需要传递一个数组或arguments对象
+        //注意：这两个方法功能相同，都是将被调用函数中的this变为其第一个实参
+        var fn2 = function(name,age,sex){
+            fn1.call(this,name,age);
+            //fn1.apply(this,arguments);
+            this.sex = sex;
+        }
+
+        var f2 = new fn2("张三",18,"男");
+        console.dir(f2);
+    </script>
+</body>
+</html>

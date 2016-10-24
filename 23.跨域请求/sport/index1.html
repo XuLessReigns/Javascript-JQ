@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}
+			.box{height: 100px;width: 100px;position: absolute;background: green;}
+			#dv1{margin-top: 110px;}
+			#dv2{margin-top: 220px;}
+			#dv3{margin-top: 330px;}
+		</style>
+	</head>
+	<body>
+		<button id="btn">运动</button>
+		<div id="dv" class="box"></div>	
+		<div id="dv1" class="box"></div>	
+		<div id="dv2" class="box"></div>	
+		<div id="dv3" class="box"></div>	
+	</body>
+	<script>
+		var btn = document.getElementById("btn");
+		var dv = document.getElementById("dv");
+		var dv1 = document.getElementById("dv1");
+		var dv2 = document.getElementById("dv2");
+		var dv3 = document.getElementById("dv3");
+		
+		btn.onclick = function(){	
+			sport(dv);
+			sport(dv1);
+			sport(dv2);
+			sport(dv3);			
+		}
+		
+		//多个物体一起运动
+		function sport(dom){
+			clearInterval(dom.termId);
+			var step = 10;
+			var target = 400;
+			dom.termId = setInterval(function(){	
+				if(dom.offsetLeft==target){
+					clearInterval(dom.termId);
+					return;
+				}
+				dom.style.left = dom.offsetLeft + step + "px";
+			},100);
+		}
+	</script>
+</html>

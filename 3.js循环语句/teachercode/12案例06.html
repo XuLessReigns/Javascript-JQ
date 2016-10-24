@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		案例：输出１００－２００之间的所有素数 
+		／／除了1和它本身以外不再有其他的除数整除。
+
+		3
+		1 2 3
+
+		5
+		1 2 3 4 5
+
+		7
+		1 2 3 4 5 6 7
+
+		8
+		1 2 3 4 5 6 7 8
+	*/
+
+	/*
+		思路：
+			第一步：循环遍历100-200之间的所有的数字
+			第二步：循环遍历除1和其身之间的数字和本身整除，若有一个能被整除的尽，则该数字不是素数
+			第三步：如果是素数就打印出来
+			编程思维：开关思想
+	*/
+	
+	//外层循环，遍历所有的数字
+	for(var num = 100;num<=200;num++){
+		var flag = true;  //  标记 是否是素数  true表示是，false表示不是
+		//内层循环，检测该数是否是素数
+		for(var index = 2;index<num;index++){
+			if(num%index==0){
+				flag = false;
+				break;
+			}
+		}
+
+		if(flag){  //true   flase
+			document.write(num + "<br/>");
+		}
+	}
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

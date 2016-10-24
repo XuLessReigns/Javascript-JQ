@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		 1,2,6,24,120,720….第n个位置的数字的值是多少？
+		 位置：1 2  3   4    ...... 
+		 结果：1 2  6   24   ......
+		 前一个的结果 * 当前的位置
+	*/  
+
+	function getValue(n){
+		if(n==1){
+			return 1;
+		}else{
+			return getValue(n-1)*n;
+		}
+	}
+
+	alert(getValue(5));
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

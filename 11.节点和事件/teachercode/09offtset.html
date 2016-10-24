@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script></script>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.box{
+		width:200px;
+		height:200px;
+		background-color:green;
+		border:1px solid #ccc;
+	}
+	.bigBox{
+		width:200px;
+		background-color:yellow;
+		padding:100px;
+		margin:100px;
+		
+	}
+  </style>
+ </head>
+ <body class="bb">
+	<div class="bigBox">
+		<div class="box" id="box">
+		</div>
+	</div>
+	
+	<script>
+		/*
+			功能：获取指定节点样式属性的值
+			参数：dom 表示的指定的节点对象  propertyName 表示是样式属性名
+		 */
+
+		 function getStylePropertyValue(dom,propertyName){
+			//var dom,propertyName
+			if(window.getComputedStyle){
+				return getComputedStyle(dom,null)[propertyName];  
+			}else{  //IE
+				return dom.currentStyle[propertyName];
+			}
+			
+		 }
+
+		 var box = document.getElementById("box");
+		 //这种方式不包含内补丁（内边距）和边框
+		 //var w = getStylePropertyValue(box,"width") 
+		 //alert(w);
+
+		 //var w = box.offsetWidth;
+		 //alert(w);
+
+		 var x = box.offsetLeft;
+		 var y = box.offsetTop;
+		 //alert(y);
+
+		 var r = box.offsetParent;  //参照物节对象
+		 alert(r.className);
+
+
+	</script>
+ </body>
+</html>

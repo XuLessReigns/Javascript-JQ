@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var arr = [1,2,3,true];    //arr 是一个数组，数组是一个特殊的对象，对象具有键值对儿
+	//arr.uname = "赵六";
+	/*
+	var len = arr.push("六六","呜呜","毛毛","肥肥");
+	console.log(len);
+	for(var i = 0;i<arr.length;i++){
+		document.write(arr[i] + "<br/>");
+	}
+
+	//alert(arr.length);
+	document.write("-------------------------");
+	var result = arr.pop();
+	console.log(result);
+	for(var i = 0;i<arr.length;i++){
+		document.write(arr[i] + "<br/>");
+	}
+	*/
+
+	arr.unshift("月月","多多");
+
+	for(var i = 0;i<arr.length;i++){
+		document.write(arr[i] + "<br/>");
+	}
+
+	arr.shift();
+	document.write("-------------------------" + "<br/>");
+	for(var i = 0;i<arr.length;i++){
+		document.write(arr[i] + "<br/>");
+	}
+
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

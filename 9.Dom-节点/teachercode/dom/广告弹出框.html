@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.box{
+		width:400px;
+		height:300px;
+		background-color:pink;
+		position:absolute;
+		top:50%;
+		left:50%;
+		margin-top:-200px;
+		margin-left:-150px;
+	}
+	i{
+		font-style:normal;
+		font:bold 28px/28px "宋体";
+		color:red;
+	}
+  </style>
+  <script type="text/javascript">
+	window.onload = function(){
+		var time = document.getElementById("time");
+		var box = document.getElementById("box");
+		
+		setInterval(function(){
+			var num = time.innerHTML;
+			num--;
+			if(num==0){
+				box.style.display = "none";
+				return;
+			}
+			time.innerHTML = num;
+		},1000);
+	}
+  </script>
+ </head>
+ <body>
+	<div id="box" class="box">
+		<span><i id="time">5</i>秒钟后，广告自动关闭</span>
+	</div>
+ </body>
+</html>

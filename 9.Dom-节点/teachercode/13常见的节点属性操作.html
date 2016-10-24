@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	div{
+		background-color:red;
+		height:300px;
+		width:300px;
+	}
+  </style>
+  <script>
+	window.onload = function(){
+		var dv = document.querySelector("#ddv");
+		//alert(dv.tagName);
+		//alert(dv.innerHTML);
+		//alert(dv.innerText);
+		//alert(dv.outerHTML);
+		//dv.innerHTML = "<h1>基于爱，人生的酸甜苦辣都是幸福的</h1>";
+		//alert(dv.id);
+		//alert(dv.title);
+		//alert(dv.className);
+		//dv.className = "small";
+		//alert(dv.style.backgroundColor);
+
+		//window.getComputedStyle(box,null);  //标准
+		//alert(window.getComputedStyle);
+		//var dvStyle = getComputedStyle(dv,null);
+		//alert(dvStyle.backgroundColor);
+
+		 //alert(dv.currentStyle);  //IE8及以下的处理方式
+
+		 /*兼容性处理*/
+		 if(window.getComputedStyle){   //能够执行，说明不是在IE8及其以下环境运行的
+			alert(getComputedStyle(dv,null).height);
+			
+		 }else{   //在IE环境下运行
+			alert(dv.currentStyle.height);
+		 }
+		
+	}
+  </script>
+ </head>
+ <body>
+	<!--
+	<div id="ddv" class="box" style="background-color:red;height:300px;width:300px;" title="O(∩_∩)O哈哈~"><h1>基于爱，人生的酸甜苦辣都是幸福的</h1></div>
+	-->
+
+	<div id="ddv" class="box"  title="O(∩_∩)O哈哈~"><h1>基于爱，人生的酸甜苦辣都是幸福的</h1></div>
+ </body>
+</html>

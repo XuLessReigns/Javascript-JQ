@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  *{margin:0;padding:0;}
+	.bigBox{
+		height:300px;
+		width:600px;
+		position:relative;
+	}
+	.box{
+		height:300px;
+		width:200px;
+		float:left;
+	}
+	img{
+		height:300px;
+		width:200px;
+	}
+  </style>
+  <script src="wenCookie.js"></script>
+ </head>
+ <body>
+	<div class="bigBox" id="bigBox">		
+	</div>
+	<script>
+		var bigBox = document.getElementById("bigBox");
+		//var length = getCookie("length");
+			if(getCookie("div0") ){
+				var div = document.createElement("div");
+				bigBox.appendChild(div);
+				div.className = "box";
+				div.innerHTML = getCookie("div0");
+			}
+		
+		
+		if(getCookie("div1")){
+			var div = document.createElement("div");
+			bigBox.appendChild(div);
+			div.className = "box";
+			div.innerHTML = getCookie("div1");
+		}
+		if(getCookie("div2")){
+			var div = document.createElement("div");
+			bigBox.appendChild(div);
+			div.className = "box";
+			div.innerHTML = getCookie("div2");
+		}
+		
+  </script>
+ </body>
+</html>

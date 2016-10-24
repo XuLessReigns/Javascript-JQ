@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //JS中的静态是存在于Function对象实例下的一个属性
+        //使用静态属性好处是调用时可以不写new操作符进行实例化了
+        // Person.eat = Person.prototype.eat = function(){
+        //     console.log("吃饭");
+        // };
+        var Person = function(){
+
+        }
+        Person.eat = function(){
+            console.log("A");
+        }
+        Person.prototype.eat = function(){
+            console.log("B");
+        }
+        var person = new Person();
+        person.eat();   //B
+        Person.eat();  //A
+
+
+        //以上静态属性和动态属性的原理：
+        //在解释器内部运行如下
+        // var person = new Person();
+        // person.eat();
+        //
+        // var Person = new Function();
+        // Person.eat();
+    </script>
+</body>
+</html>

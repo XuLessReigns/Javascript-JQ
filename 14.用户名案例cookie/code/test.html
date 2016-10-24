@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="wenCookie.js"></script>
+  <script>
+	var obj = {
+		name:"age",
+		value:"17",
+		path:"/D:/mysite/second/day14/code/",
+		expires:new Date("2116/8/18")
+	};
+	setCookie(obj);
+	alert(document.cookie);
+
+	removeCookie(obj);
+	/*removeCookie({
+		name:"age",
+		value:"17",
+		path:"/D:/mysite/second/day14/code/"
+	});*/
+	alert(document.cookie);
+
+	setCookie({name:"gender",value:"boy"});
+	setCookie({name:"money",value:"$10000000"});
+	setCookie({name:"email",value:"110@126.com"});
+	setCookie({name:"是否已婚",value:"单身"});
+	alert(getCookie("gender") );
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

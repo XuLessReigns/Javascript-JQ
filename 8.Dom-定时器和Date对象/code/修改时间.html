@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+	<script>
+		var date = new Date();
+		//document.write(date.getFullYear() + "<br/>");
+		//date.setFullYear(2012);//设置 Date 对象中的年份（四位数字）
+		//document.write(date.getFullYear() + "<br/>");
+		//document.write(date.getFullYear() + "<br/>");//2016
+		//document.write(date.getMonth() + "<br/>");//7
+
+		//document.write(date.setMonth(12) + "<br/>");//1484016646712
+		
+		//document.write(date.getFullYear() + "<br/>");//2017
+		//document.write(date.getMonth() + "<br/>");//0
+
+		//获取设置毫秒1970年1月1日至今的毫秒
+		//document.write(date.getTime() + "<br/>");
+		//设置1970年1月1日至今的总毫秒
+		//document.write(date.getFullYear() + "<br/>")//2016
+		date.setTime(0);//设置1970年1月1日至今的总毫秒
+		//document.write(date.getFullYear() + "<br/>")//1970
+
+
+		//求时间差
+		var date1 = new Date();
+		var date2 = new Date("2016/8/11");
+		var min = date2.getTime()-date1.getTime();
+		document.write(min);
+	</script>
+ </head>
+ <body>
+  
+ </body>
+</html>

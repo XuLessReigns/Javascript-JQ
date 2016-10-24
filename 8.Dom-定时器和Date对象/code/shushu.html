@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+  //用setTimeout 模拟 srtInterval数数
+	var num = 0;
+	start();
+	var a;
+	function start(){
+		a = setTimeout(start1,1000);
+		//start1();
+		if(num==10){
+			clearTimeout(a);
+		}		
+	}
+	function start1(){
+			setTimeout(function(){
+				document.write(num + "<br/>");
+				num++;
+			},1000);
+			//setTimeout(start,1000);
+			start();
+	}
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

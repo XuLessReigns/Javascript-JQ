@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script></script>
+ </head>
+ <body>
+	<h1>这是01.html</h1>
+	<a href="02.html">去02.html</a>
+	<button id="btn">》</button>
+	<script>
+		alert("历史记录数量："  + history.length);
+		var btn = document.getElementById("btn");
+		btn.onclick = function(){
+			//alert("哈哈");
+			history.go(1);
+		}
+	</script>
+ </body>
+</html>

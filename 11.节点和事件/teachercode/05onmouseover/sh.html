@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	img{
+		width:300px;
+		height:300px;
+	}
+  </style>
+  <script></script>
+ </head>
+ <body>
+	<img id="mm" src="awe.jpg"/>
+	<script>
+		var mm = document.getElementById("mm");
+		mm.onmouseover = function(){
+			mm.src="fj.jpg";
+		}
+
+		//onmouseleave
+
+		mm.onmouseout = function(){
+			mm.src = "awe.jpg";
+		}
+
+		/*
+		document.onmousemove = function(){
+			console.log(new Date());
+		}
+		*/
+		
+		/*
+		document.onmousedown = function(){
+			alert("事件太好学了");
+		}
+
+		document.onmouseup = function(){
+			alert("可是知识点有点多");
+		}
+		*/
+
+		
+	</script>
+ </body>
+</html>

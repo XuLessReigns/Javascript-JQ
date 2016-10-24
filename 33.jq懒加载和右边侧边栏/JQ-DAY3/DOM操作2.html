@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            $("p").click(function(){
+                alert("OK");
+            });
+
+            //以下方法可以复制节点
+            //当对clone()方法传递true时代表连同事件一起复制
+            //若不传递true时代表只复制元素不复制事件
+            //$("p").clone(true).appendTo("#container");
+
+            //将匹配元素替换为给定的内容
+            //$("p").replaceWith("<a href=''>hello</a>");
+
+            //将匹配元素用给定元素包裹起来（独立包裹）
+            //$("p").wrap("<div class='d1'></div>");
+
+            //将匹配元素用给定元素包裹起来（统一包裹）
+            //$("p").wrapAll("<div class='d1'></div>");
+
+            //将匹配元素内部的内容用给定元素包裹起来
+            //$("p").wrapInner("<b></b>");
+
+            //设置属性值，两个参数，第一个参数属性名，第二个参数属性值
+            //$("p").attr("img-origin","img/1.jpg");
+
+            //获取属性值，一个参数，获取给定属性名的属性值
+            //console.log($("#container").attr("id"));
+
+            //删除给定属性名的属性节点，若删除多个应该将属性名使用空格分隔
+            //$("a").removeAttr("href id");
+
+            //遍历节点的方法
+            //console.log($("body").children());  //查找匹配元素的子元素
+            //console.log($("#container").parent());  //查找匹配元素的父级元素
+            //console.log($("#container").parent().children());
+            //console.log($("#container").next().next());  //查找匹配元素的下一个元素
+            //console.log($("p").prev());  //查找匹配元素的上一个元素
+            //console.log($("#container").siblings());  //查找匹配元素的同辈元素
+
+            //获取匹配元素的高度
+            //console.log($("#container").height());
+            //获取可视区高度
+            //console.log($(window).height());
+            //获取页面文档高度
+            //console.log($(document).height());
+
+            //获取宽度与高度使用方法相同，主要看前边匹配元素是谁
+            //console.log($(window).width());
+
+            //$("#container").width(300).height(500);
+
+            //offset().left和offset().top是参照浏览器进行计算的匹配元素的偏移量
+            //console.log($("#container>div").offset().left);
+            //console.log($("#container>div").offset().top);
+
+            //position().left和position().top是参照父级元素进行计算的匹配元素的偏移量
+            // console.log($("#container>div").position().left);
+            // console.log($("#container>div").position().top);
+
+
+            //scrollTop()可以获取滚动条卷取高度
+            //传递一个参数时可以设置滚动条位置
+            //但是不能在初始化中设置滚动条位置
+            // $(window).scroll(function(){
+            //     console.log($(window).scrollTop());
+            // });
+            //
+            // $("#container").click(function(){
+            //     $(window).scrollTop(1000);
+            // });
+
+
+            // $("#container").click(function(){
+            //     $(this).scrollLeft(100);
+            //     console.log($(this).scrollLeft());
+            // });
+
+            //hover代表鼠标经过和鼠标离开事件，支持2个处理函数
+            //其内部原理采用的mouseenter和mouseleave事件
+            // $("#container").hover(function(){
+            //     console.log("鼠标移入");
+            // },function(){
+            //     console.log("鼠标移出");
+            // });
+
+
+            //自定义动画方法
+            //接收3个参数：
+            //1:运动目标值（JSON）
+            //2:运动总时长（单位毫秒）
+            //3:运动回调函数(function)
+
+            // $("div:eq(0)").animate({
+            //     left:500
+            // },600,function(){
+            //     console.log("动画执行完了")
+            // });
+        });
+    </script>
+</head>
+<body style="height:4000px;">
+    <div style="width:50px; height:50px; background:blue; position:absolute; left:0; top:0;"></div>
+    <hr>
+    <div id="container" style="width:300px; height:300px; background:red; position:relative; left:500px; top:300px; overflow:auto;">
+        <div style="width:1000px; height:80px; background:green; position:absolute; left:50px;"></div>
+    </div>
+    <p>hello1</p>
+    <span>我是span</span>
+    <p>hello2</p>
+    <a href="" id="btn"></a>
+</body>
+</html>

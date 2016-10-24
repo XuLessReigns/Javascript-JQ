@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background-color: green;
+				position: absolute;
+				left:0px;
+				top:50px
+			}
+			
+			#dv2{
+				top:160px;
+			}
+			#dv3{
+				top:270px;
+			}
+			
+			#dv4{
+				top:380px;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn">运动</button>
+		<div class="box" id="dv"></div>
+		<div class="box" id="dv2"></div>
+		<div class="box" id="dv3"></div>
+		<div class="box" id="dv4"></div>
+		<script>
+			var  btn = document.getElementById("btn");
+			var dv = document.getElementById("dv");
+			var dv2= document.getElementById("dv2");
+			var dv3= document.getElementById("dv3");
+			var dv4= document.getElementById("dv4");
+			btn.onclick = function(){
+				animate(dv);
+				animate(dv2);
+				animate(dv3);
+				animate(dv4);
+			}
+			
+			
+			/*
+			 	动画
+			 		多物体运动
+			 	参数：
+			 		dom：要运动的节点对象
+			 */
+			function animate(dom){
+				clearInterval(dom.termId);
+				//step
+				var step = 10;  //步长
+				var target = 400;
+				dom.termId = setInterval(function(){
+					if(dom.offsetWidth==400){
+						clearInterval(dom.termId);
+						return;
+					}
+				  	dom.style.width=dom.offsetWidth + step + "px";
+				},10)
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

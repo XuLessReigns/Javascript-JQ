@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css"  href="all.css">
+ </head>
+ <body>
+	<div id="box" class="box">
+		<div id="content" class="content">
+			<ul id="talkList">
+				<li class="mm">
+					<div class="logo-head"> 
+						<img src="images/mm.jpg"/>
+					</div>
+					<span class="talk">
+						Hi,主人！我是您最贴心的小娜!
+					</span>
+				</li>
+				<li class="mm">
+					<div class="logo-head"> 
+						<img src="images/mm.jpg"/>
+					</div>
+					<span class="talk">
+						我可以陪您聊天哦！O(∩_∩)O
+					</span>
+				</li>
+				<li class="gg">
+					<div class="logo-head">
+						<img src="images/gg.jpg"/>
+					</div>
+					<span class="talk">
+						o(≧v≦)o~~
+					</span>
+				</li>
+				<li class="gg">
+					<div class="logo-head">
+						<img src="images/gg.jpg"/>
+					</div>
+					<span class="talk">
+						你好
+					</span>
+				</li>
+				<li class="mm">
+					<div class="logo-head"> 
+						<img src="images/mm.jpg"/>
+					</div>
+					<span class="talk">
+						ლ(°◕‵ƹ′◕ლ)
+					</span>
+				</li>
+				
+			</ul>
+		</div>
+
+		<div class="control">
+			<textarea id="txt" rows="2" cols="40"></textarea>
+			<a href="javascript:;" id="send">发送</a>
+		</div>
+	</div>
+
+	  <script>
+		 /*
+			思路：
+				第一步：获取所要操作的节对象
+				第二步：为按钮节点对象添加一个点击事件
+				第三步：获取文本域中内容   input系列
+				第四步：创建li节对象，把内容包装起来，追加在ul最后面
+						gg
+						mm
+		 */
+			
+		 //获取ul节点对象
+		 var talkList = document.getElementById("talkList");
+		 //获取文本域节点对象
+		 var txt = document.getElementById("txt");
+		 //发送按钮节点对象
+		 var send = document.getElementById("send");
+		 
+		 /*为按钮添加一个点击事件*/
+		 send.onclick = function(){
+			if(txt.value){
+				var innerData = txt.value;  //获取文本域中内容 value属性
+				/*创建男生对话*/
+				AddTalkToList('gg',innerData,talkList)
+				//清空文本框
+				txt.value = '';
+
+				/*定时器，模拟对话过程，延迟女生回复时间*/
+				setTimeout(function(){
+					var mmData = '';  //女生回复的内容
+					switch(innerData){ //根据男生的内容设定不同的回复场景
+						case "你好":
+							mmData = "(*^__^*) 嘻嘻……";
+							break;
+						case "谁创造的你":
+							mmData = "要你管！";
+							break;
+						default:
+							mmData = "亲，请充值，100000$";
+						 
+					}
+					//创建女生对象
+					AddTalkToList('mm',mmData,talkList);
+					
+				},1000);
+			}else{
+				confirm('发送信息不能为空');
+				txt.value = '';
+			}
+		 }
+		 document.onkeydown = function(e){
+			var e = window.event||e;
+			if(e.keyCode==17){//enter13,ctrl17
+				//send.onclick();
+				document.onkeydown = function(e){
+					var e = window.event||e;
+					//console.log(e.keyCode);
+					if(e.keyCode==13){
+						send.onclick();
+					}
+				}	
+			}
+		 }
+		 
+		 /*
+			创建对话
+			参数：cName 类名
+				  data  聊天的内容
+				  list	ul节点对象
+		 */
+		 function AddTalkToList(cName,data,list){
+			//创建li节点对象
+			var li = document.createElement("li"); 
+			//添加类名
+			li.className = cName;
+			//添加内容
+			li.innerHTML = '<div class="logo-head">' + 
+								'<img src="images/' + cName + '.jpg"/>' + 
+							 '</div>' + 
+							 '<span class="talk">' + 
+								data + 
+							'</span>';
+			//追加到ul列表中
+			list.appendChild(li);
+			//是追加后的节点对象显示在可视区域之中
+			li.scrollIntoView();
+			
+
+		 }
+
+
+	  </script>
+ </body>
+</html>

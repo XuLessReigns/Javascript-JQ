@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//用程序把无敌出现的次数统计出来！
+	var str = "无敌是多么寂寞，无敌是多么空虚，无敌是多么的冷，无敌风火轮无敌是多么寂寞，无敌是多么空虚，无敌是多么的冷，无敌风火轮无敌是多么寂寞，无敌是多么空虚，无敌是多么的冷，无敌风火轮无敌是多么寂寞，无敌是多么空虚，无敌是多么的冷，无敌风火轮无敌是多么寂寞，无敌是多么空虚，无敌是多么的冷，无敌风火轮无敌是多么寂寞，无敌是多么空虚，无敌是多么的冷，无敌风火轮无敌是多么寂寞，无敌是多么空虚，无敌是多么的冷，无敌风火轮无敌是多么寂寞，无敌是多么空虚，无敌是多么的冷，无敌风火轮无敌是多么寂寞，无敌是多么空虚，无敌是多么的冷，无敌风火轮";
+	/*
+	var a = str.split("无敌");
+	document.write(a.length-1 + "<br/>");
+	for(var i = 0;i<a.length;i++){
+		document.write(a[i] + "<br/>");
+	}
+	*/
+	/*
+	var reg = /无敌/g;
+	var b = str.match(reg);
+	document.write(b.length);
+	*/
+
+	
+	var count = 0;
+	while(true){
+		var flag = true;
+		var index = str.indexOf("无敌");
+		if(index==-1){
+			flag = false;
+			break;
+		}
+		if(flag){
+			count++;
+			str = str.substring(index+2);
+		}
+	}
+	document.write(count);
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	window.onload = function(){
+		//获取ul节点对象
+		var list = document.getElementById("list");
+		//创建一个li节点对象
+		var li = document.createElement("li");
+		li.innerHTML = "1.2";  //给创建的li节点对象添加内容
+		//获取ul节点对象中的li节点对象 li02
+		var li02 = document.getElementById("li02");
+		//把li节点对象添加到li02节点对象之前
+		list.insertBefore(li,li02);
+
+		//获取ul节点对象中的li节点对象 li03
+		var li03 = document.getElementById("li03");
+		//删除li03节点对象
+		list.removeChild(li03);
+
+		//创建一个新的节点对象li
+		var newLi = document.createElement("li");
+		//给新的节点对象添加内容
+		newLi.innerHTML = "00";
+		//把ul的第一个节点对象替换成新创建的节点对象 newLi
+		list.replaceChild(newLi,list.firstElementChild);
+	}
+  </script>
+ </head>
+ <body>
+	<ul id="list">
+		<li>01</li>
+		<li id="li02">02</li>
+		<li id="li03">03</li>
+		<li>04</li>
+	</ul>
+ </body>
+</html>

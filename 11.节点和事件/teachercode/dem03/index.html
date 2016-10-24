@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			/*重置默认的边距*/
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			/*重置i标签*/
+			i{
+				font-style: normal;
+			}
+			/*重置a标签*/
+			a{
+				text-decoration: none;
+				color: #000;
+			}
+			/*版心*/
+			.container{
+				width: 1120px;
+				margin: 0 auto;	
+				background-color: gold;
+				height: 2000px;
+			}
+			/*主题菜单容器*/
+			.container .sideBox .menus{
+				width: 210px;
+				background-color: darkred;
+				font:400 16px/40px "微软雅黑";
+				color: #fff;
+				border: 1px solid red;
+				border-right: none;
+			}
+			/*主题菜单项*/
+			.container .sideBox .menus .item{
+				padding-left: 10px;
+			}
+			/*主题菜单项的第二种状态*/
+			.container .sideBox .menus .item.active{
+				background-color: #fff;
+			}
+			/*主题菜单项下的a标签字体颜色*/
+			.container .sideBox .menus .item a{
+				color: #fff;
+			}
+			/*主题菜单项下的a标签字体颜色的第二种状态*/
+			.container .sideBox .menus .item.active a{
+				color: red;
+			}
+			/*主题菜单项下的图标指向的样式*/
+			.container .sideBox .menus .item i{
+				font-family: "宋体";
+				float: right;
+				margin-right: 20px;
+			}
+			.container .sideBox .contents{
+				position: absolute;
+				top:0;
+				left: 298px;
+			}
+			.container .sideBox .contents .item{
+				width:909px ;
+				height: 900px;
+				background-color: #eee;
+				display: none;
+			}
+			.container .sideBox .contents .item.active{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<!--版心-->
+		<div class="container">
+			<!--京东侧边栏-->
+			<div class="sideBox" id="sideBox">
+				<!--主题菜单项-->
+				<div class="menus">
+					<div class="item"><a href="">主题菜单项1</a><i>&gt;</i></div>
+					<div class="item"><a href="">主题菜单项2</a><i>&gt;</i></div>
+					<div class="item"><a href="">主题菜单项3</a><i>&gt;</i></div>
+					<div class="item"><a href="">主题菜单项4</a><i>&gt;</i></div>
+					<div class="item"><a href="">主题菜单项5</a><i>&gt;</i></div>
+					<div class="item"><a href="">主题菜单项6</a><i>&gt;</i></div>
+					<div class="item"><a href="">主题菜单项7</a><i>&gt;</i></div>
+					<div class="item"><a href="">主题菜单项8</a><i>&gt;</i></div>
+					<div class="item"><a href="">主题菜单项9</a><i>&gt;</i></div>
+					<div class="item"><a href="">主题菜单项10</a><i>&gt;</i></div>
+				</div>
+				<!--菜单内容项-->
+				<div class="contents">
+					<div class="item">
+						<h1>内容1</h1>
+					</div>
+					<div class="item">
+						<h1>内容2</h1>
+					</div>
+					<div class="item">
+						<h1>内容3</h1>
+					</div>
+					<div class="item">
+						<h1>内容4</h1>
+					</div>
+					<div class="item">
+						<h1>内容5</h1>
+					</div>
+					<div class="item">
+						<h1>内容6</h1>
+					</div>
+					<div class="item">
+						<h1>内容7</h1>
+					</div>
+					<div class="item">
+						<h1>内容8</h1>
+					</div>
+					<div class="item">
+						<h1>内容9</h1>
+					</div>
+					<div class="item">
+						<h1>内容10</h1>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!--js实现-->
+		<script>
+			/*
+			 	思路：
+			 		第一步：获取到所要操作的节点对象
+			 		第二步：为每一个主题菜单项添加一个鼠标浮动事件
+			 				改变当前主题项的样式状态
+			 				显示出对应内容
+			 		
+			 		第三步：为sideBox添加一个鼠标离开事件
+			 				改变当前主题项的样式状态
+			 				隐藏对应内容
+			 */
+			//获取所有的菜单项
+			var menus = document.querySelectorAll(".menus .item");
+			//获取所有的内容项
+			var contents = document.querySelectorAll(".contents .item")
+			//获取侧边栏容器
+			var sideBox = document.getElementById("sideBox");
+			var currentIndex = 0;  //表示当前被选中主题菜单项和内容项的索引
+			for(var i = 0;i<menus.length;i++){
+				menus[i].index = i; //把不同索引记录在不同的主题菜单项中
+				menus[i].onmouseenter = function(){
+					//this
+					currentIndex = this.index;
+					for(var j = 0;j<menus.length;j++){
+						menus[j].className = "item";
+						contents[j].className = "item";
+					}
+					this.className = "item active";
+					contents[this.index].className = "item active";
+				}
+			}
+			sideBox.onmouseleave = function(){
+				menus[currentIndex].className = "item";
+				contents[currentIndex].className = "item";
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		onclick点击事件，ondblclick双击事件，
+		onmouseenter，onmouseleave//进入，离开--》他们不支持事件冒泡
+		onmouseover,onmouseout//放在上面，离开--》不常用，因为他们支持事件冒泡
+		onmousedown,onmouseup//按下，弹起（松开）
+	*/
+	
+
+	//onmousemenu鼠标右键菜单事件
+	window.onload = function(){
+		document.oncontextmenu = function(e){
+			alert("鼠标右键点击了");
+			e.preventDefault();//取消点击右键产生的菜单
+		}
+	}
+	
+	window.onload = function(){
+		//鼠标滚轮事件
+		document.onmousewheel = function(e){
+			alert("鼠标滚轮滚动了");
+		}
+		//按键按下事件
+		document.onkeydown = function(e){
+			//alert(e.keyCode);//e按键对象
+		}
+		//按键松开事件
+		document.onkeyup = function(e){
+			//alert(e.keyCode);//e按键对象
+		}
+		
+
+	}
+  </script>
+ </head>
+ <body>
+	<input id="txt" type="password" value=""/>
+	<h1 id="h">123</h1>
+	<script>
+		//按键 按 事件
+		var txt = document.getElementById("txt");
+		var h = document.getElementById("h");
+		txt.onkeypress = function(){
+			h.innerHTML = this.value;
+		}
+	/*
+		window.onload				页面元素（包括图片多媒体等）加载完成后
+		window.onbeforeunload		用户退出页面前所产生的事件。（有兼容性问题）
+		window.onresize				窗口或框架被重新调整大小。（有兼容性问题）
+	*/
+	
+		
+	</script>
+	<input type="text" id="txt1"/>
+	<script>
+		var txt1 = document.getElementById("txt1");
+		txt1.onselect = function(){
+			alert(this.value);//文本框文本被选中。（有兼容性问题）
+		}
+	</script>
+ </body>
+</html>

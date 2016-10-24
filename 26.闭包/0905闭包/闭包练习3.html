@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function fn(){
+			var i = 2;
+			return function(n){
+			    console.log(n + i++ + ++i);
+			}
+		}
+		var f = fn();
+		f(5);      //   11 
+		f(10);     //   20
+		fn()(5);   //   11
+		fn()(10);  //   16
+
+	</script>
+</body>
+</html>

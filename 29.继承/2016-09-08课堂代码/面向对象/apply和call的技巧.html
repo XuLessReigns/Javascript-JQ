@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = {0:"A",1:"B",2:"C",length:3};
+        var newa = Array.prototype.slice.call(a);
+        console.log(newa);
+
+        var arr = new Array();
+        var arr = [1,2,3];
+        var arr1 = [3,4,5];
+
+
+        var minNum = Math.min.apply(null,[5,2,3,5]);
+		var minNum1 = Math.max.apply(null,[5,2,3,5,6]);
+        console.log(minNum,minNum1);
+    </script>
+</body>
+</html>

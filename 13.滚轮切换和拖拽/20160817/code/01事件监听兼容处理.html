@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//格式：元素节点对象.addEventListener(事件名,事件处理函数,是否捕获)
+	//元素.attachEvent(事件名,事件处理函数) ==> 事件名带on
+	
+	/*
+		事件监听绑定工具
+		参数：
+			dom 事件目标
+			type 事件名   
+			fn   事件处理程序
+	*/
+	function on(dom,type,fn){
+		
+		if(dom.addEventListener){  //标准模式
+			dom.addEventListener(type,fn)
+		}else{ //IE8及其以下模式
+			dom.attachEvent("on" + type,fn)
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<button id="btn">点击</button>
+	<script>
+		var btn = document.getElementById("btn");
+		function fn1(){
+			alert(1);
+		}
+		on(btn,"click",fn1)
+	</script>
+ </body>
+</html>

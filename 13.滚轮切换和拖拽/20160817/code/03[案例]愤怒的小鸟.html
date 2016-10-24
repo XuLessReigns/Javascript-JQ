@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>[案例]愤怒的小鸟</title>
+	<style>
+		#bird{position:absolute;width:100px;top:0;left:10px;}
+		/*
+			transform:rotateY(180deg);
+		*/
+		/*向右旋转180*/
+		.d-right{transform:rotateY(180deg);}
+	</style>
+</head>
+<body>
+	<img  src="bird.jpg" id="bird">
+	<script>
+		/*
+			思路：
+				第一步：获取所要操作的节点对象
+				第二步：为文档添加一个键盘事件（onkeydown）
+				第三步：通过onkeydown事件所提供的事件对象获取keyCode属性来甄别所按下的是否是上下左右键。
+				第四步：
+						根据上下左右键更改图片的坐标和旋转的方向。
+		*/
+		 var bird = document.getElementById("bird");
+		 var step = 5;
+		 document.onkeydown = function(e){
+			var _e = window.event||e;
+			//alert(_e.keyCode);
+			//↑38		↓40		 ←37	 →39
+			switch(_e.keyCode){
+				case 38:		//↑38
+					  var y = bird.offsetTop-step;  //小鸟向上走之后的坐标
+					  bird.style.top = y + "px";
+					break;
+				case 40:		//↓40
+					  var y = bird.offsetTop + step;  //小鸟向上走之后的坐标
+					  bird.style.top = y + "px";
+					break;
+				case 37:		//←37
+					  bird.className = '';
+					  var x = bird.offsetLeft-step;
+					  bird.style.left = x + "px";
+					break;
+				case 39:		//→39
+					  bird.className = 'd-right';
+					  var x = bird.offsetLeft + step;
+					  bird.style.left = x + "px";
+					break;
+			   
+			}
+		 }
+	</script>
+</body>
+</html>

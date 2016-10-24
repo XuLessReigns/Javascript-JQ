@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	window.onload = function(){
+		var btn = document.getElementById("btn");
+		btn.onclick = function(e){
+			e = window.event||e;//兼容
+			//var t = e.target||e.srcElement;
+			
+			//alert(t.id);//btn
+			//this也可以解决兼容问题
+			//alert(this.id);
+			//alert(e.type);//事件类型
+			
+		}
+		
+/*
+		btn.onclick = fn;
+		btn.onmouseenter = fn;
+		function fn(e){
+			e = window.event||e;//兼容
+			alert(e.type);//事件类型
+		}
+*/
+		document.oncontextmenu = function(e){
+			e = window.event||e;
+			alert(0);
+			//e.preventDefault();//ie不支持
+			//e.returnValue = false;//ie里固定用法
+			if(e.preventDefault){
+				e.preventDefault();
+			}else{
+				e.returnValue = false;
+			}
+		}
+		document.onkeydown = function(){
+			e = window.event||e;
+			//alert(e.which||e.keyCode);
+		}
+	}
+  </script>
+ </head>
+ <body>
+  <button id="btn">点击</button>
+ </body>
+</html>

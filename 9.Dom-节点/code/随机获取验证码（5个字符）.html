@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	div{height:30px;width:100px;background:#ccc;color:cyan;}
+  </style>
+ </head>
+ <body>
+	<div class="box" id ="dv">12acb</div>
+	<script>
+		/*
+		var box = document.getElementsByClassName("box");
+		
+		box[0].onclick = function(){
+			var arr = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+			var str = "";
+			for(var i = 0;i<5;i++){
+				var index = Math.floor(Math.random()*arr.length);
+				str+=arr[index];
+			}
+			console.log(dv.innerHTML);
+			box[0].innerHTML = str; 
+		}
+		*/
+
+		//随机获取验证码（5个字符）
+		var arr = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+		var dv = document.getElementById("dv");
+		dv.onclick = function(){
+			var string = "";
+			for(var j = 1;j<=5;j++){
+				var index = parseInt(Math.random()*arr.length);
+				
+				string+=arr[index];			
+			}
+			this.innerHTML = string;
+			//dv.innerHTML = string; 
+			console.log(dv.innerHTML);
+		}
+
+		
+		/*
+		var arr1 = [1];
+		var arr2 = [2];
+		//var result = arr1[0] + arr2[0];//数字3
+		var result = arr1 + arr2;
+		alert(result);//12
+		alert(typeof result);//string
+		alert(result instanceof Object);//false
+		*/
+	</script>
+ </body>
+</html>

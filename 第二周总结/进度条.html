@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.box{
+		width:700px;
+		height:20px;
+		border:1px dotted #aaa;
+		position:absolute;
+		top:50%; 
+		margin-top:-10px;
+		left:50%;
+		margin-left:-350px;
+	}
+	span{
+		position:absolute;
+		right:0;
+		font-style:none;
+		color:red;
+		font-size:22px;
+		font-weight:bold;
+	}
+	.nav{
+		width:0px;
+		height:100%;
+		background-color:green;
+	}
+
+  </style>
+  <script>
+	window.onload = function(){
+		var box = document.getElementById("box");
+		var nav = document.getElementById("nav");
+		var s = document.getElementById("s");
+		var boxWidth = parseInt(getWidth(box,"width") );
+		//alert(boxWidth);
+		var num = 0;
+		var termId = setInterval(function(){
+			num++;
+			nav.style.width = boxWidth/100*num + "px";
+			s.innerHTML = num + "%";
+			if(num==100){
+				clearInterval(termId);
+			}
+		},10);
+		
+	}
+	//求width
+	function getWidth(dom,attribute){
+		if(window.getComputedStyle){
+			return getComputedStyle(dom,null)[attribute];
+		}else{
+			return dom.currentStyle.attribute;
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<div class="box" id="box">
+		<div class="nav"  id="nav"></nav>
+		<span id="s"></span>
+	</div>
+	
+ </body>
+</html>

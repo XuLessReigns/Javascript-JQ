@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		趟数
+		每趟比较的次数
+		n:表示的是数据的个数；
+		外层循环表示趟数：
+			n-1;
+		内层循环表示的比较的次数
+			n-i-1;
+	*/
+
+	var arr = [40,8,15,18,12];
+	
+	//arr.length-1
+	for(var i = 0;i<arr.length-1;i++){  //趟数
+		
+		for(var j = 0;j<arr.length-i-1;j++){//比较的次数
+			if(arr[j]>arr[j+1]){
+				//关键点，怎么做交换？
+				var temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+			}
+		}
+	}
+
+	document.write(arr);
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

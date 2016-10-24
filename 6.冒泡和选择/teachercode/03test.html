@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	
+	var obj = {name:"张三"};
+	var obj2 = obj;
+	obj2.name = "李四";
+	//document.write(obj.name); //李四
+
+
+	var temp = 123;
+	var num = temp;  //123
+	num = "123";
+	//document.write(typeof temp);  //number
+
+		/*
+		数组去重
+	如：[1,2,3,4,1,2,5,6,7,3,6]  把重复的 1,2,3,6去除掉
+		*/
+
+		//var c = [1,2,3,4,1,2,5,6,7,3,6,6,6,6,1,2,3];
+		var c = [1,2,34,5,37,1,2,6,7523,34,34,34,2,2];
+		var num = 0;
+		for(var n = 0;n<c.length-1;n++){
+			for(var m = (n+1);m<c.length;m++){
+				if(c[n]==c[m]){
+					num = m;
+					m = m-1;
+					c.splice(num,1);
+				}
+				//console.log(c + "<br/>");
+			}
+		}
+		document.write(c);
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

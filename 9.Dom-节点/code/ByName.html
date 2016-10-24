@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	html,body,ul,li{margin:0;padding:0;}
+	ul li{height:50px;background:cyan;margin:10px 0;}
+  </style>
+  <script>
+	window.onload = function (){
+		var list = document.getElementsByName("list");//返回的是一个类似数组的集合
+		//alert(list.length);//5
+		for(var i = 0;i<list.length;i++){
+			list[i].onclick = function(){
+				alert(this.innerHTML);
+			}
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<ul>
+		<li name="list">li01</li>
+		<li name="list">li02</li>
+		<li name="list">li03</li>
+		<li name="list">li04</li>
+		<li name="list">li05</li>
+	</ul>	
+ </body>
+</html>

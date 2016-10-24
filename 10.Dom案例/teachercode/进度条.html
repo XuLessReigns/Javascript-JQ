@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.box{
+		width:700px;
+		height:20px;
+		border:1px dotted #aaa;
+		position:absolute;
+		top:50%; 
+		margin-top:-10px;
+		left:50%;
+		margin-left:-350px;
+	}
+	span{
+		position:absolute;
+		right:0;
+		font-style:none;
+		color:red;
+		font-size:22px;
+		font-weight:bold;
+	}
+	.nav{
+		width:0px;
+		height:100%;
+		background-color:green;
+	}
+
+  </style>
+  <script>
+	/*
+		思路：
+			第一步：当页面加载完后，获取所要操作的节点对象。
+			第二步：开启一个定时器，实现进度的动画效果
+			第三步：
+				把宽度平均分成100份儿，每份走多少
+				若达到目的地，则停止定时器
+	*/
+	
+	window.onload = function(){
+		var box = document.getElementById("box");  //大盒子节点对象
+		var nav = document.getElementById("nav");  //小盒子节点对象
+		var s = document.getElementById("s");//数据描述节点对象
+		//获取总宽度
+		var width = parseInt(getStylePropertyValue(box,"width"));
+		//alert(width);
+
+		var step = width/100;  //每步要走的宽度
+		
+		var count = 0; //表示百分比
+
+		var termId = setInterval(function(){
+			//当前小盒子的宽度
+			var navWidth =  parseInt(getStylePropertyValue(nav,"width"));
+			var upDateWidth = navWidth + step; //更新后的宽度
+			nav.style.width = upDateWidth + "px";  //改变小盒子的宽度
+			count++;   //增加百分比
+			s.innerHTML = count + "%";
+			if(upDateWidth==width){  //判断当前的宽度是否等于Box的宽度
+				clearInterval(termId);  //清除定时器
+			}
+			
+		},100);
+
+	}
+
+
+	 /*
+		功能：获取指定节点样式属性的值
+		参数：dom 表示的指定的节点对象  propertyName 表示是样式属性名
+	 */
+
+	 function getStylePropertyValue(dom,propertyName){
+		//var dom,propertyName
+		if(window.getComputedStyle){
+			return getComputedStyle(dom,null)[propertyName];  
+		}else{  //IE
+			return dom.currentStyle[propertyName];
+		}
+		
+	 }
+
+
+  </script>
+ </head>
+ <body>
+	<div class="box" id="box">
+		<div class="nav"  id="nav"></nav>
+		<span id="s"></span>
+	</div>
+	
+ </body>
+</html>

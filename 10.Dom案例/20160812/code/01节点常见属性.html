@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	
+  </script>
+ </head>
+ <body>
+	<button id="btn">按钮</button>
+	<ul id="list" class="box">
+		<li>li00</li>
+
+		<li id="li01">li01ddddddddd</li>
+
+		<li>li02</li>
+	</ul>
+
+	
+	<script>
+		var btn = document.getElementById("btn");
+		//alert(btn.nodeType);
+		//alert(document.nodeType);
+		//alert(btn.nodeName);
+
+		var ul = document.getElementById("list");
+		var li01 = document.getElementById("li01");
+		//var lis = ul.childNodes;
+		//var lis = ul.children;
+		//alert(lis[0]);
+
+		//alert(ul.firstChild.innerHTML);
+		//alert(ul.firstElementChild.innerHTML);
+
+		//alert(ul.ownerDocument.nodeType)   document
+		
+		//alert(li01.parentNode.id);
+		//alert(li01.previousSibling.innerHTML);
+		//alert(li01.previousElementSibling.innerHTML);
+		//alert(ul.attributes[0].nodeType);
+		alert(li01.childNodes[0].nodeType);
+
+	</script>
+ </body>
+</html>

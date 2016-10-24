@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title> 
+  <script>
+	/*
+	var arr = [40,8,15,18,12];
+	for(var i = 0;i<arr.length-1;i++){
+		for(var j = 1;j<arr.length;j++){
+			if(arr[i]>arr[i+j]){//既不是冒泡也不是选择
+				var temp = arr[i];
+				arr[i] = arr[i+j];
+				arr[i+j] = temp;
+			}
+		}
+	}
+	document.write(arr);
+	*/
+	var a = [3,4,1,5,2];
+	for(var i = 0;i<a.lenght-1;i++){
+		var min = a[i];
+		var index = i;
+		for(var j = i;j<a.length;j++){
+			if(min>a[j]){
+				min = a[j];
+				index = j;
+			}
+		}
+		var temp = a[i];
+			a[i] = min;
+			a[index] = temp;
+	}
+	document.write(a);
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

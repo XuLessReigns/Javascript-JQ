@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <script>
+	function setCookie(o){
+		//var name,value,expires,path,domain,secure;
+		var cookieStr = encodeURIComponent(o.name) + "=" + encodeURIComponent(o.value);
+		if(o.expires){
+			cookieStr+=";expires=" + o.expires;
+		}
+		if(o.path){
+			cookieStr+=";path=" + o.path;
+		}
+		if(o.domain){
+			cookieStr+=";domain=" + o.domain;
+		}
+		if(o.secure){
+			cookieStr+=";secure";
+		}
+		document.cookie = cookieStr;
+	}
+	var obj = {
+		name:"age",
+		value:"18",
+
+	};
+	setCookie(obj);
+	alert(document.cookie);
+ </script>
+ <body>
+  
+ </body>
+</html>

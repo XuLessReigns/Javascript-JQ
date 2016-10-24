@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	
+	var date = new Date();  //代表的是当前的时间
+	//默认的打印方式
+	//console.log(date);  //console.log(date.toString());
+
+	//获取年
+	var year = date.getFullYear(); //年
+	var month = date.getMonth() + 1; //月
+	var day = date.getDate();//日
+	var hours = date.getHours(); //时
+	var minutes = date.getMinutes(); //分
+ 	var seconds = date.getSeconds(); //秒
+	var milliseconds = date.getMilliseconds(); //毫秒
+	var xingqi = date.getDay();
+	document.write(year + "年");
+	document.write(month + "月");
+	document.write(day + "日 ");
+	document.write(hours + ":");
+	document.write(minutes + ":");
+	document.write(seconds + ":");
+	document.write(milliseconds + "<br/>");
+	document.write("今天星期" + xingqi);
+
+
+
+	//var date1 = new Date("2015/12/12 12:12:12:999");
+	//var date1 = new Date("2015-12-12 12:12:12:999");
+	//var date1 = new Date(2015,11,12,12,12,12,999);
+	//document.write(date1);
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

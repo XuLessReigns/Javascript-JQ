@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		类
+			Object
+		对象
+			new 关键字 用来创建对象
+			var 对象名 = new Object();
+
+		对象组成部分
+			键/值 或 属性/值
+				静态属性  特征
+				动态属性  行为
+
+		操作对象
+			增加键值
+				对象名.键名或属性名 = 值;    值，指的是数据，可以是基本类型数据也可以是引用类型数据。
+
+		引用数据类型：
+			对象也是一种数据
+			
+			
+	*/
+	var obj = new Object();  //创建对象  //类型：Object  //空对象
+	obj.uName = "张三";//增加属性
+
+	//增加属性
+	obj.sayLove = function(){
+		alert("I Love youლ(°◕‵ƹ′◕ლ)");
+	}
+	//增加属性
+	obj.program = function(){
+		alert("我会敲代码");
+	}
+	//增加属性
+	obj.song = function(sname){
+		alert("我会唱" + sname);
+	}
+	
+	//调用属性
+	obj.song("甜蜜蜜");
+
+
+	
+
+	
+
+	
+
+
+
+	
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

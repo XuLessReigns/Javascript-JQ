@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var str = "无敌是多么寂寞，无敌是多么空虚，无敌是多么的冷无敌是多么寂寞，无敌是多么空虚，无敌是多么的冷无敌是多么寂寞，无敌是多么空虚，无敌是多么的冷无敌是多么寂寞，无敌是多么空虚，无敌是多么的冷";
+	/*
+		while 和 for循环的区别
+			while：在次数确定或确定的情况下可以使用
+			for:   一般用在次数确定的情况下
+	*/
+	//document.write(str + "<br/>");
+	//str.length  =>23
+	//str = str.substring(2,str.length);
+	//str = str.substring(2);
+	//document.write(str + "<br/>");
+
+	//var startIndex = str.indexOf("无敌")+2;
+	//alert(startIndex);
+	//str = str.substring(10);
+	//document.write(str + "<br/>");
+	
+	
+	/*
+	var count = 0;  //统计无敌出现的次数
+	while(true){
+		var index = str.indexOf("无敌");
+		if(index==-1){
+			break;
+		}
+		count++;
+		str = str.substring(index+2);
+		
+	}
+	alert(count);
+	*/
+	
+	/*
+	var reg = /无敌/g;
+	var result = str.match(reg);
+	console.log(result);
+	alert(result.length);
+	*/
+
+	/*
+	var str = "无敌0无敌0无敌0无敌无敌0无敌0无敌0无敌";
+	var arr = str.split("无敌");
+	console.log(arr.length-1);
+	*/
+	
+	
+	
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

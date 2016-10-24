@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+	$(function(){
+		var flag = true;
+		$("#box,.box2").css({
+			"background-color":"red",
+			"width":"200px",
+			height:200,
+			"margin-bottom":10
+		}).click(function(){
+			$("#box,.box2").html("你好");
+			console.log($("#box,.box2").html());
+			//alert("ok");
+			if(flag){
+				$("#box1,.box1").hide(400);
+				//$(".box1").hide(400);
+				flag = false;
+			}else{
+				$("#box1,.box1").show(400);
+				//$(".box1").show(400);
+				flag = true;
+			}
+			
+		});
+	});
+	$(function(){
+		$("#box1,.box1").css({
+			background:"green",
+			height:100,
+			width:100,
+			margin:10,
+		}).mouseenter(function(){
+			$("#box1").html("哈哈");
+			console.log($("#box1").html());
+			console.log($("#box1"));
+			alert("你好");
+		});
+	});
+  </script>
+ </head>
+ <body>
+  <div id="box">
+  </div>
+  <div class="box2">
+  </div>
+   <div id="box1">
+  </div>
+  <div class="box1">
+  </div>
+ </body>
+</html>

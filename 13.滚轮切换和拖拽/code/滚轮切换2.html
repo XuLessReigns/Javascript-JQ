@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{margin:0;padding:0;}
+	html,body{width:100%;height:100%;overflow:hidden;}
+	.big-box{width:100%;height:500%;text-align:center;position:absolute;}
+	.big-box .item{height:20%;}
+	.big-box .red{background:red;}
+	.big-box .green{background:green;}
+	.big-box .cyan{background:cyan;}
+	.big-box .pink{background:pink;}
+	.big-box .gray{background:gray;}
+	.controls{list-style:none;position:absolute;
+	top:30%;right:50px;}
+	.controls li{width:50px;height:50px;font:bold 22px/50px "微软雅黑";text-align:center;background:#000;color:#fff;}
+	.controls li+li{margin-top:10px;}
+	.controls .active{background:#fff;color:#000;}
+  </style>
+  <script>
+	/*
+		思路：获取所要操作的节点对象
+			为document添加一个滚轮事件
+			获取可视区域的高度document.body.clientHeight
+			甄别滚轮滚动的方向然后改变big-box.style.top值
+			循环遍历li节点对象，为每一个li节点对象添加一个点击事件并改变big-box.style.top值
+	*/
+	window.onload = function(){
+		//获取节点对象
+		var lis = document.querySelectorAll("li");
+		var bigBox = document.getElementById("bigBox");
+		//添加事件监听工具
+		function on(dom,type,fn){
+			if(dom.addEventListener){
+				dom.addEventListener(type,fn);
+			}else{
+				dom.attachEvent("on" + type,fn);
+			}
+		}
+		//兼容
+		on(document,"mousewheel",handler);
+		on(document,"DOMMouseScroll",handler);
+		//处理程序
+		var index = 0;// 索引
+		var flag = true;//开关
+		var height = document.body.clientHeight;//可视化高度
+		function handler(e){//事件对象
+			if(flag){
+				flag = false;
+				var num = e.wheelDelta||e.detail;
+				if(num==120||num==-3){
+					//向上滚动
+					index--;
+					if(index<0){
+						index = 0;
+						flag = true;
+						return;
+					}
+				}else{
+					//向下滚动
+					index++;
+					if(index>lis.length-1){
+						index = lis.length;
+						flag = true;
+						return;
+					}
+				}
+				for(var i = 0;i<lis.length;i++){
+					lis[i].className = "";
+				}
+				lis[index].className = "active";
+				bigBox.style.top = -index*height + "px";
+				
+				setTimeout(function(){
+					flag = true;
+				},1000);
+			}
+		}
+		//点击事件
+		for(var i = 0;i<lis.length;i++){
+			lis[i].index = i;
+			lis[i].onclick = function(){
+				for(var j = 0;j<lis.length;j++){
+					lis[j].className = "";
+				}
+				lis[this.index].className = "active";
+				index = this.index;
+				bigBox.style.top = -this.index*height + "px";
+			}
+		}
+	}
+  </script>
+ </head>
+ <body>
+ <!--存放五个屏幕的大河子-->
+  <div class="big-box" id="bigBox">
+	<div class="item red"><h1>屏幕1</h1></div>
+	<div class="item green"><h1>屏幕2</h1></div>
+	<div class="item cyan"><h1>屏幕3</h1></div>
+	<div class="item pink"><h1>屏幕4</h1></div>
+	<div class="item gray"><h1>屏幕5</h1></div>
+  </div>
+
+  <ul class="controls">
+	<li class="active">1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+  </ul>
+ </body>
+</html>

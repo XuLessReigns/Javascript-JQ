@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		!的优先级要大于关系运算符的优先级
+	*/
+	var age = 18;
+	var gender = "男";
+	//!age>=18&&gender=="男";
+	//var flag = !age>=18;
+	var falg = !age>18||!gender=="女";   //false || false
+	//false>18  false
+	//!gender=="女" =>false=="女"   false
+	var falg = !(age>18)||!(gender=="女");  //true ||  true
+	alert(falg);
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

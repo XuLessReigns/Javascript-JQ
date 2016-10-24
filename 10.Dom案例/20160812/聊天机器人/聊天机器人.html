@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css"  href="all.css">
+  <script>
+	window.onload = function(){
+		var send = document.getElementById("send");
+		var txt = document.getElementById("txt");
+		var talkList = document.getElementById("talkList");
+		var arr = ["大叔，不约","我将跟随你","我将陪伴你","我将嫁给你"];
+		var arr1 = ["约么","当我君临天下的时候","当我落魄的时候","当我长大后"];
+		send.onclick = function(){
+			var tit = txt.value;
+			//alert(tit);
+			//var gg = document.getElementsByClassName("gg");
+			//var gg = talkList.createElement('li'); //创建一个元素节点(对象)
+			//var logoHead = gg.createElement('div');
+			//talkList.appendChild(gg);
+			//gg.appendChild(logoHead);
+			var li = document.createElement("li");//创建li节点
+			li.className = "gg";
+			var div = document.createElement("div");//创建div节点
+			div.className = "logo-head";
+			div.innerHTML = '<img src="images/gg.jpg"/>';
+			var span = document.createElement("span");//创建span节点
+			span.className = "talk";
+			var node=document.createTextNode(tit);//创建文本节点
+			span.appendChild(node);		//向span元素追加这个node节点
+			li.appendChild(div);		//向<li>元素追加这个div节点
+			li.appendChild(span);		//向<li>元素追加这个span节点
+			talkList.appendChild(li);//在talkList里添加li
+			txt.value = "";
+			for(var i = 0;i<arr1.length;i++){
+				if(tit==arr1[i]){
+					var li = document.createElement("li");//创建li节点
+					li.className = "mm";
+					var div = document.createElement("div");//创建div节点
+					div.className = "logo-head";
+					div.innerHTML = '<img src="images/mm.jpg"/>';
+					var span = document.createElement("span");//创建span节点
+					span.className = "talk";
+					var node=document.createTextNode(arr[i]);//创建文本节点
+					span.appendChild(node);		//向span元素追加这个node节点
+					li.appendChild(div);		//向<li>元素追加这个div节点
+					li.appendChild(span);		//向<li>元素追加这个span节点
+					talkList.appendChild(li);//在talkList里添加li
+				}
+
+			}
+			
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<div id="box" class="box">
+		<div id="content" class="content">
+			<ul id="talkList">
+				<li class="mm">
+					<div class="logo-head"> 
+						<img src="images/mm.jpg"/>
+					</div>
+					<span class="talk">
+						Hi,主人！我是您最贴心的小娜!
+					</span>
+				</li>
+				<li class="mm">
+					<div class="logo-head"> 
+						<img src="images/mm.jpg"/>
+					</div>
+					<span class="talk">
+						我可以陪您聊天哦！O(∩_∩)O
+					</span>
+				</li>
+				<li class="gg">
+					<div class="logo-head">
+						<img src="images/gg.jpg"/>
+					</div>
+					<span class="talk">
+						o(≧v≦)o~~
+					</span>
+				</li>
+				
+			</ul>
+		</div>
+		<div class="control">
+			<textarea id="txt" rows="2" cols="40"></textarea>
+			<a href="javascript:void(0)" id="send">发送</a>
+		</div>
+	</div>
+ </body>
+</html>

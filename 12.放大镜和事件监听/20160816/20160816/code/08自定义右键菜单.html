@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+				width:100px;
+				border:1px solid #CCCCCC;
+				display: none;
+				position: absolute;
+				left: 0;
+				top:0;
+			}
+			ul.active{
+				display: block;
+			}
+			li{
+				font:bold 18px/22px "宋体";
+				background-color: #000000;
+				width:100%;
+				color: #fff;
+				
+			}
+			li:hover{
+				background-color: #fff;
+				color: #ddd;
+			}
+			li+li{
+				border-top: 1px solid #ccc;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<ul id="list">
+			<li>菜单1</li>
+			<li>菜单2</li>
+			<li>菜单3</li>
+		</ul>
+		<script>
+			/*
+				思路：
+					第一步：页面加载完后，获取所要操作的节点对象
+					第二步：为document添加一个右键菜单事件
+					第三步：获取事件对象，并获取当前鼠标的坐标
+					第四步：显示出ul节对象并且改变ul的坐标
+			*/
+			//获取ul节点对象
+			var list = document.getElementById("list");
+			//给文档绑定右键菜单事件
+			document.oncontextmenu = function(e){
+				//事件对象兼容处理
+				var _e = window.event||e; 
+				//获取鼠标x坐标
+				var x = _e.clientX;
+				//获取鼠标有y坐标
+				var y = _e.clientY;
+				//list.offsetLeft  只读
+				list.style.left = x + "px";     //改变列表的x坐标
+ 				list.style.top = y + "px";      //改变列表的y坐标
+				list.className = "active";
+				/*取消右键菜单默认行为的兼容处理*/
+				if(_e.preventDefault){
+					_e.preventDefault();
+				}else{
+					_e.returnValue = false;
+				}
+			}
+			
+			/*为文档添加一个点击事件*/
+			document.onclick = function(){
+				list.className = "";  //更改ul列表的样式状态
+			}
+		</script>
+	</body>
+</html>

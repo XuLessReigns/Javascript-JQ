@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+   <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	ul{
+		list-style:none;
+		color:#fff;
+	}
+	ul li{
+		line-height:50px;
+		background-color:green;
+	}
+	ul li+li{
+		/* +表示获取下一个兄弟元素*/
+		margin-top:20px;
+	}
+	div ul{
+		margin-bottom:20px;
+	}
+	/*div ul li*/
+	</style>
+  <script>
+	window.onload = function(){
+		var lis = document.getElementsByTagName("li");
+		//alert(lis.length);
+		
+		//dv指的是div
+		var dv = document.getElementById("dv");
+		//lis2 指的是div下面的li
+		var lis2 = dv.getElementsByTagName("li");
+		for(var index = 0;index<lis2.length;index++){
+			lis2[index].onclick = function(){
+				alert(this.innerHTML);
+			}
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<div id="dv">
+		<ul>
+			<li>O(∩_∩)O哈哈~01</li>
+			<li>O(∩_∩)O哈哈~02</li>
+			<li>O(∩_∩)O哈哈~03</li>
+			<li>O(∩_∩)O哈哈~04</li>
+		</ul>
+	</div>
+
+	<ul>
+		<li>(*^__^*) 嘻嘻……01</li>
+		<li>(*^__^*) 嘻嘻……01</li>
+		<li>(*^__^*) 嘻嘻……01</li>
+		<li>(*^__^*) 嘻嘻……01</li>
+	</ul>
+ </body>
+</html>

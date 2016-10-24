@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var arr1 = [1,2,3];
+        // var arr2 = [2,3,5];
+        // console.log(arr1.slice == arr2.slice);
+
+
+        var Person = function(name){
+            this.name = name;
+        }
+        //构建对象时将方法放于该构造函数的原型对象中可以解决该对象创建多个实例
+        //造成的内存冗余问题。其解决内存冗余的原理是因为原型对象中的属性可以被
+        //多个实例共享
+        Person.prototype.eat = function(){
+            console.log(this.name);
+        }
+        Person.prototype.say = function(){
+            console.log("说话");
+        }
+        Person.prototype.abc = "123";
+        //原型对象存在于构造函数的属性（prototype）中
+        //prototype的值是一个Object类型数据（对象）
+
+        //原型链的查找规则：
+        //在访问一个对象的属性时，先从实例本身开始查找该属性，若能找到则
+        //直接使用，若无法找到则向该实例中的原型对象中进行查找，若原型对象中
+        //无法找到则会向原型对象下的原型对象继续查找，直到找到Object基类的
+        //原型中，若还找不到则执行动态创建属性，以上文字中描述的原型对象是
+        //指__proto__属性
+
+        //
+        var person1 = new Person("张三");
+        person1.abc = "345";
+        //当为一个对象中属性赋值时，先从实例本身中查找，实例中存在该属性则覆盖
+        //实例中的属性值，如果实例不存在该属性则直接在该实例中创建属性
+        //（不会影响到原型中的同名属性）
+
+        console.log(person1);
+        var person2 = new Person("李四");
+        person1.eat();
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+				background-color: #000;
+				opacity: 0.5;
+				filter: alpha(opacity=50);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="dv"></div>
+	</body>
+	<script>
+	
+	var dv = document.getElementById("dv");
+	alert(getStylePropertyValue(dv,"opacity"));
+	
+	 /*
+		功能：获取指定节点样式属性的值
+		参数：dom 表示的指定的节点对象  propertyName 表示是样式属性名
+	 */
+
+	 function getStylePropertyValue(dom,propertyName){
+		//var dom,propertyName
+		if(window.getComputedStyle){
+			return getComputedStyle(dom,null)[propertyName];  
+		}else{  //IE
+			return dom.currentStyle[propertyName];
+		}
+		
+	 }
+			
+	</script>
+</html>

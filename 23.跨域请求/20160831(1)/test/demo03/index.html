@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>瀑布流</title>
+		<link rel="stylesheet" href="base.css" />
+		<script src="ajax.js"></script>
+	</head>
+	<body>
+	    <div id="container">
+	        <div class="col">
+	        	<div class="box">
+	        		<img src="images/0.jpg"  />
+	        	</div>
+	        	<div class="box">
+	        		<img src="images/4.jpg"  />
+	        	</div>
+	        	<div class="box">
+	        		<img src="images/5.jpg"  />
+	        	</div>
+	        </div>
+	        <div class="col">
+	        	<div class="box">
+	        		<img src="images/1.jpg"  />
+	        	</div>
+	        	<div class="box">
+	        		<img src="images/4.jpg"  />
+	        	</div>
+	        	<div class="box">
+	        		<img src="images/6.jpg"  />
+	        	</div>
+	        </div>
+	        <div class="col">
+	        	<div class="box">
+	        		<img src="images/2.jpg"  />
+	        	</div>
+	        	<div class="box">
+	        		<img src="images/0.jpg"  />
+	        	</div>
+	        </div>
+	        <div class="col">
+	        	<div class="box">
+	        		<img src="images/3.jpg"  />
+	        	</div>
+	        	<div class="box">
+	        		<img src="images/8.jpg"  />
+	        	</div>
+	        	<div class="box">
+	        		<img src="images/9.jpg"  />
+	        	</div>
+	        </div>
+	    </div>
+		<script>
+			/*
+				思路：
+					第一步：获取所要操作的节点对象
+					第二步：
+						为window对象添加滚动条滚动事件 onscroll
+					
+						
+
+			*/
+			var cols = document.querySelectorAll(".col");
+			window.onscroll = function(){	
+				/*
+					什么情况下发送AJAX请求服务端
+					当滚动条滚动到底部的时候 开始AJAX请求
+					条件：document.body.scrollHeight == document.body.clientHeight + (document.body.scrollTop||document.documentElement.scrollTop); 
+				*/
+				//被卷去的页面的高度
+				var sHeight = document.body.scrollTop||document.documentElement.scrollTop;
+				var cHeight = document.body.clientHeight;  //可视区域的高度
+				var pHeight = document.body.scrollHeight; //网页的高度
+
+				if(sHeight+cHeight==pHeight){
+					ajax({
+						method:"get",
+						isAsyc:true,
+						url:"handler.php",
+						success:function(data){
+							var arr = JSON.parse(data);
+							for(var i = 0;i<arr.length;i++){
+								var minCol = getMinHeightCol();
+								var div = document.createElement("div");
+								div.className = "box";
+								div.innerHTML = '<img src="'+arr[i]+'" />';
+								minCol.appendChild(div);
+
+								
+							}
+						},
+						error:function(mes){
+							alert(mes);
+						}
+					});
+				}
+			}
+
+			/*
+				获取高度最小的列
+			*/
+			function getMinHeightCol(){
+				var min = cols[0].offsetHeight;
+				var index = 0;
+				for(var i = 0;i<cols.length;i++){
+					if(cols[i].offsetHeight<min){
+						min = cols[i].offsetHeight;
+						index = i;
+					}
+				}
+				return cols[index];
+			}
+
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圆</title>
+	<script>
+		// document.onreadystatechange = function(){
+		// 	if(document.readyState == "complete"){
+		// 		var div = document.createElement("div");
+		// 		div.style.cssText = "width:15px; height:15px; background:red; border-radius:50%;";
+		// 		document.body.appendChild(div);
+		// 	}
+		// }
+
+		// document.addEventListener("DOMContentLoaded",function(){
+			
+		// },false);
+
+		window.onload = function(){
+			var w = document.documentElement.clientWidth / 2;
+			var h = document.documentElement.clientHeight / 2;
+			var divList = [];
+			var rote = 100;
+			for(var i = 0; i < 14; i++){
+				var x = w + Math.cos(Math.PI * 2 / 14 * (i + 1))* rote;
+				var y =  h + Math.sin(Math.PI * 2 / 14 * (i + 1)) * rote;
+				var div = document.createElement("div");
+				div.style.cssText = "width:15px; height:15px; background:red; border-radius:50%; position:absolute; left:"+x+"px; top:"+y+"px;";
+				document.body.appendChild(div);
+				divList.push(div);
+			}
+
+			var timer = setInterval(function(){
+				rote += 5;
+				for(var i = 0; i < divList.length; i++){
+					var x = w + Math.cos(Math.PI * 2 / 14 * (i+1))* rote;
+					var y =  h + Math.sin(Math.PI * 2 / 14 * (i+1)) * rote;
+					divList[i].style.left = x + "px";
+					divList[i].style.top = y + "px";
+				}
+			},50);
+		}
+	</script>
+</head>
+<body>
+	<div id="container"></div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		正则：
+			描述一个字符串的规则
+			入门儿
+	*/
+   //var reg = /\d{4}/g;   //顶一个一个字符串规则
+   //abba
+   //var reg = /(\d)(\d)\2\1/g;   //顶一个一个字符串规则
+   var reg = /\d{4}/g;  //描述了提取连续4个数字的的规则
+   window.onload = function(){
+		var txt = document.getElementById("txt");
+		var btn = document.getElementById("btn");
+		btn.onclick = function(){
+			var str = txt.value;
+			var result;
+			/*
+				明确需求，给出解决方案1111明确需求，给出解决方案2222明，给出解决方案3333
+			*/
+			/*
+			var result = reg.exec(str);
+			alert(result);      //1111 
+			result = reg.exec(str);
+			alert(result);      //2222
+			result = reg.exec(str);
+			alert(result);      //3333
+			result = reg.exec(str);
+			alert(result);      //null
+			*/
+			while(result=reg.exec(str)){
+				//alert(result instanceof Array);
+				//console.log(result);
+				//alert(result[0]);
+			}
+		}
+   }
+
+  </script>
+ </head>
+ <body>
+	<textarea id="txt"></textarea>
+	<button id="btn">提取</button>
+ </body>
+</html>

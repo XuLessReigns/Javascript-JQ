@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	html,body{
+		width:100%;
+		height:100%;
+		overflow:hidden;
+	}
+	.big-box{
+		width:100%;
+		height:500%;   /*5000px*/
+		text-align:center;
+		position:absolute;
+	}
+	.big-box .item{
+		/*对于item项，big-bog就是一个100%的高度*/
+		height:20%;
+	}
+	.big-box .item1{
+		background-color:red;
+	}
+	.big-box .item2{
+		background-color:blue;
+	}
+	.big-box .item3{
+		background-color:purple;
+	}
+	.big-box .item4{
+		background-color:gold;
+	}
+	.big-box .item5{
+		background-color:pink;
+	}
+	.controls{
+		list-style:none;
+		position:absolute;
+		top:20%;
+		right:20px;
+	}
+	.controls li{
+		width:50px;
+		height:50px;
+		font:bold 22px/50px "宋体";
+		text-align:center;
+		background-color:#000;
+		color:#fff;
+		cursor:pointer;
+	}
+	.controls li+li{
+		margin-top:5px;
+	}
+	.controls li.active{
+		background-color:#fff;
+		color:red;
+	}
+
+  </style>
+  <script></script>
+ </head>
+ <body>
+	<!--存放5个屏幕的大盒子-->
+	<div class="big-box" id="bigBox">
+		<div class="item item1"><h1>屏幕1</h1></div>
+		<div class="item item2"><h1>屏幕2</h1></div>
+		<div class="item item3"><h1>屏幕3</h1></div>
+		<div class="item item4"><h1>屏幕4</h1></div>
+		<div class="item item5"><h1>屏幕5</h1></div>
+	</div>
+	<!--控制按钮-->
+	<ul class="controls">
+		<li class="active">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<script>
+		/*
+			思路的产生必然基于需求
+			思路：
+				第一步：获取所要操作的节点对象
+				第二步：为document添加一个鼠标滚轮滚动事件
+				第三步：
+						获取浏览器可视区域的高度
+							document.body.clientHeight
+						甄别滚轮滚动方向
+							改变bigBox的top值
+				第四步：
+						作业：循环遍历li节点对象，为每一个li节点对象添加一个点击事件
+						改变bigBox的top值
+		*/
+			/*
+				事件监听绑定工具
+				参数：
+					dom 事件目标
+					type 事件名   
+					fn   事件处理程序
+			*/
+			function on(dom,type,fn){
+				
+				if(dom.addEventListener){  //标准模式
+					dom.addEventListener(type,fn)
+				}else{ //IE8及其以下模式
+					dom.attachEvent("on" + type,fn)
+				}
+			}
+		//获取大盒子节点对象
+		var bigBox = document.getElementById("bigBox");
+		//获取所有的li节点对象
+		var lis = document.querySelectorAll(".controls li");
+		//获取当前浏览器可视区域的高度
+		var viewHeight = document.body.clientHeight;
+		//控制索引值
+		var index = 0;
+		//开关控制切换程序是否执行
+		var flag = true; //true 表示可以执行  //false 表示不能执行
+		
+		/*滚轮滚动事件绑定*/
+		on(document,"mousewheel",handler);
+		on(document,"DOMMouseScroll",handler);
+		/*事件处理程序*/
+		function handler(e){
+			if(flag){
+				var _e = window.event||e;
+				//_e.wheelDelta  甄别滚轮方向  120 上   -120下  
+				//_e.detail      甄别滚轮方向  -3 上   3 下   火狐
+
+				if(_e.detail==-3||_e.wheelDelta==120){
+					//上
+					index--;
+					/*索引限定控制*/
+					if(index<0){
+						index = 0;
+					}
+				}else{
+					//下
+					index++;
+					/*索引限定控制*/
+					if(index>lis.length-1){
+						index = lis.length-1;
+					}
+				}
+				//y 滚轮滚动后bigBox的top值
+				var y = -index*viewHeight; 
+				/*改变大盒子的top值*/
+				bigBox.style.top = y + "px";
+				for(var j = 0,len = lis.length;j<len;j++){
+					lis[j].className = "";
+				}
+				/*更改对应控制按钮的样式*/
+				lis[index].className = "active";
+				flag = false;
+				/*一秒钟之后，把flag变成true;*/
+				setTimeout(function(){
+					flag = true;
+				},1000)
+			}
+		}
+	</script>
+ </body>
+</html>

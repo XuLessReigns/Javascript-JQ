@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/server.js"></script>
+		<script type="text/javascript" src="js/leigegeCookie.js" ></script>
+		<script>
+		//http://127.0.0.1:8020/demo06/index02.html
+			var json = getData();
+			console.log(typeof json)
+			setCookie({
+				name:"datas",
+				value:json
+			})
+			
+			
+		</script>
+	</head>
+	<body>
+			
+	</body>
+</html>

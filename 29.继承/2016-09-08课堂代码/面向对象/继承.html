@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Person = function(name,age,sex){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        Person.prototype = {
+            eat:function(){
+                console.log("吃饭");
+            },
+            say:function(){
+                console.log("说话");
+            }
+        }
+
+        // var person = new Person("张三",18,"男");
+        // console.log(person);
+
+
+
+        var Programmer = function(name,sex,age){
+            this.hobby = ["看书","翻墙"];
+        }
+        Programmer.prototype = new Person();
+        Programmer.prototype.wirteCode = function(){
+            console.log("写代码");
+        }
+
+        var prm = new Programmer("李四",18,"男");
+        console.log(prm);
+
+        //仅仅通过原型继承我们可以发现在实例化子类时无法向父类构造函数中传递参数
+
+        //三种方式继承：
+        //通过原型（prototype）实现继承
+        //通过call()方法实现继承
+        //通过apply()方法实现继承
+    </script>
+</body>
+</html>

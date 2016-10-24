@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		正则：
+			描述一个字符串的规则
+			入门儿
+	*/
+   //abba     1221   2332
+   // var reg = /(\d)(\d)\2\1/g;   //顶一个一个字符串规则
+   //var reg = /(\d)(\d)\1\2/g;
+    //var reg = /(\d)(\d)((\1\2)|(\2\1))/g
+	//var reg = /(\d)(\d)(\1\2|\2\1)/g
+	var reg = /((\d)(\d)\2\3)|((\d)(\d)\6\5)/g
+   window.onload = function(){
+		var txt = document.getElementById("txt");
+		var btn = document.getElementById("btn");
+		btn.onclick = function(){
+			var str = txt.value;
+			var result;
+			while(result = reg.exec(str)){
+				alert(result[0]);
+			}
+		}
+   }
+
+   // 给一段字符串文本，从中把规则符合 abab或abba（1212、3434、3443）这这种形式的数字子字符串提取出来
+
+  </script>
+ </head>
+ <body>
+	<textarea id="txt"></textarea>
+	<button id="btn">提取</button>
+ </body>
+</html>

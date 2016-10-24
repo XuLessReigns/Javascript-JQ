@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  
+ </head>
+ <body>
+	<button id="btn">按钮</button>
+	<ul id="ul">
+		<li>li01</li>
+		<li>li02</li>
+	</ul>
+ </body>
+ <script>
+	var btn = document.getElementById("btn");
+	//alert(btn.nodeType);//1
+	//alert(document.nodeType);//9
+	//alert(btn.nodeName);//BUTTON
+
+	var ul = document.getElementById("ul");
+	var lis = ul.childNodes;
+	alert(lis.length);
+  </script>
+</html>

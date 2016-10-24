@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var sum = 0;
+	var arr = [1,2,3,4,5,6,7,8,9,10,11,12];
+	for(var i = 0,len = arr.length;i<len;i++){
+		//优化程序这样只需要数一次个数
+		if(arr[i]>5){
+			sum++;
+		}
+	}
+	document.write("个数：" + sum+ "<br/>");
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

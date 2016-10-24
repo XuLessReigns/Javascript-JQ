@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	window.onload = function(){		
+		var btn = document.getElementById("btn");
+		function addEvent(dom,event,fn){
+			if(dom.addEventListener){
+				dom.addEventListener(event,fn);
+			}else{
+				event = "on" + event;
+				dom.attachEvent(event,fn);
+			}
+		}
+		addEvent(btn,"click",function(){
+			alert("坚持不懈1");
+		});
+		addEvent(btn,"click",function(){
+			alert("坚持不懈2");
+		});
+		addEvent(btn,"click",function(){
+			alert("坚持不懈3");
+		});
+	}
+  </script>
+ </head>
+ <body>
+  <button id="btn">按钮</button>
+ </body>
+</html>

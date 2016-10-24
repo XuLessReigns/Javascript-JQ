@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//传入对象
+	function setCookie(obj){
+		//var cookieStr = obj.name + "=" + obj.value;
+		var cookieStr = encodeURIComponent(obj.name) + "=" + encodeURIComponent(obj.value);
+		if(obj.expires){
+			cookieStr+=";expires=" + obj.expires;
+		}
+		if(obj.path){
+			cookieStr+=";path=" + obj.path;
+		}
+		if(obj.domain){
+			cookieStr+=";domain=" + obj.domain;
+		}
+		if(obj.secure){
+			cookieStr+=";secure";
+		}
+		//document.cookie = cookieStr;
+		document.cookie = decodeURIComponent(cookieStr);
+	}
+	var obj = {
+		name:"姓名",
+		value:"张国伟",
+		expires:new Date("2016/11/18"),
+	};
+	setCookie(obj);
+	alert(document.cookie);
+	//删除
+	function removeCookie(obj){
+		var date = new Date();
+		date.setSeconds(-1);
+		setCookie({
+			name:obj.name,
+			value:obj.value,
+			expires:date,
+			path:obj.path,
+			domain:obj.path,
+			secure:obj.secure
+		});
+	}
+	removeCookie(obj);
+	alert(document.cookie);
+	//查找
+	function getCookie(cname){
+		var str = document.cookie;
+		var cookies = str.split("; ");
+		for(var i = 0;i<cookies.length;i++){
+			var arr = cookies[i].split("=");
+			if(decodeURIComponent(arr[0])==cname){
+				return decodeURIComponent(arr[1]);
+			}		
+		}
+		return "";
+	}
+	setCookie({name:"姓名",value:"张三"});
+	setCookie({name:"gender",value:"boy"});
+	alert(getCookie("姓名") );
+	alert(getCookie("gender") );
+	alert(getCookie("age") );//写了return "";返回空“”，没写返回undefined
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

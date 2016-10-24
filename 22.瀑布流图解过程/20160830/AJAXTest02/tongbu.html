@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*
+			document.write("1" + "<br/>");
+			setInterval(function(){
+				console.log(new Date())
+			},1000)
+			
+			document.write("2" + "<br/>");
+			document.write("3" + "<br/>");
+			*/
+			
+			/*
+			document.write("1" + "<br/>");
+			alert("123")
+			document.write("2" + "<br/>");
+			document.write("3" + "<br/>");
+			*/
+			
+			document.write("<h1>1<h1>")
+							//第一步 ：先创建AJAX对象
+				//XMLHttpRequest 标准模式
+				//ActiveXObject("Microsoft.XMLHTTP")
+				
+				var xhr;  //声明AJAX对象变量
+				if(window.XMLHttpRequest){  //标准模式下创建的AJAX对象
+				  	xhr = new XMLHttpRequest();
+				}else{  //非标准模式下创建的AJAX对象
+					xhr = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				/*
+				 第二步：连接服务器 open(请求方式,请求的路径url,是否异步)
+					请求方式：get  或     post  
+					请求的路径：相对路径  或  http协议路径
+					url?key1=value1&key2=value2&key3=value3....
+					ulr =>www.bidu.com
+					?   =>?wd=美女      相当于 一个请求的条件  这个条件被称之为 “参数”
+					www.baidu.com?c=车
+					
+				*/
+				xhr.open("GET","data.txt?num="+new Date().getTime(),false);
+				
+				/*
+				 	第三步  发送      send(要提交的数据)
+				 	要提的数据：可写可不写
+				 		可写：post
+				 			key1=value1&key2=value2&key3=value3....
+				 			模拟表单提交
+				 			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				 		
+				 		可不写：get
+				 		get请求：
+							在某些浏览器下，可能会有缓存
+							缓存
+								根据请求的地址缓存
+								假如：
+									第一次  http://127.0.0.1:8888/AJAXTest/server/a.txt?random=0.112120
+									在某些浏览器下会把第一次请求的结果给缓存下来
+						
+						
+									 http://127.0.0.1:8888/AJAXTest/server/a.txt?random=0.111200
+									第二次再访问的时候，若访问的地址是一模一样的时候，不会重新去请求服务器，而会重新加载之前缓存的结果。
+
+				 			
+				 */
+				xhr.send();
+				
+				/*
+				 	第四步：监听服务端响应的数据
+				 	同步：不需要监听事件
+				 			readystate  请求状态
+				 				如果请求状态是4的话：
+				 				表示的是http包已经完全接收！
+				 			status  完全接收后的状态码
+				 				如果状态码是200
+				 				表示的是http包已经完全解析
+		
+				 	异步：需要监听事件
+				 		xhr.onreadystatechange = function(){
+				 			readystate  请求状态
+				 				如果请求状态是4的话：
+				 				表示的是http包已经完全接收！
+				 			status  完全接收后的状态码
+				 				如果状态码是200
+				 				表示的是http包已经完全解析
+				 			responseText 
+				 				表示服务端给你返回过来的结果
+				 		}
+				 		
+				 */
+				
+					if(xhr.readyState==4){
+						if(xhr.status==200){
+							alert(xhr.responseText)
+						}else{
+							//不是ok  会话失败
+							alert(xhr.statusText)
+						}
+					}
+				
+				
+			document.write("<h1>2<h1>")
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

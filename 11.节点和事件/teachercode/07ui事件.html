@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	window.onbeforeunload = function(){
+		alert("我要走了吗？");
+	}
+
+	window.onresize = function(){
+		alert("我变瘦了吗？");
+	}
+  </script>
+ </head>
+ <body>
+	<input type="text" id="txt" />
+	<script>
+		var txt = document.getElementById("txt");
+		/*
+		txt.onselect = function(){
+			alert(this.value);
+		}
+		*/
+	</script>
+ </body>
+</html>

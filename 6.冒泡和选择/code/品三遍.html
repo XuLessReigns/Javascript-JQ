@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//基本数据和引用数据的区别
+	/*
+		1、对于基本数据类型的数据和变量名以及标识符存储在栈区，
+ 	  	   对于引用数据类型的数据存储在堆区；
+		2、对于基本类型的数据在复制的时候，会重新对该数据克隆一份，在内存当中。
+		 对于引用数据类型在复制的时候，克隆的是数据和变量名或标识符的地址，而不是数据。
+	*/
+	var a = [1,2,3,4];
+	var b = a;
+	b[1] = "你好";
+	document.write(a[1]);
+	var n = 1;
+	n = 3;
+	var m = n;
+	//m = 2;
+	n = 2;
+	//document.write(n);
+	document.write(m);
+
+
+	//常用工具
+	var a = [1,2,3,4,5];
+	//var b = a.shift();//删除第一个数据，并返回删除的数据
+	//alert(b);//1
+	//document.write(a);//2345
+	//var b = a.pop();//删除最后一个数据，并返回删除的数据
+	//alert(b);//5
+	//document.write(a);//1234
+	//var b = a.unshift("ni","hao",0);//添加数据到数组的首部，并返回当前数组的长度
+	//alert(b);//8
+	//document.write(a);//"ni","hao",012345
+	var b = a.push("ni","hao",0);//添加数据到数组的尾部，并返回当前数组的长度
+	alert(b);//8
+	document.write(a);//12345"ni","hao",0
+	
+	//模拟数据结构栈和队列
+	/* 模拟栈
+	var arr = [];
+	arr.push("你好","他好","大家好");
+	document.write(arr + "<br/>");
+	//var result = arr.pop();
+	alert(arr.pop());
+	document.write(arr);
+	*/
+
+	var arr = [];
+	arr.push("你好","他好","大家好");
+	document.write(arr + "<br/>");
+	arr.shift();
+	document.write(arr + "<br/>");
+
+	//slice
+	var a = [1,2,3,4,5,6];
+	var b = a.slice(3);//不改变原来的数组
+	//alert(b);//从当前的索引切到最后
+	//document.write(a);
+	var c = [9,8,7,6,5,4];
+	var d = c.slice(2,5);//前包后不包
+	alert(d);
+	document.write(c);
+
+	//splice
+	var a = [1,2,3,4,5];
+	//var b = a.splice(3,1);//改变原来的数组,从索引3开始删除，删除一个
+	//alert(b);//4
+	//document.write(a);//1235
+	
+	//var c = a.splice(2,1,"hi");//替换
+	//alert(c);
+	//document.write(a);
+	 
+	var d = a.splice(3,0,"hi","ni","hao");//增加
+	alert(d);
+	document.write(a);
+
+	//reverse反转
+	var a = [1,2,3,4,5];
+	a.reverse();
+	alert(a);
+	//sort及案例
+	var a = [12,3,56,89,5,9,6];
+	a.sort();//默认是二进制排序
+	document.write(a + "<br/>");
+
+	a.sort(function(a,b){
+		return a-b;//从小到大 升序
+	});
+	document.write(a + "<br/>");
+	a.sort(function(a,b){
+		return b-a;//从大到小 降序
+	});
+	document.write(a + "<br/>");
+	//案例
+	var a = [{name:"1张国伟",age:5},{name:"2张国伟",age:4},{name:"3张国伟",age:3},{name:"4张国伟",age:2},{name:"5张国伟",age:1}];
+	
+	
+	document.write("------------默认排序--------------" + "<br/>");
+	a.sort();
+	for(var i = 0;i<=4;i++){
+		document.write("名字:" + a[i].name + " 年龄:" + a[i].age + "<br/>");
+	}
+	
+	
+	document.write("------------按名字排序--------------" + "<br/>");
+	a.sort(function(a,b){
+		return a.name-b.name;//按名字排序
+	});
+	for(var i = 0;i<=4;i++){
+		document.write("名字:" + a[i].name + " 年龄:" + a[i].age + "<br/>");
+	}
+	
+	document.write("------------按年龄排序--------------" + "<br/>");
+	a.sort(function(a,b){
+		return a.age-b.age;//按年龄排序
+	});
+	for(var i = 0;i<=4;i++){
+		document.write("名字:" + a[i].name + " 年龄:" + a[i].age + "<br/>");
+	}
+	
+	//冒泡
+	var a = [40,8,15,18,12];
+	for(var i = 0;i<a.length-1;i++){
+		for(var j = 0;j<a.length-i-1;j++){
+			if(a[j]>a[j+1]){
+				var temp = a[j];
+				a[j] = a[j+1];
+				a[j+1] = temp;
+			}
+		}
+	}
+	document.write(a);
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

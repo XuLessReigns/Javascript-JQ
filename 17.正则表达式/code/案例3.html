@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//var reg = /(\d)(\d)\1\2/g;
+	//var reg = /(\d)(\d)((\1\2)|(\2\1))/g;
+	//var reg = /(\d)(\d)(\1\2|\2\1)/g;
+	
+	var reg = /((\d)(\d)\2\3)|((\d)(\d)\6\5)/g
+	var str = "1212asf3434smam3344asmdmfs6868";
+	var result;
+	/*
+	result = reg.exec(str);
+	alert(result[0]);//1212
+	result = reg.exec(str);
+	alert(result[0]);//3434
+	result = reg.exec(str);
+	alert(result[0]);//6868
+	*/
+	while(result = reg.exec(str)){
+		console.log(result);
+		console.log(result[0]);
+	}
+	
+	//var str = "我和你";
+	//var reg = /[\u4e00-\u9fa5]/;
+	//var result = str.replace(/[\u4e00-\u9fa5]/g,'啊哈哈');
+	//var result = reg.test(str);
+	//alert(result);
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

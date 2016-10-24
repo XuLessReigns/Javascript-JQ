@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: #000;
+				overflow: hidden;
+			}
+			.box{
+				width: 400px;
+				height: 400px;
+				background-color: #ccc;
+				position: absolute;
+			}
+			.box p{
+				width:100%;
+				font:bold 22px/40px "宋体";
+				text-align: center;
+				cursor: move;
+				background-color: #aaa;
+			}
+		</style>
+		<script src="leigegeCookie.js"></script>
+	</head>
+	<body>
+		<div class="box" id="box">
+			<p id="p">欧巴，请带我走吧O(∩_∩)O哈！</p>
+			<a href="javascript:;" id="hf">回放</a>
+		</div>
+		<script>
+			/*
+				思路：
+					第一步：获取所要操作的节点对象
+					第二步：为p标签节点对象添加一个鼠标按下事件（onmousedown）
+					第三步：在鼠标按下事件程序中为document添加一个鼠标移动事件（onmousemove）
+					第四步：
+						在鼠标移动的过程中，根据鼠标的坐标更改box盒子的坐标
+					
+					第五步：
+						当鼠标弹起，移除document的onmousemove事件
+			*/
+
+			
+
+			//获取box盒子节点对象
+			var box = document.getElementById("box");
+			//获取p节点对象
+			var p = document.getElementById("p");
+			//获取回放节点对象
+			var hf = document.getElementById("hf");
+			var steps = [];
+			/*为p节点对象添加一个鼠标被按下事件*/
+			p.onmousedown = function(e){
+				var _e0 = window.event||e; /*事件对象的兼容处理*/
+				//var x0 = _e0.offsetX;  获取鼠标相对于p标签的x坐标  在火狐里有兼容性问题
+				//var y0 = _e0.offsetY;  获取鼠标相对于p标签的y坐标	在火狐里有兼容性问题
+				
+				/*
+					兼容处理后的代码
+				*/
+				var x0 = _e0.clientX-box.offsetLeft; 
+				var y0 = _e0.clientY-box.offsetTop;
+				/*
+					为文档节点对象添加一个鼠标移动事件
+				*/
+				document.onmousemove = function(e){
+					var _e = window.event||e;  //事件对象兼容处理
+					var x = _e.clientX-x0;     //计算box应该移动的位置x坐标
+					var y = _e.clientY-y0;	   //计算box应该移动的位置y坐标
+					box.style.left = x + "px";  //更改box的x坐标
+					box.style.top = y + "px";	//更改box的y坐标
+					var obj = {left:x,top:y};   //用对象的方式组织移动的轨迹
+					steps.push(obj); //将移动的轨迹存放在数组中
+				}
+				/*
+					鼠标弹起事件
+				*/
+				document.onmouseup = function(){
+					/*
+						为什么要写个null?
+						因为javascript编程机制中有一个   垃圾回收器
+						垃圾回收器 会自动的清理无用数据
+					*/
+					document.onmousemove = null;
+					var x = box.offsetLeft + "px";
+					var y = box.offsetTop + "px";
+					setCookie({
+						name:"box",
+						//"var obj = {x:11,y:22}"
+						value:'var obj ={x:"'+x+'",y:"'+y+'"}',
+						//"var obj = {x:"11px",y:"12px"}"
+						expires:new Date("2116/08/19")
+					})
+				}
+			}
+
+			hf.onclick = function(){
+				var termId = setInterval(function(){
+					var obj = steps.shift();
+					console.log(obj);
+					if(!obj){
+						clearInterval(termId);
+						return;
+					}
+
+					box.style.left = obj.left + "px";
+					box.style.top = obj.top + "px";
+					
+				},10);
+			}
+			
+			var jsStr = getCookie("box");
+			if(jsStr){
+				//eval("字符串形式的代码")    可以将字符形式的代码转换成真正意义上js代码 
+				eval(jsStr);  //var obj = {x:1,y:12}
+				box.style.left = obj.x;
+				box.style.top = obj.y;
+			}
+
+			
+		</script>
+	</body>
+</html>

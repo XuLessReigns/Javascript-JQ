@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}
+			.box{height: 100px;width: 100px;position: absolute;background: green;}
+		</style>
+	</head>
+	<body>
+		<button id="btn">运动</button>
+		<div id="dv" class="box"></div>	
+	</body>
+	<script>
+		var btn = document.getElementById("btn");
+		var dv = document.getElementById("dv");
+		var termId;
+		btn.onclick = function(){	
+			clearInterval(termId);
+			var step = 10;
+			var target = 400;
+			termId = setInterval(function(){	
+				if(dv.offsetLeft==target){
+					clearInterval(termId);
+					return;
+				}
+				dv.style.left = dv.offsetLeft + step + "px";
+			},100);
+		}
+	</script>
+</html>

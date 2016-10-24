@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	window.onload = function(){
+		var dvs = document.getElementsByTagName("div");
+		for(var i = 0;i<dvs.length;i++){
+			dvs[i].onclick = function(){
+				//i为0 1 2 3 4 5(跳出循环)
+				//this  指的是当前对象  dvs[i]
+				alert(this.innerHTML);
+				//alert(dvs[i].innerHTML);//会报错，因为函数没调用前for循环已经执行完毕，此时i已经是5了但div只有5个也就是dvs[0]-dvs[4]，dvs[5]没有定义，也就会报错。
+			}
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<div>01</div>
+	<div>02</div>
+	<div>03</div>
+	<div>04</div>
+	<div>05</div>
+ </body>
+</html>

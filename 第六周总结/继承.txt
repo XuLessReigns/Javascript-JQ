@@ -1,0 +1,76 @@
+三种继承方式：
+	1.通过原型（prototype）实现继承
+	2.通过call（）方法实现继承
+	3.通过apply（）方法实现继承
+	
+
+	*仅仅通过原型继承我们可以发现在实例化子类时无法向父类构造函数中传递参数
+	*call()方法存在于Function对象实例中的原型对象属性中
+	call（）方法作用：
+		1.可以让调用call方法的对象实例执行（分辨是谁调用就看，前面的对象是谁）
+		2.call方法会用其第一个实参替换被调用函数内部中的this指向。
+		3.call方法可以将其除第一个实参以外的参数传递给被调用函数中。
+	**call和apply方法的区别：
+		1.call向被调用函数中传递参数需要将参数逐个传递
+		2.apply向被调用函数中传递参数需要传递一个数组或arguments对象
+	*注意：这两个方法功能相同，都是将被调用函数中的this变为其第一个参数
+
+	call的其他作用：
+		把对象转换成数组
+		var a = {0：“A”，1：“B”，2：“C”,length:3}；
+		var newa = Array.prototype.slice.call(a);
+	apply的其他作用如：
+		var minNum = Math.min.apply(null,[5,2,3,5]);
+
+	call和apply有个弊端就是只能继承实例本身的属性，不能继承原型对象的属性
+	
+	要没有瑕疵就要结合他们一起使用,即原型继承+call或apply继承（专业术语：称之为组合式继承)
+	//组合寄生式继承
+	实例化子类时可以向父类构造函数中传递参数
+	并且父类构造函数只会执行一次（这一次是继承实例属性时发生的）	
+		使用call或apply（继承实例属性）（专业术语：借用构造函数式继承）
+		以及fn2.prototype = fn1.prototype;（继承原型属性）（专业术语：原型式继承）
+		由于使用原型式继承时，会覆盖子类原型中原有的属性，
+		1.所以利用对象循环遍历属性，实现属性浅拷贝的功能来解决属性覆盖问题。
+		浅拷贝方法具体看下面的extend函数。有缺陷不如深拷贝。
+	var extend = function(obj1,obj2){
+            for(var attrName in obj2){
+                //obj1.prototype[attrName] = obj2.prototype[attrName];
+                obj1[attrName] = obj2[attrName];
+            }
+            return obj1;
+        };
+	fn2.prototype = extend(fn2.prototype,fn1.prototype);
+        var f2 = new fn2("张三",18,"男");
+        console.dir(f2);
+
+		2.在后面写动态创建属性
+
+
+封装，继承，多态，抽象。
+重载是多态的一种；
+重载的概念：
+	通过参数的类型不同或参数的个数不同可以让方法实现的功能不同
+	***注意：js中没有真正意义上的重载，但是可以用typeof或arguments来进行模拟
+		从而体现出js面向对象思想中的重载特点
+	var fn1 = function(field){
+            if(typeof field == "string"){
+                console.log("执行代码1");
+            }
+            else if(typeof field == "number"){
+                console.log("执行代码2");
+            }
+        }
+        fn1("OK");
+        fn1(123);
+
+        var fn2 = function(){
+            if(arguments.length == 1){
+                console.log("取值");
+            }
+            else{
+                console.log("赋值");
+            }
+        }
+        fn2("color");
+        fn2("color","#fff");

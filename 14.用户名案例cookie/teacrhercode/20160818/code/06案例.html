@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="leigegeCookie.js"></script>
+ </head>
+ <body>
+	<p>用户名<input type="text" id="uName"  /></p>
+	<p>密码<input type="password" id="pwd" /></p>
+	<p><input type="checkbox" id="ck"  />记住用户名和密码</p>
+	<p><button id="btn">登录</button></p>
+	<script>
+		/*
+			思路：
+				第一步：页面加载完后，获取所要从操作的节点对象
+				第二步：验证本地是否有cookie保存着用户名
+					    若有：
+							把用户从本地读取出来，并赋值给文本框
+				
+				第三步：为按钮添加一个点击事件
+						获取文本框中值，
+						根据是否记住用户名存放cookie
+						存在在cookie中  名称userName   pwd
+
+		*/
+		var uName = document.getElementById("uName");
+		var ck = document.getElementById("ck");
+		var btn = document.getElementById("btn");
+		var pwd = document.getElementById("pwd");
+
+		if(getCookie("userName")&&getCookie("pwd")){
+			uName.value = getCookie("userName");
+			pwd.value = getCookie("pwd");
+		}
+
+		btn.onclick = function(){
+			if(ck.checked){
+				setCookie({
+					name:"userName",
+					value:uName.value,
+					expires:new Date("2016/8/19")
+				})
+				setCookie({
+					name:"pwd",
+					value:pwd.value,
+					expires:new Date("2016/8/19")
+				})
+			}
+		}
+
+
+	</script>
+ </body>
+</html>

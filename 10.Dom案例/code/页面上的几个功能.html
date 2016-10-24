@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	window.onload = function(){
+		var box1 = document.getElementById("box1");
+		var box2 = document.getElementById("box2");
+		var box3 = document.getElementById("box3");
+		var btn = document.getElementById("btn");
+		var txt = document.getElementById("txt");
+		var box4 = document.getElementById("box4");
+
+		//系统当前时间
+		setInterval(function(){			
+			var date = new Date();
+			var year = date.getFullYear();
+			var month = date.getMonth() + 1;
+			var day = date.getDate();
+			var hours = date.getHours();
+			var minutes = date.getMinutes();
+			var seconds = date.getSeconds();
+			if(seconds<10){
+				seconds = "0" + seconds;
+			}
+			if(minutes<10){
+				minutes = "0" + minutes;
+			}
+			box1.innerHTML = "系统当前时间：" + year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+		},1000);
+		//当前页面已停留时间
+		var num = 0;
+		setInterval(function(){			
+			num++;
+			var hours = parseInt(num/60/60);
+			var minutes = parseInt(num/60);
+			var seconds = num%60;
+			if(seconds<10){
+				seconds = "0" + seconds;
+			}
+			if(minutes<10){
+				minutes = "0" + minutes;
+			}
+			box2.innerHTML = "当前页面已停留时间：" + hours + "小时" + minutes + "分" + seconds + "秒";
+		},1000);
+		//请输入字符串,并打印出每个字符的ascII
+		btn.onclick = function(){
+			//alert(txt.value);
+			var tit = txt.value;//字符串
+			//alert(tit.length);
+			for(var i = 0;i<tit.length;i++){
+				var asc = [];
+				asc[i] = tit.charCodeAt(i);
+				box4.innerHTML+="你输入的字符为：" + tit[i] + "它的ASCII码为：" + asc[i] + "<br/>";
+				//document.write("你输入的字符为：" + tit[i] + "它的ASCII码为：" + asc[i] + "<br/>");
+			}					
+		}
+
+		
+	}
+  </script>
+ </head>
+ <body>
+	<div id="box1">
+	</div>
+	<div id="box2">
+	</div>
+	<div id="box3">请输入字符串
+		<input id="txt" type="text" value=""/>
+		<button id="btn">执行</button>
+		<button id="btn1">清除</button>
+	</div>
+	<div id="box4">
+	</div>
+	<script>
+		//扩展
+		//清除文本框和box4的内容
+		var btn1 = document.getElementById("btn1");
+		btn1.onclick = function(){
+			txt.value = "";
+			box4.innerHTML = "";
+		}
+	</script>
+ </body>
+</html>

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//临时对象
+	/*
+		str.length
+		首先，将str转换成 对象类型 new String("123456");
+		然后，对象就可以访问其属性 length;
+		最后，将结果返回之后，对象释放掉重新转换为 字符串类型
+		这个过程当中所转换后的对象，被称之为 “临时对象”
+	*/
+/*
+	var str = "12345";
+	str.length = 100;
+	str.name = "shui";
+	alert(str);//12345
+	alert(str.length);//5
+	alert(str.name);//undefinded	
+*/
+/*
+	str.name="shui"
+	首先会吧str转换成对象类型new String（shui）；
+	然后，给str添加name属性；
+	最后这个属性会随临时对象的销毁而销毁
+*/
+/*
+	alert(str.name);
+	此时，会重新创建临时对象跟之前的临时对象不一样，是两个独立的个体
+*/
+	/*字符串对象的写法*/
+/*	var str = new String("12345");
+	str.name = "hi";
+	alert(str.name);//hi
+*/
+	/*
+		valueOf()
+	*/
+	
+	//var str = new String("abc");
+	//var result = str.valueOf();   //原始值，指的是他原来基本的数据
+	//alert(result);//abc
+	//alert(typeof result)//string
+	//alert(str);//abc
+	//alert(typeof str);//object
+	//var result = str.toString();
+	//alert(result);//abc
+	//alert(typeof result);//string
+	
+
+	//var num = 123;   //number       new Number();
+	//alert(num.toString());//123
+	//alert(typeof num.toString());//string
+
+	//alert(num.valueOf()); //123
+	//alert(typeof num.valueOf());//number
+
+
+	//var flag = true;           //new Boolan();
+	//alert(flag.valueOf());//true
+	//alert(typeof flag.valueOf());//Boolean
+	//alert(flag.toString());//true
+	//alert(typeof flag.toString());//string
+
+//字符串常用的方法
+	//var str = "123456";
+	//alert(str.charAt(2));//3取一个字符串的指定位置的字符
+	//alert(str[4]);//5可以像数组一样使用中括号索引的方式读取指定位置的字符
+	//alert(str.length);//6获取字符串的字符数；
+	//var  str2 = "A";
+	//alert(str2.charCodeAt(0));//65返回一个字符串中指定位置的字符编码
+
+	//alert(String.fromCharCode(37));//%
+
+	
+	//var str3 = "没有情人的情人节";
+	//alert(str3.indexOf("情人"));//2
+	//alert(str3.indexOf("情郎"));   //-1
+	//alert(str3.lastIndexOf("情人")); //5
+
+	/*
+		正则表达式
+			规定字符串的规则
+			定好规则之后，你就可以使用正则对象所提供的工具匹配所符合规则字符串
+	*/
+
+	/*
+		扩展：
+			定义正则：
+			var 正则名 = /规则/;
+	*/
+	
+	//var reg = /it/;  //规则定义  
+	//var str="Visit w3cShool!"
+	//var result = str.search(reg);//3正规匹配，返回出现的位子（索引）
+	//alert(result);
+	
+
+
+
+	//var str = "没有情人的情人节";
+	//var result = str.match("情人");//情人 //result 接收的结果是一个数组
+	//document.write(typeof result);//数组object
+	//alert(result[0]);//情人
+	//console.log(result);
+
+	//var reg = /情人/g;   //g表示全局的
+	//var result = str.match(reg);
+	//document.write(result);//情人，情人
+	//console.log(result);//情人，情人
+
+	//replace  代替
+	//var str = "老公，你真棒，棒棒哒，能拿这么高的薪资";
+	//var reg = /棒/g;
+	//var result = str.replace(reg,"牛");
+	//document.write(result);//老公，你真牛，牛牛哒，能拿这么高的薪资
+
+
+	//var str = "abcAbcAAcab";  //恩
+	//i  忽略大小写
+	//var reg = /a/ig;
+	//var result = str.replace(reg,"恩");
+	//document.write(result);//恩bc恩bc恩恩c恩b
+
+	//concat连接两个或多个字符串
+	//var str1 = "奥";
+	//var str2 = "林";
+	//var str3 = "匹";
+	//var str4 = "克";
+	//var str5 = "更高、更快、更强";
+	//var result = str1.concat(str2,str3,str4,str5);
+	//alert(result);//奥林匹克更高、更快、更强
+
+
+	//var str = "123";  //string
+	
+	/*
+		自定写在程序总的对象，并不是临时对象
+	*/
+	//var strObj = new String("123");   //object
+	//document.write("str:" + str + "<br/>");
+	//strObj  在这里默认的调用本身toString()方法
+	//document.write("strObj:" + strObj + "<br/>");
+
+	//var flag = str==strObj;//true
+	//var flag = str===strObj;//false
+	//alert(flag);
+
+//substring:截取跟slice一样不改变原数组
+	//var  str = "以无法为有法，以无限为有限";
+	//var result = str.substring(4,6);   //前包后不包
+	//var result = str.slice(4,6);
+	//alert(result);//有法
+
+//splice:根据分隔符拆分成数组
+	//var str="熊一样的力量-蛇一样的速度-猫一样的灵巧";
+	//var result = str.split("-");
+	//document.write(result);//熊一样的力量,蛇一样的速度,猫一样的灵巧
+	//console.log(result);
+
+	//toLowerCase小写、toUpperCase大写
+
+	//var str = "BRUCE";
+	//var str = "lee";
+	//var reuslt = str.toLowerCase();
+	//var reuslt = str.toUpperCase();
+	//alert(reuslt);//bruce/LEE
+
+
+//数组去重
+	/*
+	var arr = [1,2,3,1,2,3,4,5,6,7,1,3,5,6,7];
+	var newArr = [];
+	for(var i = 0;i<arr.length;i++){
+		var flag = true;
+		var currentDate = arr[i];
+		for(var j = 0;j<newArr.length;j++){
+			if(currentDate==newArr[j]){
+				flag = false;
+				break;
+			}
+		}
+		if(flag){
+			newArr.push(arr[i]);
+		}
+	}
+	arr = newArr;
+	document.write(arr);
+*/
+
+
+//Math()
+/*
+	document.write(Math.round(3.5) + "<br/>");//四舍五入4
+	document.write(Math.round(3.49) + "<br/>");//四舍五入3
+	document.write("随机数：" + parseInt(9*Math.random() ) + "<br/>");//0-8随机数
+	document.write("最大数：" + Math.max(3,4) + "<br/>");//最大数4
+	document.write("最小数：" + Math.min(3,4) + "<br/>");//最小数3
+	document.write("-10的绝对值：" + Math.abs(-10) + "<br/>");//10绝对值
+	document.write(Math.ceil(3.0000001) + "<br/>");//4向上取整
+	document.write(Math.floor(3.9999999) + "<br/>");//3向下取整
+	document.write(Math.pow(2,4) + "<br/>");//2*2*2*2=16  x的y次方
+	document.write(Math.sqrt(9) + "<br/>");//开方3
+*/
+
+
+
+	/*
+	var arr = [{name:"雷哥哥",age:18},
+		{name:"Bruce.Lee",age:15},
+		{name:"Andy",age:28},
+		{name:"Nike",age:19},
+		{name:"雨哥哥",age:18}];
+	arr.sort(function(a,b){
+		if(a.age==b.age){
+			//return a.name.charCodeAt(0)-b.name.charCodeAt(0);
+			return getValue(a.name)-getValue(b.name);
+		}
+		return a.age-b.age;
+	});
+	for(var i =0;i<arr.length;i++){
+		document.write(arr[i].name + arr[i].age + "<br/>");
+	}
+	function getValue(str){
+		var sum = 0;
+		for(var j = 0;j<str.length;j++){
+			sum+=str.charCodeAt(j);
+		}
+		return sum;
+	}
+	*/
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var a = [{name:"1张国伟",age:5},{name:"2张国伟",age:4},{name:"3张国伟",age:3},{name:"4张国伟",age:2},{name:"5张国伟",age:1}];
+	
+	
+	document.write("------------默认排序--------------" + "<br/>");
+	a.sort();
+	for(var i = 0;i<=4;i++){
+		document.write("名字:" + a[i].name + " 年龄:" + a[i].age + "<br/>");
+	}
+	
+	
+	document.write("------------按名字排序--------------" + "<br/>");
+	a.sort(function(a,b){
+		return a.name-b.name;//按名字排序
+	});
+	for(var i = 0;i<=4;i++){
+		document.write("名字:" + a[i].name + " 年龄:" + a[i].age + "<br/>");
+	}
+	
+	document.write("------------按年龄排序--------------" + "<br/>");
+	a.sort(function(a,b){
+		return a.age-b.age;//按年龄排序
+	});
+	for(var i = 0;i<=4;i++){
+		document.write("名字:" + a[i].name + " 年龄:" + a[i].age + "<br/>");
+	}
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

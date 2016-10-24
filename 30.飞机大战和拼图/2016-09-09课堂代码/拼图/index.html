@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拼图游戏</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		#container{
+			width:700px;
+			height: 460px;
+			margin: 50px auto;
+			position: relative;
+		}
+		#container img{
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	</style>
+	<script src="js/startMove.js"></script>
+	<script>
+		function randomIMG(imgList,imgPosition){
+			var arr = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+			arr.sort(function(){
+				return Math.random() > 0.5;
+			});
+			for(var i = 0; i < imgList.length; i++){
+				startMove(imgList[i],{left:imgPosition[arr[i]].x,top:imgPosition[arr[i]].y});
+			}
+		}
+		window.onload = function(){
+			var isImpactA = true;
+			var isImpactB = true;
+			var imgPosition = [];
+			var imgList = document.getElementsByTagName("img");
+			var imgWidth = imgList[0].offsetWidth;
+			var imgHeight = imgList[0].offsetHeight;
+			var row = 0;
+			var col = 0;
+			for(var i = 0; i < imgList.length; i++){
+				imgList[i].style.left = imgWidth * row + "px";
+				imgList[i].style.top = imgHeight * col + "px";
+				imgList[i].zIndex = 1;
+				imgPosition.push({x:imgWidth * row,y:imgHeight * col});
+				row++;
+				if((i + 1) % 4 == 0){
+					col++;
+					row = 0;
+				}
+
+				
+				imgList[i].onmousedown = function mDown(e){
+					e = e || event;
+					var imgX = this.offsetLeft;
+					var imgY = this.offsetTop;
+					var disX = e.clientX - this.offsetLeft;
+					var disY = e.clientY - this.offsetTop;
+					var that = this;
+					var selected = null;
+					var selectedX = null;
+					var selectedY = null;
+					document.onmousemove = function(e){
+						that.style.left = e.clientX - disX + "px";
+						that.style.top = e.clientY - disY + "px";
+						var index;
+						var value = 0;
+						for(var j = 0; j < imgList.length; j++){
+							if(imgList[j] != that && isImpactA && isImpactB){
+								if(that.offsetLeft + that.offsetWidth > imgList[j].offsetLeft && that.offsetLeft < imgList[j].offsetLeft + imgList[j].offsetWidth){
+									if(that.offsetTop + that.offsetHeight > imgList[j].offsetTop && that.offsetTop < imgList[j].offsetTop + imgList[j].offsetHeight){
+
+										var acrossWdith = imgWidth - Math.abs(that.offsetLeft - imgList[j].offsetLeft);
+										var acrossHeight = imgHeight - Math.abs(that.offsetTop - imgList[j].offsetTop);
+
+										if(acrossWdith * acrossHeight > value){
+											value = acrossWdith * acrossHeight;
+											index = j;
+										}
+									}
+								}
+							}
+							imgList[j].style.border = "0px";
+							imgList[j].style.zIndex = 1;
+						}
+						if(index != undefined){
+							that.style.zIndex = 3;
+							selectedX = imgList[index].offsetLeft;
+							selectedY = imgList[index].offsetTop;
+							imgList[index].style.border = "solid 3px #96FF73";
+							imgList[index].style.zIndex = 2;
+							selected = imgList[index];
+						}
+						else{
+							selected = null;
+						}
+					}
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+						that.style.zIndex = 1;
+						that.onmousedown = null;
+						isImpactA = false;
+						isImpactB = false;
+						if(selected){
+							selected.onmousedown = null;
+							selected.style.border = "0px";
+							startMove(that,{left:selectedX,top:selectedY},function(){
+								that.onmousedown = mDown;
+								imgX = undefined;
+								imgY = undefined;
+								isImpactA = true;
+							});
+							startMove(selected,{left:imgX,top:imgY},function(){
+								selected.onmousedown = mDown;
+								selected = null;
+								isImpactB = true;
+							});
+						}
+						else{
+							if(imgX != undefined && imgY != undefined){
+								startMove(that,{left:imgX,top:imgY},function(){
+									that.onmousedown = mDown;
+									isImpactA = true;
+									isImpactB = true;
+								});
+							}
+
+						}
+					}
+					if(e.preventDefault){
+						e.preventDefault();
+					}
+					else{
+						e.returnValue = false;
+					}
+				}
+			}
+
+			randomIMG(imgList,imgPosition);
+		}
+	</script>
+</head>
+<body>
+	<div id="container">
+		<img src="img/1.jpg" />
+		<img src="img/2.jpg" />
+		<img src="img/3.jpg" />
+		<img src="img/4.jpg" />
+		<img src="img/5.jpg" />
+		<img src="img/6.jpg" />
+		<img src="img/7.jpg" />
+		<img src="img/8.jpg" />
+		<img src="img/9.jpg" />
+		<img src="img/10.jpg" />
+		<img src="img/11.jpg" />
+		<img src="img/12.jpg" />
+		<img src="img/13.jpg" />
+		<img src="img/14.jpg" />
+		<img src="img/15.jpg" />
+		<img src="img/16.jpg" />
+	</div>
+</body>
+</html>

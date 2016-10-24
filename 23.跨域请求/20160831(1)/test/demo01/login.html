@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script></script>
+ </head>
+ <body>
+	<p>登录名：<input type="text" id="userName"/></p>
+	<p>密码：<input type="password" id="pwd"/></p>
+	<p><button id="btn">登录</button></p>
+	<script>
+		var btn = document.getElementById("btn");
+		var userName = document.getElementById("userName");
+		var pwd = document.getElementById("pwd");
+
+		btn.onclick = function(){
+				var uValue =  userName.value; //用户名 张三
+				var pValue = pwd.value;
+				//创建异步对象
+				var xhr;
+				if(window.XMLHttpRequest){
+					xhr = new XMLHttpRequest(); //标准模式
+				}else{
+					xhr = new ActiveXObject("Microsoft.XMLHTTP") //IE6
+				}
+				//连接服务器
+				//xhr.open("GET","login.php?uName=" + uValue + "&pd=" + pValue,true);
+				xhr.open("POST","login.php",true);
+				//发送请求
+				//xhr.send(); 
+				//uName=" + uValue + "&pd=" + pValue
+				var data = 'uName=' + uValue + '&pd='+pValue;
+				//模拟表单提交
+				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				xhr.send(data);
+				//监听响应
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState==4){
+						if(xhr.status==200){
+							//表示登录成功
+							if(xhr.responseText==1){
+								location.href = "index.php";
+								
+							}else{//表示登录失败
+								alert("用户名或密码错误");
+							}
+						}else{
+							alert("请求失败")
+						}
+					}
+				}
+		}
+	</script>
+ </body>
+</html>

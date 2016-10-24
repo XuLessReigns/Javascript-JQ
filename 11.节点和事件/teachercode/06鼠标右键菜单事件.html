@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	window.onload = function(){
+		/*
+		document.oncontextmenu = function(e){
+			alert("鼠标有键点击了");
+			e.preventDefault();
+		}
+
+		document.onmousewheel = function(){
+			console.log(new Date());
+		}
+
+		document.onkeydown = function(e){
+			//alert(e.keyCode);
+			alert(0);
+		}
+		document.onkeyup = function(e){
+			//alert(e.keyCode);
+			alert(1);
+		}
+		*/
+	}
+  </script>
+ </head>
+ <body>
+	<input type="password" id="txt" />
+	<h1 id="h">123</h1>
+	<script>
+		var txt = document.getElementById("txt");
+		var h = document.getElementById("h");
+		txt.onkeyup = function(){
+			h.innerHTML = this.value;
+		}
+
+	</script>
+ </body>
+</html>

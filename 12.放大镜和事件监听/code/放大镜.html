@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{margin:0;padding:0;}
+	.smallBox{
+		width:300px;
+		border:1px solid #ccc;
+		position:relative;
+		float:left;
+		margin:100px;
+		cursor:move;
+		overflow:hidden;
+	}
+	.smallBox img{
+		width:300px;
+	}
+	.smallBox .tool{
+		width:100px;
+		height:100px;
+		background:orange;
+		opacity:.5;
+		filter:alpha(opacity=50);
+		position:absolute;
+		top:0;
+		left:0;
+		display:none;
+	}
+	.smallBox .tool.active{
+		display:block;
+	}
+	.bigBox{
+		width:400px;
+		height:400px;
+		border:1px solid #ccc;
+		overflow:hidden;
+		float:left;
+		margin:100px;
+		position:relative;
+		display:none;
+	}
+	.bigBox.active{
+		display:block;
+	}
+	.bigBox img{
+		width:1200px;
+		position:absolute;
+		
+	}
+  </style>
+
+  <script>
+	window.onload = function(){
+		//获取所要操作的节点对象
+		var smallBox = document.getElementById("smallBox");
+		var bigBox = document.getElementById("bigBox");
+		var tool = document.getElementById("tool");
+		var bigImg = document.getElementById("bigImg");
+		//隐藏和显示
+		smallBox.onmouseenter = function(){
+			tool.className = "tool active";
+			bigBox.className = "bigBox active";
+		}
+		smallBox.onmouseleave = function(){
+			tool.className = "tool";
+			bigBox.className = "bigBox";
+		}
+		smallBox.onmousemove = function(e){//事件对象
+			var e = window.event||e;
+			var x = e.clientX-this.offsetLeft-tool.offsetWidth/2;
+			var y = e.clientY-this.offsetTop-tool.offsetHeight/2;
+			if(x<=0){
+				x = 0;
+			}
+			if(y<=0){
+				y = 0;
+			}
+			if(x>=this.offsetWidth-tool.offsetWidth){
+				x = this.offsetWidth-tool.offsetWidth;
+			}
+			if(y>=this.offsetHeight-tool.offsetHeight){
+				y = this.offsetHeight-tool.offsetHeight;
+			}
+			tool.style.left = x + "px";
+			tool.style.top = y + "px";
+			var left = tool.offsetLeft*4;
+			var top = tool.offsetTop*4;
+			//bigImg.style.left = -left + "px";
+			//bigImg.style.top = -top + "px";
+			bigImg.style.left = -4*x + "px";
+			bigImg.style.top = -4*y + "px";
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<div id="smallBox" class="smallBox">
+		<img src="../images/awe.jpg"/>
+		<div class="tool" id="tool">
+		</div>
+	</div>
+	<div class="bigBox" id="bigBox">
+		<img id="bigImg" src="../images/awe.jpg"/>
+	</div>
+ </body>
+</html>

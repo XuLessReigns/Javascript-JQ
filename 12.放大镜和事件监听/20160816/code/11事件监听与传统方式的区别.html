@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		元素节点对象.on + 事件名 = 事件处理程序
+
+		元素节点对象.addEventListener(事件名,事件处理函数,是否捕获)
+	*/
+  </script>
+ </head>
+ <body>
+	<button id="btn">按钮</button>
+	<script>
+		var btn = document.getElementById("btn");
+		/*
+		btn.addEventListener("click",function(){
+			alert("一鼓作气！");
+		});
+		*/
+
+		//元素节点对象.attachEvent(事件名,事件处理函数) ==> 事件名带on
+		/*
+		btn.attachEvent("onclick",function(){
+			alert("我是属于IE的人");
+		});
+		*/
+		
+		/*
+		btn.onclick = function(){
+			alert(1);
+		}
+
+		btn.onclick = function(){
+			alert(2);
+		}
+		*/
+		
+		
+		function fn1(){
+			alert("一鼓作气！");
+		}
+		function fn2(){
+			alert("hello！");
+		}
+		/*
+		btn.addEventListener("click",fn1);
+
+		btn.addEventListener("click",fn2);
+		
+		//移除：removeEventListener('click',fn)传入的参数fn要跟添加时一样(同一个函
+		//btn.removeEventListener('click',fn2)
+		*/
+
+
+		
+		//元素节点对象.attachEvent(事件名,事件处理函数) ==> 事件名带on
+		
+		/*
+		btn.attachEvent("onclick",function(){
+			alert("我是属于IE的人1");
+		});
+
+		btn.attachEvent("onclick",function(){
+			alert("我是属于IE的人2");
+		});
+		*/
+
+		/*
+		btn.attachEvent("onclick",fn1);
+
+		btn.attachEvent("onclick",fn2);
+		
+		//detachEvent('onclick',fun)，传入的参数fun要跟添加时一样，否则不能移除事件
+		btn.detachEvent('onclick',fn2);
+		*/
+		
+
+	</script>
+ </body>
+</html>

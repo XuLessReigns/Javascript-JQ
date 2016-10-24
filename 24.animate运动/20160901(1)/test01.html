@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				width:850px;
+				margin: 10px auto;
+				list-style: none;
+				overflow: hidden;
+			}
+			li{
+				width:190px;
+				height: 138px;
+				float: left;
+				margin-right: 20px;
+				border: 1px solid #ccc;
+				overflow: hidden;
+				position: relative;
+			}
+			img{
+				position: absolute;
+				left:0px;
+			}
+		</style>
+		<script src="animate.js"></script>
+		
+	</head>
+	<body>
+		<ul>
+			<li>
+				<img src="jiuxianwang/jiu01.jpg" alt="" />
+			</li>
+			<li>
+				<img src="jiuxianwang/jiu02.jpg" alt="" />
+			</li>
+			<li>
+				<img src="jiuxianwang/jiu03.jpg" alt="" />
+			</li>
+			<li>
+				<img src="jiuxianwang/jiu04.jpg" alt="" />
+			</li>
+		</ul>
+		<script type="text/javascript">
+			/*
+			 	思路：
+			 		第一步：获取所要操作的节点对象
+			 		第二步为每一个li节点对象添加一个onmouseenter事件和onmouseleve
+			 		第三步：onmouseenter
+			 			改变其中图片的left值为-60 (动画)
+			 		
+			 		第四步：onmouseleave
+			 			改变其中图片的left值为0
+			 			
+			 */
+			var lis = document.querySelectorAll("li");
+			for(var i = 0;i<lis.length;i++){
+				lis[i].onmouseenter = function(){
+					//this  li   
+					
+					animate(this.firstElementChild,{left:-60},10)
+				}
+				lis[i].onmouseleave = function(){
+					//this  li   
+					
+					animate(this.firstElementChild,{left:0},10)
+				}
+			}
+		</script>
+	</body>
+</html>

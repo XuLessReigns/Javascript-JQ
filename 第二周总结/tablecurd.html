@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	table{
+		width:800px;
+	}
+
+  </style>
+  <script>
+	window.onload = function(){
+		var del = document.getElementsByClassName("del");
+		var edit = document.querySelectorAll(".edit");
+		//alert(edit.length);
+		//删除		
+		
+		for(var i = 0;i<del.length;i++){
+			del[i].onclick = function(){
+				var a = confirm("你是否真的要删除");
+				if(a){
+					var tbody = this.parentNode.parentNode.parentNode;
+					var tr = this.parentNode.parentNode;
+					tbody.removeChild(tr);
+				}			
+			}
+		}
+		//修改
+		for(var j = 0;j<edit.length;j++){
+			edit[j].onclick = function(){
+				//alert(edit.length);
+				var tr = this.parentNode.parentNode;
+				var td = tr.children;
+				if(this.innerHTML=="修改")
+				{
+					this.innerHTML = "确认";
+					//alert(td.length);
+					for(var i = 0;i<td.length-1;i++){
+						var tit = td[i].innerHTML;
+						//alert(tit);
+						td[i].innerHTML = '<input type="text" value="' + tit + '"/>';
+					}
+					
+				}else{
+					this.innerHTML = "修改";
+					for(var i = 0;i<td.length-1;i++){
+						//td[i].innerHTML = td[i].firstElementChild.value; 
+						var tit = td[i].firstElementChild.value;
+						//alert(tit);
+						td[i].innerHTML = tit;
+					}	
+				}
+			}		
+		}
+	}
+	
+  </script>
+
+	
+ </head>
+ <body>
+	<table border="1">
+		<thead>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>性别</th>
+			<th>操作</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>小明</td>
+				<td>18</td>
+				<td>男</td>
+				<td class="control">
+					<button class="del">删除</button>
+					<button class="edit">修改</button>
+				</td>
+			</tr>
+			<tr>
+				<td>小明</td>
+				<td>16</td>
+				<td>男</td>
+				<td class="control">
+					<button class="del">删除</button>
+					<button class="edit">修改</button>
+				</td>
+			</tr>
+			<tr>
+				<td>小明</td>
+				<td>13</td>
+				<td>男</td>
+				<td class="control">
+					<button class="del">删除</button>
+					<button class="edit">修改</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+ </body>
+</html>

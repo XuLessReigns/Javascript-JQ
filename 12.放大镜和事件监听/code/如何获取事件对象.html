@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	document.onmousemove = function(e){
+		//函数的形参的第一个参数    会被赋值一个事件对象，所以参数e就是我们的时间对象
+		//兼容问题在ie里面饮用事件对象，window.event
+		e = window.event||e;
+		var x = e.clientX;//client表示可视区域窗口，当前可视区域的x坐标
+		var y = e.clientY;//当前可视区域的y坐标
+		//console.log("X:" + x + "Y:" + y);
+		//通过js来控制title(固定方式)
+		document.title = "X:" + x + "Y:" + y;
+	}
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

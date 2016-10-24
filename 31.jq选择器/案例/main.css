@@ -1,0 +1,105 @@
+@charset "UTF-8";
+.container .fix:after, .container .selectBox .search:after, .container .selectBox .data-list:after {
+  content: ' ';
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+.container {
+  width: 990px;
+  margin: 30px auto;
+  position: relative;
+}
+.container .c_title {
+  border: solid 1px #DDDDDD;
+  font: 14px/2.3 微软雅黑;
+  height: 32px;
+  background: #F1F1F1;
+  padding-left: 10px;
+}
+.container .c_title b {
+  color: #E4393C;
+}
+.container .selectBox {
+  border: solid 2px #EDD28B;
+  position: relative;
+}
+.container .selectBox .selectText {
+  float: left;
+  width: 70px;
+  background: #FFFDEE;
+  font: 14px/3 微软雅黑;
+  height: 100%;
+  position: absolute;
+  padding-left: 10px;
+}
+.container .selectBox .selectList {
+  padding-left: 70px;
+}
+.container .selectBox .search, .container .selectBox .data-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.container .selectBox .search {
+  margin: 10px 20px;
+  height: 30px;
+}
+.container .selectBox .search li {
+  float: left;
+  padding: 6px 6px;
+  margin-right: 1px;
+  color: #1F5AA0;
+  font: 14px Arial;
+  cursor: pointer;
+}
+.container .selectBox .search li:hover {
+  border: solid 1px #E4393C;
+  color: #E4393C;
+}
+.container .selectBox .search li.on {
+  border: solid 1px #E4393C;
+  color: #E4393C;
+}
+.container .selectBox .data-list {
+  width: 850px;
+  margin: 20px 26px;
+}
+.container .selectBox .data-list li {
+  float: left;
+  font: 14px/2.3 微软雅黑;
+  width: 158px;
+}
+.container .selectBox .data-list li a {
+  color: #1F5AA0;
+  text-decoration: none;
+}
+.container .selectBox .data-list li a:hover {
+  color: #ff0000;
+  text-decoration: underline;
+}
+.container .more {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  z-index: 2;
+  width: 50px;
+  height: 20px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  background: url(jt.jpg) no-repeat;
+  padding-left: 25px;
+  transition: background-position-y 0.3s;
+  -moz-transition: background-position-y 0.3s;
+  -o-transition: background-position-y 0.3s;
+  -webkit-transition: background-position-y 0.3s;
+}
+.container .more:hover {
+  background-position-y: -22px;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//获取两个日期相差 多少天 多小时  多少分钟  多少秒 
+	function getDiff(a,b){
+		var value = b.getTime()-a.getTime();
+		var day = parseInt(value/1000/60/60/24);
+		var hours = parseInt(value/1000/60/60%24);
+		var minutes = parseInt(value/1000/60%60);
+		var seconds = parseInt(value/1000%60);
+		var str = day + "天" + hours + '小时' + minutes + '分' + seconds + '秒';
+		return str;
+	}
+	
+	
+	
+	/*
+	document.write("<b>2016/8/10 12:12:12与2016-11-18 23:23:23之间相差的天数：</b>" + day + "天" + hours + '小时' + minutes + '分' + seconds + '秒' + "<br/>");
+	*/
+  </script>
+ </head>
+ <body>
+	<div id="dv"></div>
+	<script>
+		var b = new Date("2016-11-18 23:23:23");
+		var dv = document.getElementById("dv");
+		setInterval(function(){
+			var a = new Date();
+			dv.innerHTML = getDiff(a,b);
+		},1000)
+	</script>
+ </body>
+</html>

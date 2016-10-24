@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				border: 1px solid #ccc;
+				font:bold 22px/30px "微软雅黑";
+			}
+			i{
+				background-color: red;
+				font-style: normal;
+			};
+			
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box">
+			因为信仰能使人更有智慧的来看待世间万物，宽容的态度面对错综复杂的人际关系，无比坚定的信念奔走人生之路，从容淡定的直面人性的黑暗和世间的悲剧。愿我们每个人在信望爱中，找到温暖，找到安慰，找到答案。
+		</div>
+		<input type="text" id="txt" />
+		<button id="btn">查找</button>
+		<script>
+			var box = document.getElementById("box");
+			var txt = document.getElementById("txt");
+			var btn = document.getElementById("btn");
+			btn.onclick = function(){
+				var v = txt.value;
+				var content = box.innerHTML;
+				//var reg = /""/;
+				var reg = new RegExp(v,"g");
+				var reg2 = new RegExp("<i>|</i>","g");
+				content = content.replace(reg2,"")
+				//从    <i>从</i>
+				box.innerHTML = content.replace(reg,"<i>"+v+"</i>")
+			}
+		</script>
+	</body>
+</html>

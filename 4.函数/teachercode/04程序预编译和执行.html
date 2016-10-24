@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		程序预编译 -> 程序的执行
+		程序预编译：
+			先准备：
+				会把程序当中用var关键字所声明变量名提升到当前执行环境的顶部。
+				注意：仅仅是提升变量名。 赋值 并没有提升  
+				变量声明提升
+
+				会把程序中用function关键字 【函数声明的方式】 的函数统一提升到当前执行环境的顶部
+				统一：把整体提升到当前执行环境的顶部
+				函数提升
+	*/
+	
+	daGuangBo();
+	function daGuangBo(){
+		document.write("<h1>----------------------------------</h1>");
+		document.write("<h2>你们好，领导们</h2>");
+		document.write("<h2>你们好，家长们</h2>");
+		document.write("<h2>你们好，老师们</h2>");
+		document.write("<h2>你们好，屌丝们</h2>");
+		document.write("<h1>----------------------------------</h1>");
+	}
+
+	
+
+	/*
+	//daGuangBo(); 
+	var daGuangBo = function(){
+		document.write("<h1>----------------------------------</h1>");
+		document.write("<h2>你们好，领导们</h2>");
+		document.write("<h2>你们好，家长们</h2>");
+		document.write("<h2>你们好，老师们</h2>");
+		document.write("<h2>你们好，屌丝们</h2>");
+		document.write("<h1>----------------------------------</h1>");
+	}
+
+	daGuangBo(); 
+	*/
+
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

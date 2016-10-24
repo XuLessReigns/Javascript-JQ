@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>品牌筛选</title>
+	<link rel="stylesheet" href="main.css">
+	<script src="jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			var $flag = false;
+			$(".data-list>li:gt(6):not(:last)").hide();
+			$(".search").hide();
+			$(".more").click(function(){
+				if($flag){
+					$(".data-list>li").show();
+					$($(this)).html("更多");
+					$(".data-list>li:gt(6):not(:last)").hide();
+					$(".search").hide();
+					$flag = false;
+				}else{
+					$($(this)).html("隐藏");
+					$(".data-list>li:gt(6):not(:last)").show();
+					$(".search").show();
+					$flag = true;
+				}
+			});
+			$(".search>li:not(:first)").click(function(){
+				var $result = $($(this)).html();
+				$(".data-list>li").show();
+				$(".data-list>li>a[brand!=" + $result +"]").parent().hide();
+			});
+			$(".on").click(function(){
+				$(".data-list>li").show();
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<a href="javascript:;" class="more">更多</a>
+		<div class="c_title"><b>主板</b>&nbsp;品牌筛选</div>
+		<div class="selectBox fix">
+			<div class="selectText">品牌</div>
+			<div class="selectList">
+				<ul class="search">
+					<li class="on">所有品牌</li>
+					<li>A</li>
+					<li>B</li>
+					<li>C</li>
+					<li>D</li>
+					<li>E</li>
+					<li>F</li>
+					<li>G</li>
+					<li>H</li>
+					<li>I</li>
+				</ul>
+				<ul class="data-list">
+					<li><a href="" brand="A">华硕（ASUS）</a></li>
+					<li><a href="" brand="G">技嘉（GIGABYTE）</a></li>
+					<li><a href="" brand="A">华擎科技（ASRock）</a></li>
+					<li><a href="" brand="M">微星（MSI）</a></li>
+					<li><a href="" brand="R">玩家国度（ROG）</a></li>
+					<li><a href="" brand="O">昂达（ONDA）</a></li>
+					<li><a href="" brand="C">七彩虹（Colorful）</a></li>
+					<li><a href="" brand="S">梅捷（SOYO）</a></li>
+					<li><a href="" brand="M">映泰铭速（MINGSU）</a></li>
+					<li><a href="" brand="I">英特尔（Intel）</a></li>
+					<li><a href="" brand="M">铭瑄（MAXSUN）</a></li>
+					<li><a href="" brand="P">新创云PC大佬（PCDL）</a></li>
+					<li><a href="" brand="A">阿里云（ALIYUN）</a></li>
+					<li><a href="" brand="A">外星人（ALIEN）</a></li>
+					<li><a href="" brand="S">三星（SANGUM）</a></li>
+					<li><a href="" brand="A">宏基（ACER）</a></li>
+					<li><a href="" brand="H">海尔（HAIER）</a></li>
+					<li><a href="" brand="H">惠普（HP）</a></li>
+					<li><a href="" brand="T">联想（ThinkPad）</a></li>
+					<li><a href="" brand="H">神州（HASEE）</a></li>
+					<li><a href="" brand="A">APPLE（APPLE）</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

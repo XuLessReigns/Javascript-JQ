@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		++ 自增
+			针对于变量的前++ 和 后++
+				在变量独立做运算的时候，结果是一样的。
+				在变量做非独立运算的时候，对运算后的结果是不一样的。
+				为什么不一样？
+					前++ 在和其他数据做运算的时候，先改变自身，再和其他数据做运算。
+
+					后++ 在和其他数据做运算的时候，先参与和其他数据的运算，然后再改变自身。
+			
+
+	*/
+	var num1 = 1;
+	//num1++;    //num1 = num1 + 1;
+	//++num1;      //num1 = num1 + 1;
+
+	//var sum = ++num1 + 1;//3
+	//var sum = num1++ + 1;//2
+
+	//var sum = ++num1 + 1 + num1 + 2;
+	var sum = ++num1 + 1 + num1++ + 2 + num1-- + num1;
+	//2 + 1 + 2 + 2 + 2  + 2
+	// 2 + 1 + 2 + 2 + 3 + 2
+
+	//2 + 1 ; num1 = 2
+	//2 + 1 + 2; num1 = 3
+	//2 + 1 + 2 + 2 + 3; num1 = 2;
+	//2 + 1 + 2 + 2 + 3 + 2;
+
+	document.write(num1 + "<br/>");//  2     2
+	document.write(sum + "<br/>");  // 11    12
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

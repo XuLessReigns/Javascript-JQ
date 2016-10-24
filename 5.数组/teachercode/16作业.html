@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		斐波那契数列
+		1,1,2,3,5,8,13,21….n
+		计算出第n个位置的数字的值
+		4  3
+		3  2
+		2  1
+
+	*/
+	function getValue(n){
+		if(n==1||n==2){
+			return 1;
+		}else{
+			return getValue(n-1) + getValue(n-2)
+		}
+	}
+
+	alert(getValue(7));
+
+
+	for(var i = 1;i<=20;i++){
+		var result = getValue(i);
+		document.write(result + "<br/>");
+	}
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

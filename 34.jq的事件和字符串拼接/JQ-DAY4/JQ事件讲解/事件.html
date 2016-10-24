@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            // $(":button").dblclick(function(e){
+            //     alert(a);
+            // });
+
+            // $(document).mousedown(function(){
+            //     alert("OK");
+            // });
+
+            // $(document).mousemove(function(e){
+            //     console.log(e.pageX,e.pageY);
+            // });
+
+            //获取键码建议使用e.which属性，在JQ高版本中
+            //keyCode和whichASSIC码有区别(大写ASC码和小写ASC码)
+
+            // $(document).keyup(function(e){
+            //     console.log(e.keyCode,e.which);
+            // });
+
+            // $(document).keydown(function(e){
+            //     console.log(e.keyCode,e.which);
+            // });
+
+            // $(document).keypress(function(e){
+            //     console.log(e.keyCode,e.which);
+            // });
+
+            // $(":text").change(function(){
+            //     console.log($(this).val());
+            // });
+
+            // $(":text").focus(function(){
+            //     console.log("焦点进入");
+            // });
+            // $(":text").blur(function(){
+            //     console.log("焦点离开");
+            // });
+
+            //浏览器窗口大小发生改变时会触发该事件
+            // $(window).resize(function(){
+            //     console.log("浏览器大小发生改变了");
+            // });
+
+            // $(":text").select(function(){
+            //     alert("选中啦");
+            // });
+
+            //当使用on邦迪事件时
+            //传递2个参数分别为：事件类型、事件处理函数
+            //传递3个参数分别为：事件类型、选择器、事件处理函数
+            //传递4个参数分别为：事件类型、选择器、实参、事件处理函数
+            //JQ中的on和快捷事件全部采用原生JS中的DOM2级事件
+            //为同一个元素绑定多个事件时不会覆盖前面的事件
+            // $(":button").on("click","","我是传递给事件处理函数实参",function(e){
+            //     alert(e.data);
+            // });
+            // $(":button").on("click",function(){
+            //     alert("我是第二个点击事件");
+            // });
+            // $(":button").click(function(){
+            //     alert("我是第三个点击事件");
+            // });
+            // $(":button").on("mouseover",function(){
+            //     console.log("经过");
+            // });
+            //$(":button").off("mouseover");
+
+            //通过以下形式绑定事件其内部采用的DOM0级事件，重复事件会覆盖
+            // $(":button").on({
+            //     click:function(){
+            //         alert("第一个");
+            //     },
+            //     click:function(){
+            //         alert("第二个");
+            //     },
+            //     mouseover:function(){
+            //         console.log("经过");
+            //     }
+            // });
+
+            // $(":button").one("click",function(){
+            //     alert("OK");
+            // });
+
+            // $(":button").on("click.c1",function(e,str){
+            //     console.log(str.a,str.b);
+            // });
+
+            // $(":button").on("click.c2",function(e){
+            //     console.log("事件2");
+            // });
+
+            // setInterval(function(){
+            //     //通过trigger()方法向事件处理函数中传递实参，若传递
+            //     //多个需要使用对象，并且事件处理函数中以形参形式获取
+            //     $(":button").trigger("click.c1",{a:"a1",b:"a2"});
+            // },1000);
+
+            //$(":button").off("click.c1");
+
+
+            // $(document).mousedown(function(e){
+            //     if(e.which == 1){
+            //         console.log("触发");
+            //     }
+            // });
+
+            // $("ul").click(function(e){
+            //     console.log($(e.target).html());
+            // });
+        });
+
+        // $(window).load(function(){
+        //     //若附加给window对象等同于原生JS中的window.onload
+        //     console.log($(":text"));
+        //     console.log("在浏览器加载完毕后触发，还得等DOM和图片加载完成后才会发")
+        // });
+
+        //浏览器卸载时触发（卸载包括页面刷新或关闭浏览器）
+        // $(window).unload(function(){
+        //     console.log("OK");
+        // });
+
+
+
+
+    </script>
+</head>
+<body style="height:3000px;">
+    <input type="button" value="测试">
+    <input type="text">
+    <div contenteditable="true" style="width:300px; height:300px; border:solid 1px #ff0000;">
+        <p>
+        	<strong>户籍科户籍科哈哈健康</strong>
+        </p>
+    </div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+</html>

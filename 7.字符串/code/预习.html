@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var str = "abcde";
+	alert(str.length);//5获取字符串的字符数
+	document.write(str[3]);//d可以像数组一样使用中括号索引的方式读取指定位置的字符
+	alert(str.charAt(3) );//d取一个字符串的指定位置的字符
+	alert(str.charCodeAt(0) );//97返回一个字符串中指定位置的字符编码
+	document.write(String.fromCharCode(97) );//编码转换成字符a
+	document.write(str.indexOf("c") );//2索引查找字符串第一次出现的位置
+	document.write(str.indexOf("f") );//没有找到为-1
+	document.write(str.lastIndexOf("c") );//2查找字符串最后一次出现的位置
+	document.write(str.lastIndexOf("f") );//没有找到为-1
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

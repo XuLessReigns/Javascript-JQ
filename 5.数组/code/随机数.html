@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+	<style>
+		div{height:200px;width:200px;background:pink;margin:100px auto;font-size:100px;font-weight:bold;text-align:center;position:relative;}	
+		.button{height:150px;width:200px;float:left;}
+		.button1{height:30px;width:70px;float:left;position:absolute;left:20px;bottom:20px}
+		.button2{height:30px;width:70px;float:left;position:absolute;right:20px;bottom:20px}
+	</style>
+	<script>
+		var num = document.getEmlementById("button");
+		var num1 = document.getEmlementById("button1");
+		var num2 = document.getEmlementById("button2");
+		function start(){
+			num1.value = parseInt(66*Math.random() );
+
+		}
+		setTimeout(start,1000);
+		function end(){
+			num2.value = parseInt(66*Math.random() );
+		}
+		
+	</script>
+ </head>
+ <body>
+	<div id="num">
+		<input type="button" class="button" value="0" />
+		<input type="button" class="button1" value="开始" onclick="start"/>
+		<input type="button" class="button2" value="结束" onclick="end"/>
+	</div>  
+ </body>
+</html>

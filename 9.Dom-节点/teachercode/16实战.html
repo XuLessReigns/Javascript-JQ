@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <style>
+	.box{
+		width:200px;
+		height:50px;
+		background-color:#000;
+		color:#fff;
+		font:bold 22px/50px "宋体";
+		text-align:center;
+		cursor:pointer;
+	}
+  </style>
+  <title>Document</title>
+  <script>
+		//随机获取验证码（5个字符）！
+		//随机   5 个字符      字母和数字
+  </script>
+ </head>
+ <body>
+	<div class="box" id="dv">12abc<div>
+	<script>
+		/*
+			思路：
+				第一步：获取所要操作的节点对象
+				第二步：为其绑定点击事件
+				第三步：建立一个数组，存放字母和数字
+				第四步：随机5次，每次拿到数组中的一个结果，并把5次获取到的结果拼接起来
+				第五步：赋值给节点对象的innerHTML
+
+		*/
+
+		//数组，存放字母和数字
+		var strArr = ["0","1","2","3","4","5","6","7","8","9","a","b","c","e","f","g","h","i"];
+		
+		/*
+			第一步：获取所要操作的节点对象
+		*/
+
+		var dv = document.getElementById("dv");
+		/*
+			第一步：获取所要操作的节点对象
+		*/
+		dv.onclick = function(){
+			var randomStr = "";
+			for(var i = 1;i<=5;i++){	//i 表示的是随机的次数
+				var index = parseInt(Math.random()*strArr.length);
+				//console.log(index + "--" + strArr[index] );
+				randomStr+=strArr[index]
+			}
+			this.innerHTML = randomStr;
+		}
+	</script>
+ </body>
+</html>

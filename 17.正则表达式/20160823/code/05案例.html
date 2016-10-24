@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				border: 1px solid #ccc;
+				font:bold 22px/30px "微软雅黑";
+				
+			}
+			i{
+				background-color: red;
+				font-style: normal;
+			};
+			
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box">
+			因为信仰能使人更有智慧的来看待世间万物，宽容的态度面对错综复杂的人际关系，无比坚定的信念奔走人生之路，从容淡定的直面人性的黑暗和世间的悲剧。愿我们每个人在信望爱中，找到温暖，找到安慰，找到答案。
+		</div>
+		<input type="text" id="txt"  />
+		<button id="btn">查找</button>
+		<br/>
+		<input type="text" id="txt2"  />
+		<button id="btn2">替换</button>
+		<script>
+			var box = document.getElementById("box"); //获取box节点对象
+			var txt = document.getElementById("txt"); //获取文本框节点对象
+			var btn = document.getElementById("btn"); //获取按钮节点对象
+			var txt2 = document.getElementById("txt2"); //获取文本框节点对象
+			var btn2 = document.getElementById("btn2"); //获取按钮节点对象
+			/*为按钮添加点击事件*/
+			btn.onclick = function(){
+				//获取关键词
+				var v = txt.value;
+				if(!v){
+					return;
+				}
+				//获取box里的内容 是字符串类型
+				var content = box.innerHTML;
+				//var reg = /""/;  
+				//定义正则表达式用new RegExp方式，匹配关键词的正则
+				var reg = new RegExp(v,"g");
+				//定义正则表达式用new RegExp方式，匹配i标签的正则 |表示或的意思
+				var reg2 = new RegExp("<i>|</i>","g");
+				//先去的所有的i标签
+				content = content.replace(reg2,"");
+				//从    <i>从</i>
+				//将关键词用i标签包裹
+				box.innerHTML = content.replace(reg,"<i>"+v+"</i>");
+			}
+
+			btn2.onclick = function(){
+				//获取box里的内容 是字符串类型
+				var content = box.innerHTML;
+				//关键词
+				var _old = txt.value;    
+				//替换后的新词
+				var _new = txt2.value;
+				//描述关键词的正则对象
+				var reg = new RegExp(_old,"g");
+				//描述i标签的正则对象
+				var reg2 = new RegExp("<i>|</i>","g");  //去除i标签的正则表达式
+				//去除所有的i标签
+				content = content.replace(reg2,'');
+				//实现替换关键词
+				box.innerHTML = content.replace(reg,_new);
+				
+			}
+		</script>
+	</body>
+</html>

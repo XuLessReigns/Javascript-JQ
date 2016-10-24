@@ -1,0 +1,28 @@
+数据组织方式？
+	[
+	{pid:"1001",imgSrc:"images/1.jpg",price:123,pName:"商品1",desc:"棒",count:6},
+	{pid:"1002",imgSrc:"images/2.jpg",price:1222,pName:"商品2",desc:"好好",count:4},
+	{pid:"1003",imgSrc:"images/1.jpg",price:123,pName:"商品1",desc:"棒",count:5},
+	{pid:"1004",imgSrc:"images/1.jpg",price:123,pName:"商品1",desc:"棒",count:5}
+        ]
+
+-->明确需求和功能：
+添加购物车
+	创建一个cookie来表示一个空的容器； "[]" 
+
+	当点击添加购物车的时候：
+		先从容器遍历一遍，看是否已经存有这个商品了，如果存有了，则把这个对象读取出来，改变它的数量count
+		否则，创建一个对象把所要添加的商品相关的数据用对象组织起来，添加到本地存放数据的容器  默认的数量为1 
+	
+	商品的总数量
+		把容器中的存放的对象遍历一遍，在遍历的过程中，读取每一个商品对象的count 累加
+
+	
+
+
+	
+	
+
+
+	
+	

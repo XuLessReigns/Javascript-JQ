@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+	
+	var num1 = 12;
+	if(num1>0){
+		document.write(num1 + "大于0");
+	}else if(num<0){
+		document.write(num1 + "小于0");
+	}else{
+		document.write(num1 + "等于0");
+	}
+	
+	document.write("<br/>");
+
+	var num2 = 8;
+	if(num2==0){
+		document.write("0既不是奇数也不是偶数");
+	}else if(num2%2){
+		document.write(num2 + "是奇数");
+	}else{
+		document.write(num2 + "是偶数");
+	}
+	
+	document.write("<br/>");
+
+	var num3 = 9;
+
+	if(num3<=12&&num3>=1){
+		if(num3==2||num3==1||num3==12){
+			document.write(num3 + "月为冬季");
+		}else if(num3==3||num3==4||num3==5){
+			document.write(num3 + "月为春季");
+		}else if(num3==6||num3==7||num3==8){
+			document.write(num3 + "月为夏季");
+		}else if(num3==9||num3==10||num3==11){
+			document.write(num3 + "月为秋季");
+		}
+		else{
+			document.write("你输出的月份有误");
+		}
+	}else{
+		document.write("你输出的月份有误");
+	}
+
+
+	document.write("<br/>");
+	
+
+	var year = 2016;
+	if(year%4==0&&year%100!=0){
+		alert(year + "是瑞年");
+	}else if(year%400==0){
+		alert(year + "是瑞年");
+	}else{
+		alert(year + "不是瑞年");
+	}
+  </script>
+
+ </head>
+ <body>
+  
+ </body>
+</html>

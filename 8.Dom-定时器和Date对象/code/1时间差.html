@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//获取两个日期相差 多少天 多小时  多少分钟  多少秒 
+	var date1 = new Date("2016/8/10 12:12:12");
+	var date2 = new Date("2016-11-18 23:23:23");
+	var value = date2.getTime()-date1.getTime();
+	var day = parseInt(value/1000/60/60/24);
+	var hours = parseInt(value/1000/60/60%24);
+	var minutes = parseInt(value/1000/60%60);
+	var seconds = parseInt(value/1000%60);
+	document.write("<b>2016/8/10 12:12:12与2016-11-18 23:23:23之间相差的天数：</b>" + day + "天" + hours + '小时' + minutes + '分' + seconds + '秒' + "<br/>");
+
+	var date3 = new Date("2016/8/10 0:0:0");
+	var date4 = new Date("2016-11-18 0:0:0");
+	var value1 = date4.getTime()-date3.getTime();
+	var day1 = value1/1000/60/60/24;
+	document.write("<b>2016/8/10与2016-11-18之间相差的天数：</b>" + day1 + "天" + "<br/>");
+	var hours1 = value1/1000/60/60;
+	document.write("<b>2016/8/10与2016-11-18之间相差的天数：</b>" + hours1 + "小时" + "<br/>");
+	var minutes1 = value1/1000/60;
+	document.write("<b>2016/8/10与2016-11-18之间相差的天数：</b>" + minutes1 + "分" + "<br/>");
+	var seconds1 = value1/1000;
+	document.write("<b>2016/8/10与2016-11-18之间相差的天数：</b>" + seconds1 + "秒" + "<br/>");
+
+	
+	
+	
+	
+	
+  </script>
+ </head>
+ <body>
+	
+ </body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		forEach
+	*/
+
+	var arr = [2,4,1,5,6,3,7];
+	var fn = function(a,b,c){
+		//a 值   b 索引    c 数组本身
+		/*
+		document.write("<h1>------------------------</h1>");
+		document.write("a:" + a + "<br/>");
+		document.write("b:" + b + "<br/>");
+		document.write("c:" + c + "<br/>");
+		document.write("<h1>------------------------</h1>");
+		*/
+		if(a>5){
+			document.write(a + "<br/>");
+		}
+	}
+
+	arr.forEach(fn);
+
+	
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

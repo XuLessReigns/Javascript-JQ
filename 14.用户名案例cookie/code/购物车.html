@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  
+  <style>
+	*{margin:0;padding:0;}
+	.bigBox{
+		height:300px;
+		width:600px;
+		border:2px solid black;
+		position:relative;
+	}
+	.box{
+		height:300px;
+		width:200px;
+		float:left;
+	}
+	img{
+		height:300px;
+		width:200px;
+	}
+	.btn1{
+		border:0;
+		width:100px;
+		height:30px;
+		position:absolute;
+		bottom:0;
+		left:50px;
+	}
+	.btn2{
+		left:250px;
+	}
+	.btn3{
+		left:450px;
+	}
+	.btn4{
+		text-decoration:none;
+		color:black;
+		background:#ccc;
+		text-align:center;
+		display:block;
+		border:0;
+		width:100px;
+		height:30px;
+		line-height:30px;
+		margin:50px 250px;
+	}
+  </style>
+ </head>
+ <body>
+	<div class="bigBox" id="bigBox">
+		<div class="box">
+			<img src="1.bmp"/>
+		</div>
+		<div class="box">
+			<img src="2.bmp"/>
+		</div>		
+		<div class="box">
+			<img src="3.bmp"/>		
+		</div>
+		<button class="btn1">添加购物车</button>
+		<button class="btn1 btn2">添加购物车</button>
+		<button class="btn1 btn3">添加购物车</button>
+	</div>
+	<a id="btn4" class="btn4" href="gouwuche.html" target="_blank">我的购物车</a>
+	<script src="wenCookie.js"></script>
+	<script>
+		var bigBox = document.getElementById("bigBox");
+		var boxs = bigBox.querySelectorAll(".box");
+		var btns = bigBox.querySelectorAll(".btn1");
+		var btn4 = document.getElementById("btn4");
+		//alert(btns.length);//3
+		for(var i = 0;i<btns.length;i++){
+			btns[i].index = i;
+			btns[i].num = 0;
+			btns[i].onclick = function(){
+				//alert(1);
+				this.num++;
+				var obj = {
+					name:"div" + this.index,
+					value:'<img src="' + (this.index + 1) + '.bmp"/>',
+				};
+				setCookie(obj);
+				/*
+				setCookie({
+					name:"length",
+					value:this.index
+				});
+				
+				
+				setCookie({
+					name:"num",
+					value:this.num
+				});
+				*/
+			}
+		}
+		//btn4.onclick = function(){
+		
+		//}
+	</script>
+ </body>
+</html>

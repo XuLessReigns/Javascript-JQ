@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="list">
+			
+		</ul>
+		<script>
+			var ul = document.getElementById("list");
+			
+			/*
+			 	处理姓名的数据
+			 	data：
+			 		字符串Json
+			 */
+			function setNames001(data){
+				//var arr = JSON.parse(data);
+				for(var i = 0;i<data.length;i++){
+					var li = document.createElement("li");
+					li.innerHTML = data[i];
+					ul.appendChild(li)
+				}
+			}
+		</script>
+		
+		<script src="http://127.0.0.1:80/web01/handler.php?fnName=setNames001"></script>
+	</body>
+</html>

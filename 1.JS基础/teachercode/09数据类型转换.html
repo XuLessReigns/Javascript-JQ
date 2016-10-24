@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		自动类型转换
+			任何其他数据和字符串类型的数据在做相加（+）操作的时候，其他数据会自动转换为字符串类型，此时的+表示的不是数学意义上的相加，而表示拼接！
+
+			任何数据非数字类型的数组之间在做【非】相加(指的是不和字符串做相加操作的时候)操作的算术运算操作，此时数据会自动的转为数字类型number
+	*/
+	var num1 = 1;  //number
+	var num2 = "2"; //string
+	//var result = num1 + num2;   //num1自动的转换为string类型
+
+	var num3 = true;
+	var num4 = "2"; 
+	//var result = num3 + num4;   //true2
+
+	var num5 = 2; //number
+	var num6 = "1"; //string  
+	//var result = num5-num6; //num6会自动的转换为number类型
+	
+
+	var num7 = false;//true 1  false 0
+	var num8 = "1";
+	//var result = num7-num8;//0
+
+	//var result = true + false-2 + "2";  //“-12” string
+
+	//var result = true*"22"*"2"-true + 12 + "0"; 
+	//43120
+	//550
+
+	
+	/*
+		任何数据和数字类型的值NaN做算术操作时（除了和字符串做相加操作之外），所得结果始终是NaN,包括NaN自己和自己做任何算术操作运算，都是NaN
+	*/
+	var num9 = 2;
+	var num10 = "a12"; //NaN
+	var result = num9-num10; //NaN (Not a Number)   类型为数字类型
+	// 猫1 猫2 猫3 猫4.......  1 2 3 4...  猫科动物
+	//NaN 老虎   猫科动物
+
+
+	var num11 = 22;
+	var num12 = "123a";
+	var result = num11-num12-NaN;
+
+	//小工具 isNaN(数据)  结果是boolean   true 或 false;
+	var flag = isNaN(result);
+
+
+	//document.write(flag);
+	//document.write(typeof result);
+
+	var num13; //undefined;    --转换数字 NaN
+	//var result = num13*12; //NaN
+
+	var result = null*12;// null --转换为数字 0
+	document.write(result); //
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

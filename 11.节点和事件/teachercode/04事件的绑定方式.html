@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+  
+  </script>
+ </head>
+ <body>
+	<button id="btn">点击</button>
+	<script>
+		var btn = document.getElementById("btn");   //按钮节点对象
+		//格式：节点对象.on+事件名 = 事件处理程序;
+		btn.ondblclick = function(){
+			//事件处理程序
+			alert("这周要考试了，别睡觉哈");
+		}
+	</script>
+ </body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//a这个变量接收的是  对应定时器的标识  用于清除定时器而使用
+	var a = setTimeout(function(){
+		alert("爆炸了！！！！！");
+	},5000);
+	var a2 = setTimeout(function(){
+		alert("屌爆了！！！！！");
+	},5000);
+	window.onload = function(){
+		var btn = document.getElementById("btn");
+		btn.onclick = function(){
+			clearTimeout(a);
+			clearTimeout(a2);
+		}
+	}
+  </script>
+
+ </head>
+ <body>
+	<button>红线</button>
+	<button id="btn">红线下面的金属线</button>
+	<button>蓝线</button>
+ </body>
+</html>

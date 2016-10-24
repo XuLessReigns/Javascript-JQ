@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	
+	var str = encodeURIComponent("姓名") + "=" + encodeURIComponent("张&三");
+	document.cookie = str;
+	document.cookie = encodeURIComponent("年龄") + "=" + encodeURIComponent("18=;");
+
+	alert(document.cookie);
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var num = 1;  //基本数据类型
+	var arr = [1,2,3,4];  //引用数据类型
+
+	/*
+		看是否能够改变num的值
+	*/
+	function change1(n){
+		// var n  =1
+		n = 2;
+	}
+
+	function change2(a){
+		//var a = [1,2,3,4]
+		a[1] = "你好";
+	}
+	
+	change1(num);
+	change2(arr);
+
+	//document.write(num);
+	document.write(arr[1]);
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

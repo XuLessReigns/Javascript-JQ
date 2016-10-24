@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	<h1>这是第三个页面</h1>
+	<a href="first.html">去第一个页面</a>
+	<button id = "btn1">《</button>
+	<script>
+		//alert(history.length);
+		var btn1 = document.getElementById("btn1");
+		btn1.onclick = function(){
+			history.go(-1);
+		}
+	</script>
+ </body>
+</html>

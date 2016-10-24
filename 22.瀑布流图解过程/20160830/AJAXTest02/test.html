@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			var params = {uName:"zhangsan",pwd:"123456",age:18}
+			//uName=zhangsan&pwd=123456&age=18
+			//key1=value1&key2=value2&key3=value3
+			//join()
+			var arr = []
+			for(var item in params){
+				console.log(item);  //键名 属性名
+				console.log(params[item])
+				//item+"="+params[item]     uName=zhangsan
+				arr.push(item+"="+params[item])
+			}
+			var str = arr.join("&");
+			console.log(str)
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

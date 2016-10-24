@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		&& 
+			如果两个非boolean类型的值做且运算，若第一个条件自动转换boolean的值为true，则返回第二条件所产生的结果。否则，返回第一条件所产生的结果。
+		|| 
+			如果两个非boolean类型的值做或运算，若第一个条件自动转换为boolean的值为true，则返回第一个条件所产生的结果。否则，返回第二个条件所产生的结果
+		!
+			对任何数据取反，返回的结果始终都是boolean类型的值
+	*/
+	//var result = 1&&0;  //0     true&&false;
+	//var result = 0&&1;  // 0     false&&true;
+	//var result = 2&&1;  // 1	  true&&true
+	//var result = 1&&2;  // 2	  true&&true
+
+	//var result = " "&&"hello"; //hello
+
+	//var result = 1||0;     true||false; //1
+	//var result = 0||1;  //     false||true;  //1
+	//var result = 2||1;  //	  true||true //2
+	//var result = 1||2;  // 	  true||true    //1
+
+	//var result = !1; //false;
+	var result = !"";  //true;
+	alert(result);
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

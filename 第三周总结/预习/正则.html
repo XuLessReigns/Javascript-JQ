@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//var reg = new RegExp("study");
+	//document.write(reg.test("study") );//true
+	//document.write(reg.test("Study") );//flase
+	//var reg = /study/i;
+	//document.write(reg.test("study") );//true
+	//document.write(reg.test("Study") );//true
+	var reg = new RegExp("study","ig");
+	var str = "dsamstudyafdStudyafaSTUDY";
+	var str1 = "ajfStudY";
+	//alert(str.search(reg));//4
+	//alert(str1.search(reg));//3
+	var arr = str.match(reg);//接收的是一个数组
+	//document.write(arr);//study,Study,STUDY
+	//alert(arr.length);//3
+	//document.write(reg.test("Study") );//true
+	//document.write(reg.test("Study") );//flase
+	var str2 = "good good Study，day day up";
+	//alert(reg.test(str2));//true
+	var flag = reg.exec(str2);
+	//alert(flag);//Study
+	var str3 = "wfwagf";
+
+	var reg = new RegExp("study","ig");
+	var arr = str.match(reg);//接收的是一个数组
+	//document.write(arr);//study,Study,STUDY
+	//alert(str3.search(reg));//找不到返回-1，找到了返回索引值
+	//alert(str3.match(reg));//找不到返回null，找到了返回数组
+	
+	var flag1 = reg.exec(str3);
+	//alert(flag1);//null
+	var result = str2.replace("good","great");
+	//alert(result);//great good Study，day day up
+	var result = str2.replace(/good/ig,"great");
+	//alert(result);//great great Study，day day up
+
+
+	//使用 split 拆分成字符串数组
+	var pattern = / /ig;
+	var str = 'good good study!，day day up!';
+	//document.write(str.split(pattern)); //将空格拆开分组成数组
+	//good,good,study!，day,day,up!
+	
+	//使用点元字符
+	var pattern = /g..gle/; //.匹配一个任意字符
+	var str = 'google';
+	//alert(pattern.test(str));//true
+
+	//重复多次匹配（+ * ？）
+	var pattern = /g.*gle/; //.匹配 0 到多个
+	var str = 'google'; //*,?,+,{n,m}
+	//alert(pattern.test(str));//true
+	
+	//使用字符类匹配
+	var pattern = /g[a-zA-Z_]*gle/; //[a-z]*表示任意个 a-z 中的字符
+	var str = 'google';
+	//alert(pattern.test(str));//true
+
+	//var pattern = /g[^0-9]*gle/; //[^0-9]*表示任意个非 0-9 的字符
+	//var str = 'google';
+	//alert(pattern.test(str));//true
+
+	var pattern = /[a-z][A-Z]+/; //[A-Z]+表示 A-Z 一次或多次
+	var str = 'gOOGLE';
+	//alert(pattern.test(str));//true
+
+	//使用元符号匹配
+	var pattern = /g\w*gle/; //\w*匹配任意多个所有字母数字_
+	var str = 'google';
+	//alert(pattern.test(str));//true
+
+	var pattern = /google\d*/; //\d*匹配任意多个数字
+	var str = 'google444';
+	//alert(pattern.test(str));//true
+
+	var pattern = /\D{7,}/; //\D{7,}匹配至少 7 个非数字
+	var str = 'google8';
+	//alert(pattern.test(str));//false
+
+	//使用锚元字符匹配
+	var pattern = /^google$/; //^从开头匹配，$从结尾开始匹配
+	var str = 'google';
+	//alert(pattern.test(str));//true
+	var pattern = /goo\sgle/; //\s 可以匹配到空格
+	var str = 'goo gle';
+	//alert(pattern.test(str));//true
+
+	var pattern = /google\b/; //\b 可以匹配是否到了边界
+	var str = 'google';
+	var str2= 'googleaa googlexx google dsdddd';
+	var str3= 'googleaa googlexx googledsdddd';
+	//alert(pattern.test(str));//true
+	//alert(pattern.test(str2));//true
+	//alert(pattern.test(str3));//false
+
+
+
+	//使用或模式匹配
+	var pattern = /google|baidu|bing/; //匹配三种其中一种字符串
+	var str = 'google';
+	//alert(pattern.test(str));//true
+	//使用分组模式匹配
+	var pattern = /(google){4,8}/; //匹配分组里的字符串 4-8 次
+	var str = 'googlegoogle';
+	//alert(pattern.test(str));//flase
+
+	var pattern = /8(.*)8/; //获取 8..8 之间的任意字符
+	var str = 'This is 8google8, dd 8ggg8';
+	//console.log(str.match(pattern)); 
+	//["8google8, dd 8ggg8","google8, dd 8ggg"]
+	//alert(str.match(pattern).length);//2
+	//alert($1); //得到第一个分组里的字符串内容
+	//document.write("<br/>");
+
+	var pattern = /8(.*)8/;
+	var str = 'This is 8google8';
+	var result = str.replace(pattern,'<strong>$1</strong>'); //得到替换的字符串输出
+	//document.write(result);//This is google,google加粗了
+	//document.write("<br/>");
+
+	var pattern = /(.*)\s(.*)/;
+	var str = 'google baidu';
+	var result = str.replace(pattern, '$2 $1'); //将两个分组的值替换输出
+	//document.write(result);//baidu google
+
+	//使用 exec 返回数组
+	var pattern = /^[a-z]+\s[0-9]{4}$/i;
+	var str = 'google 2012';
+	//console.log(pattern.exec(str)); //返回整个字符串["google 2012"];
+	//document.write(pattern.exec(str));//google 2012
+		
+	var pattern = /^[a-z]+/i; //只匹配字母
+	var str = 'google 2012';
+	//alert(pattern.exec(str)); //返回 google
+
+	var pattern = /^([a-z]+)\s([0-9]{4})$/i; //使用分组
+	var str = 'google 2012';
+	//console.log(pattern.exec(str) );
+	//["google 2012", "google", "2012"]
+	//alert(pattern.exec(str)[0]); //google 2012
+	//alert(pattern.exec(str)[1]); //google
+	//alert(pattern.exec(str)[2]); //2012
+
+
+
+	//捕获性分组和非捕获性分组
+	var pattern = /(\d+)([a-z])/; //捕获性分组
+	var str = '123abc';
+	//console.log(pattern.exec(str));//["123a", "123", "a"] 
+
+	var pattern = /(\d+)(?:[a-z])/; //非捕获性分组
+	var str = '123bc';
+	//console.log(pattern.exec(str));//["123a", "123"]
+	//使用分组嵌套
+	var pattern = /(A?(B?(C?)))/; //从外往内获取
+	var str = 'ABC';
+	//console.log(pattern.exec(str));//["ABC", "ABC", "BC", "C"]
+	//alert(pattern.exec(str).length);//4
+
+
+	//使用特殊字符匹配
+	var pattern = /\.\[\/b\]/; //特殊字符，用\符号转义即可
+	var str = '.[/b]';
+	//console.log(pattern.test(str));//true
+	//使用换行模式
+	var pattern = /^\d+/mg; //启用了换行模式
+	var str = '1.baidu\n2.google\n3.bing';
+	var result = str.replace(pattern, '#');
+	//console.log(result);
+	//document.write(str);
+	/*
+		#.baidu		1.baidu			
+		#.google	2.google
+		#.bing		3.bing
+	*/
+
+	var str = "Johnny tried really really really really hard";
+	var result = str.replace(/(really\s)+/gi,'very ');
+	document.write(result);//Johnny tried very hard
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

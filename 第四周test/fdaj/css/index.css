@@ -1,0 +1,96 @@
+/*-----小盒子和小盒子下的img的设置-----*/
+img{
+	border: 0;
+}
+.small-box{
+	width:200px;
+	height: 200px;
+	border:1px solid #ccc;
+	position:relative;
+	float:left;margin:10px;cursor:move;
+	margin: 50px 100px;
+	overflow: hidden;
+}
+.small-box img{
+	width: 200px;
+}
+.small-box .item{
+	display: none;
+}
+.small-box .active{
+	display: block;
+}			
+.tool{
+	width:100px;
+	height:100px;
+	opacity: 0.3;
+	background: cyan;
+	position:absolute;
+	left:0px;
+	top:0px;
+	display:none;
+}
+.tool.active{
+	display: block;
+}
+.tab{width:200px;height: 38px;overflow: hidden;
+	position:relative;top:262px;left:-290px;
+}
+#list{
+	position: absolute;
+	top:-16px;
+	left:-40px;
+}
+.tab #list li{
+	list-style: none;
+	float: left;
+	border:1px solid #fff;
+}
+.tab #list .active{
+	border:1px solid red;
+}
+.tab #list img{
+	width: 35px;
+	height: 35px;
+}
+
+.bigBox{position:relative;display:none;
+    float:left;border:1px solid #ccc;
+    margin-top: 10px;width: 400px;
+    height: 400px;overflow: hidden;
+}
+/*---为大盒子添加一个类名使其在鼠标移动到tool的时候会显示----*/
+.bigBox.ative{
+	display: block;
+}
+
+.bigBox .item{
+	width:800px;
+	position:absolute;
+	display: none;
+}
+.bigBox .active{
+	display: block;
+}
+
+#zgt{
+	width: 8px;
+	height: 35px;
+	line-height: 35px;
+	position: absolute;
+	top:270px;
+	left:106px;
+	background: gray;
+	opacity: 0.5;
+}
+#ygt{
+	width: 8px;
+	height: 35px;
+	line-height: 35px;
+	position: absolute;
+	top:270px;
+	left:302px;
+	text-align: right;
+	background: gray;
+	opacity: 0.5;
+}

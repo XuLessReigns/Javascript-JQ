@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		事件监听绑定工具
+		参数：
+			dom 事件目标
+			type 事件名   
+			fn   事件处理程序
+	*/
+	function on(dom,type,fn){
+		
+		if(dom.addEventListener){  //标准模式
+			dom.addEventListener(type,fn)
+		}else{ //IE8及其以下模式
+			dom.attachEvent("on" + type,fn)
+		}
+	}
+
+	window.onload = function(){
+		function handler(e){
+			var _e = window.event||e;
+			//_e.wheelDelta  甄别滚轮方向  120 上   -120下  
+			//_e.detail      甄别滚轮方向  -3 上   3 下   火狐
+
+			if(_e.detail==-3||_e.wheelDelta==120){
+				document.title = "上";
+			}else{
+				document.title = "下";
+			}
+
+		}
+		on(document,"mousewheel",handler);
+		
+		
+		on(document,"DOMMouseScroll",handler);
+		
+
+
+	}
+  </script>
+ </head>
+ <body>
+
+ </body>
+</html>

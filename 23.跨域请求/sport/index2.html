@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}
+			.box{height: 100px;width: 100px;position: absolute;background: green;left:0;}
+			#dv1{margin-top: 110px;left:0;}
+			#dv2{margin-top: 220px;left:0;}
+			#dv3{margin-top: 330px;left:0;}
+		</style>
+	</head>
+	<body>
+		<button id="btn">运动</button>
+		<div id="dv" class="box"></div>	
+		<div id="dv1" class="box"></div>	
+		<div id="dv2" class="box"></div>	
+		<div id="dv3" class="box"></div>	
+	</body>
+	<script>
+		var btn = document.getElementById("btn");
+		var dv = document.getElementById("dv");
+		var dv1 = document.getElementById("dv1");
+		var dv2 = document.getElementById("dv2");
+		var dv3 = document.getElementById("dv3");
+		
+		btn.onclick = function(){	
+			sport(dv,"left");
+			sport(dv1,"width");
+			sport(dv2,"width");
+			sport(dv3,"height");			
+		}
+		
+		/*动画：
+			1、运动属性：width,height,left,right...	
+		*/
+		function sport(dom,propertyName){
+			clearInterval(dom.termId);			
+			var step = 10;
+			var target = 400;
+			dom.termId = setInterval(function(){
+				var num = parseInt(getStylePropertyValue(dom,propertyName) );
+				if(num==target){
+					clearInterval(dom.termId);
+					return;
+				}
+				dom.style[propertyName] = num + step + "px";
+			},100);
+		}
+		//获取指定样式的值
+		function getStylePropertyValue(dom,propertyName){
+			if(window.getComputedStyle){
+				return getComputedStyle(dom,null)[propertyName];
+			}else{
+				return dom.currentStyle[propertyName];
+			}
+			
+		}
+	</script>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	function fn(){
+		alert("你的忌日到了！");
+	}
+
+	var fn2 = function(){
+		alert("你有血光之灾！");
+	}
+	//window.setTimeout(fn2,3000);
+
+	/*
+		函数在其中表现为定义
+	*/
+	setTimeout(function(){
+		alert("你有血光之灾！");
+	},3000);
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

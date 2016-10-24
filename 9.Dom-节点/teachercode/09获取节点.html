@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	ul{
+		list-style:none;
+		color:#fff;
+	}
+	ul li{
+		line-height:50px;
+		background-color:green;
+	}
+	ul li+li{
+		margin-top:20px;
+	}
+  </style>
+  <script>
+	window.onload = function(){
+		var lis = document.getElementsByName("list");
+		//document.getElementsByName("list"); 返回的是一个类似数组的集合
+		//alert(lis.length);
+		for(var i = 0;i<lis.length;i++){
+			lis[i].onclick = function(){
+				//this 当前的对象
+				//this.innerHTML
+				alert(this.innerHTML);
+			}
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<ul>
+		<li name="list">li01</li>
+		<li name="list">li02</li>
+		<li name="list">li03</li>
+		<li name="list">li04</li>
+		<li name="list">li05</li>
+
+	</ul>
+ </body>
+</html>

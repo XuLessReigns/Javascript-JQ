@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	div{background:red;width:300px;height:300px;}
+  </style>
+  <script>
+	window.onload = function(){
+		var dv = document.querySelector("#dv")
+		//alert(dv.tagName);
+		//alert(dv.innerHTML);
+		//dv.innerHTML = "<h1>世界是多么美好，你是如此暴躁，这样不好不好</h1>";
+		//alert(dv.innerText);
+		//alert(dv.id);
+		//alert(dv.title);
+		//alert(dv.className);
+		//dv.className = "box1";
+		//alert(dv.className);
+
+		//var w = window.getComputedStyle(box,null).width;  //标准
+		//var h = box.currentStyle["height"];  //IE8及以下的处理方式
+		//alert(window.getComputedStyle(dv,null).width);
+		//alert(dv.currentStyle.["height"]);
+		//处理兼容问题
+		if(window.getComputedStyle){
+			alert(window.getComputedStyle(dv,null).width);
+		}else{
+			alert(dv.currentStyle.height);
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<div id="dv" class="box" title="哈哈"><h1>世界是多么美好，你是如此暴躁，这样不好不好</h1>
+	</div>
+ </body>
+</html>

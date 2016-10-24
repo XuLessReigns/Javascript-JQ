@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            // $("<div id='div1'></div>").css({
+            //     width:100,
+            //     height:100,
+            //     background:"red"
+            // }).html("hello word").appendTo("#div2");
+
+            //appendTo()方法可以将创建元素追加到指定的元素中
+            //$(创建元素).appendTo(指定容器);
+            //$("<div id='div1'>hello</div>").appendTo("#div2");
+
+            //append()方法需要先匹配插入元素的指定位置，
+            //在append方法中进行创建元素
+            //$(指定容器).appendTo(创建元素);
+            //使用apped方法时需要注意返回值返回的是匹配的元素
+            //所以会影响链式调用
+            //$("#div2").append("<div id='div1'>hello</div>");
+
+            //向给定元素内部的前面插入创建元素
+            //$("<p>text</p>").prependTo("#div2");
+            //$("#div3").prependTo("#div2");
+
+            //prepend()可以将创建的元素插入匹配元素内部的前面
+            //prepend()不支持对已有的标签的插入，只能插入新创建的标签
+            //prependTo()支持已有标签插入（功能等同于标签剪切）
+            //$("#div2").prepend("<p>text</p>");
+
+            //$("#div3").insertAfter("#div2");
+            //以下方法可以将创建元素插入匹配元素外部的后面
+            //$("<hr/>").insertAfter("#div2");
+            //$("#div2").after("<hr/>");
+
+            //以下方法将创建元素插入匹配元素外部的前面
+            //$("<hr>").insertBefore("#div2");
+            //$("#div2").before("<hr>");
+
+            // $(".sp1").click(function(){
+            //     alert("OK");
+            // });
+
+            //删除匹配元素
+            // var $r = $(".sp1").remove();
+            // console.log($r);
+            // $r.appendTo("div:eq(2)");
+
+            //删除匹配元素，detach与remove是detach删除的
+            //元素在恢复时可以保留原有事件
+            // var $r = $(".sp1").detach();
+            // $r.appendTo("div:eq(2)");
+
+            //将匹配元素所有后代元素删除
+            //$("#div2").empty();
+        });
+    </script>
+</head>
+<body>
+    <div id="div2">
+        <div id="div3">我是DIV</div>
+        <span>123</span>
+        <span class="sp1">234</span>
+    </div>
+    <div></div>
+</body>
+</html>

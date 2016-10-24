@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//var a;
+	/*
+		作用域：作用范围
+			全局作用域
+				全局变量，可以作用在任何地方；
+			局部作用域
+				局部变量，仅仅只能在当前的作用域中使用
+				一个函数就是一个独立作用域，被称之为局部作用域
+			
+	*/
+	var a = 456;
+	//a = 456;
+	function test(){
+		//var a;
+		document.write("局部作用域中的a:" + a + "<br/>");//undefined   
+		var a = 123;
+		//a = 123;
+		document.write("局部作用域中的a:" + a + "<br/>");  //123
+	}
+	test();
+	document.write("全局作用域中的a:" + a+ "<br/>");   //456
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

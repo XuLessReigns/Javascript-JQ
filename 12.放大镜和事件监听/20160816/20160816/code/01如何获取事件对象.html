@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>事件对象</title>
+  <script>
+	window.onload = function(){
+		document.onmousemove = function(e){
+			//window.event   //在IE里面引用事件对象  window.event
+			
+
+			/*
+			if(e){  //w3c标准浏览器
+				var x = e.clientX;
+			}else{  //ie浏览器
+				var x = window.event.clientX;
+			}
+			document.title = x; 
+			*/
+			var _e = e||window.event;  //事件对象的一个兼容处理
+			alert(_e.clientX);
+		}
+	}
+
+	/*
+	var arr = [];
+	arr.forEach(function(a,b,c){
+	
+	});
+	*/
+  </script>
+ </head>
+ <body>
+	
+ </body>
+</html>

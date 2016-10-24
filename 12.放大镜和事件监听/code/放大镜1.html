@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{margin:0;padding:0;}
+	.smallBox{
+		width:300px;
+		border:1px solid #ccc;
+		position:relative;
+		float:left;
+		margin:100px;
+		cursor:move;
+		overflow:hidden;
+	}
+	.smallBox img{
+		width:300px;
+	}
+	.smallBox .tool{
+		width:100px;
+		height:100px;
+		background:orange;
+		opacity:.5;
+		filter:alpha(opacity=50);
+		position:absolute;
+		top:0;
+		left:0;
+		display:none;
+	}
+	.smallBox .tool.active{
+		display:block;
+	}
+	.bigBox{
+		width:400px;
+		height:400px;
+		border:1px solid #ccc;
+		overflow:hidden;
+		float:left;
+		margin:100px;
+		position:relative;
+		display:none;
+	}
+	.bigBox.active{
+		display:block;
+	}
+	.bigBox img{
+		width:1200px;
+		position:absolute;
+		
+	}
+  </style>
+
+
+  <script>
+	/*
+		思路：第一步：当页面加载完毕之后，获取所要操作的节点对象
+				2、为smallBox添加一个鼠标浮动和离开事件
+				为了显示和隐藏tool和bigBox
+				3、为smallBox添加一个鼠标移动事件
+				改变tool坐标
+				4.求出tool距smallBox左边和顶部的距离
+				并改变大图片的位子
+				left:-4*left
+				top:-4*top
+	*/
+	window.onload = function(){
+		//获取smallBox的节点对象
+		var smallBox = document.getElementById("smallBox");
+		//获取tool的节点对象
+		var tool = document.getElementById("tool");
+		//获取bigBox的节点对象
+		var bigBox = document.getElementById("bigBox");
+		//获取bigImg的节点对象
+		var bigImg = document.getElementById("bigImg");
+
+		//为smallBox添加一个鼠标浮动和离开事件,为了显示和隐藏tool和bigBox
+		smallBox.onmouseenter = function(){
+			tool.className = "tool active";
+			bigBox.className = "bigBox active";
+		}
+		smallBox.onmouseleave = function(){
+			tool.className = "tool";
+			bigBox.className = "bigBox";
+		}
+		//为smallBox添加鼠标移动事件
+		smallBox.onmousemove = function(e){
+			var e = window.event||e;
+			/*有问题
+			var x = e.offsetX;
+			var y = e.offsetY;
+			tool.style.left = x + "px";
+			tool.style.top = y + "px";
+			*/
+			//tool.offsetWidth/2
+			/*鼠标移动之后的tool的坐标*/
+			var x = e.clientX-smallBox.offsetLeft-tool.offsetWidth/2;
+			var y = e.clientY-smallBox.offsetTop-tool.offsetHeight/2;
+			//范围限定
+			if(x<0){
+				x = 0;
+			}
+			if(y<0){
+				y=0;
+			}
+			if(x>smallBox.offsetWidth-tool.offsetWidth){
+				x=smallBox.offsetWidth-tool.offsetWidth;
+			}
+			if(y>smallBox.offsetHeight-tool.offsetHeight){
+				y=smallBox.offsetHeight-tool.offsetHeight;
+			}
+			//更改小盒子tool的坐标
+			tool.style.left = x + "px";
+			tool.style.top = y + "px";
+			
+			//大图片随着tool坐标的改变而改变
+			var left = tool.offsetLeft*4;
+			var top = tool.offsetTop*4;
+			//bigImg.style.left = -left + "px";
+			//bigImg.style.top = -top + "px";
+			bigImg.style.left = -4*x + "px";
+			bigImg.style.top = -4*y + "px";
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<div class="smallBox" id="smallBox">
+		<img src="../images/awe.jpg"/>
+		<div class="tool" id="tool">
+		</div>
+	</div>
+	<div class="bigBox" id="bigBox">
+		<img id="bigImg" src="../images/awe.jpg"/>
+	</div>
+ </body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.container{
+				width: 1200px;
+				margin: 0 auto;
+			}
+			ul{
+				list-style: none;
+			}
+			.box{
+				width: 400px;
+				margin: 10px auto;
+			}
+			.box .search{
+				width: 400px;
+				height: 50px;
+				border: 1px solid #ccc;
+				line-height: 50px;
+			}
+			.box .search input{
+				width: 300px;
+				outline: none;
+				border: none;
+				font:400 20px/50px "微软雅黑";
+				padding: 0 10px;
+			}
+			.box ul{
+				width: 400px;
+				border: 1px solid #CCCCCC;
+				border-top:none ;
+				display: none;
+			}
+			.box ul li{
+				font:bold 22px/30px "微软雅黑";
+				cursor: default;
+				padding: 0 10px;
+			}
+			.box ul li:hover{
+				background-color: lightgoldenrodyellow
+			}
+			.box ul.active{
+				display: block;
+			}
+		</style>
+		<script src="ajax.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="box">
+				<div class="search">
+					<input id="txt" type="text" placeholder="请输入关键字" />
+				</div>
+				<ul class="" id="list">
+					<li>李小龙</li>
+					<li>李四</li>
+					<li>李斯</li>
+					<li>李世民</li>
+				</ul>
+			</div>
+			
+		</div>
+
+		<script>
+			/*
+				思路：
+					第一步：获取所要操作的节点对象
+					第二步：为文本框添加一个文本框输入事件
+					第三步：在文本框输入事件中
+							实现和服务端的交互
+							AJAX
+							服务端为客户端返回结果：
+								条件文本框中值
+							JSON
+							根据解析后的结果，动态的创建li追加到ul中
+							ul显示
+
+					第四步：
+						为每一个li添加鼠标点击事件
+							把li中内容赋值给文本框
+							ul隐藏
+			*/
+			var txt = document.getElementById("txt");
+			var list = document.getElementById("list");
+
+			txt.onkeyup = function(){
+				var word = this.value;
+				ajax({
+					method:"get",
+					url:"search.php",
+					params:{wd:word},
+					isAsyc:true,
+					success:function(data){
+						list.innerHTML = '';
+						if(data==''){
+							list.className = "";
+						}else{
+							var arr = JSON.parse(data);
+							for(var i = 0;i<arr.length;i++){
+								var li = document.createElement("li");
+								li.innerHTML = arr[i];
+								li.onclick = function(){
+									var v = this.innerHTML;
+									txt.value = v;
+									list.className = "";
+								}
+								list.appendChild(li);
+							}
+							list.className = "active";
+						}
+					},
+					error:function(mes){
+						alert(mes);
+					}
+				});
+
+			}
+
+		</script>
+		
+	</body>
+</html>

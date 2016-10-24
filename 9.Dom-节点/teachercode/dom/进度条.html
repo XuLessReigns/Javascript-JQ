@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.box{
+		width:700px;
+		height:20px;
+		border:1px dotted #aaa;
+		position:absolute;
+		top:50%; 
+		margin-top:-10px;
+		left:50%;
+		margin-left:-350px;
+	}
+	span{
+		position:absolute;
+		right:0;
+		font-style:none;
+		color:red;
+		font-size:22px;
+		font-weight:bold;
+	}
+	.nav{
+		width:0px;
+		height:100%;
+		background-color:green;
+	}
+
+  </style>
+  <script>
+	/*
+		需求：进度条
+			思路：
+				第一步：当页面加载完后，获取所要操作的节点对象（外层div、内部div、统计数据的span节点）
+				第二步：定时器，改变内部div的宽度，改变统计的数据。
+					
+				
+	*/
+	//第一步：当页面加载完后，获取所要操作的节点对象（外层div、内部div、统计数据的span节点）
+	window.onload = function(){
+		var box = document.getElementById("box"); //外层div
+		var nav = document.getElementById("nav"); //内部div
+		var s = document.getElementById("s"); //统计数据的span节点
+		var outDivWidth = parseInt(getStylePropertyValue(box,"width")); //外层div的宽度
+		//每隔多少像素数据统计一个百分点
+		var step = outDivWidth/100;//7
+		var data = 0;
+		var termId = setInterval(function(){
+			//内容div当前的宽度
+			var currentWidth = parseInt(getStylePropertyValue(nav,"width")); 
+			nav.style.width = currentWidth + 1 + "px";
+			if(currentWidth%step==0){
+				  //加一个百分点
+				s.innerHTML = data + "%";
+				data++;  
+			}
+			
+			if(currentWidth==outDivWidth){
+				clearInterval(termId);
+			}
+		},10);
+
+	}
+
+
+	/*
+		功能：获取指定节点对象的指定样式属性的值！
+		参数：
+			dom:所操作节点对象
+			property:指定样式的属性
+	*/
+	function getStylePropertyValue(dom,property){
+		if(window.getComputedStyle){ //window.getComputedStyle!=undefined
+				//标准格式
+			return getComputedStyle(dom,null)[property];
+		}else{
+				//IE低版本格式
+				return dom.currentStyle[property]
+			}
+		}
+	
+  </script>
+ </head>
+ <body>
+	<div class="box" id="box">
+		<div class="nav"  id="nav"></nav>
+		<span id="s"></span>
+	</div>
+	
+ </body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		类 Object
+	*/
+	var obj = new Object();//创建对象 //类型：Object  //刚开始是空对象
+	obj.name = "张国伟";//增加静态属性（特征）
+	//增加动态属性（方法、函数）
+	obj.song = function (a){
+		return ("张国伟会唱" + a);
+	}
+	//增加动态属性
+	obj.say = function (a){
+		alert("张国伟会说" + a);
+	}
+	//调用动态属性
+	document.write(obj.name);
+	alert(obj.song("甜蜜蜜") );
+	obj.say("不要脸");
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

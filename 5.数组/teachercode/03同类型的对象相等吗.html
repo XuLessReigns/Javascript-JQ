@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var obj1 = new Object();    //obj1     类型Object
+	obj1.uname = "张三";  //会画画
+
+	var obj2 = new Object();    //obj2     类型Object
+	obj2.uname = "李四";  //编程
+
+	//var flag = obj1==obj2;    //对于【对象】所比较的是空间地址
+	//alert(flag);  //false
+	//alert(obj1.uname);  //张三  
+	alert(obj2.uname);  //undefined 对于对象，若内部中没有指定属性，则返回undefined
+
+	//总而言之，对象之间是不同的个体
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

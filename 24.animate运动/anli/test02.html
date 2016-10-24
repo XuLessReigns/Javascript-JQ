@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			ul{
+				list-style: none;
+			}
+			.box{
+				width: 300px;
+				margin: 0 auto;
+				color: #fff;
+				
+			}
+			.box li{
+				cursor: pointer;
+			}
+			.box>li{
+				background-color: green;
+				font:bold 18px/38px "宋体";
+				overflow: hidden;
+				height: 38px;
+				
+			}
+			.box>li+li{
+				border-top: 1px solid #CCCCCC;
+			}
+			.box>li li{
+				background-color: #0000FF;
+				font:bold 16px/28px "宋体";
+				padding-left: 20px;
+			}
+			.box>li li+li{
+				border-top: 1px solid #CCCCCC;
+			}
+			.box>li li:hover{
+				background-color: greenyellow;
+			}
+			
+		</style>
+		<script type="text/javascript" src="animate.js" ></script>
+	</head>
+	<body>
+		<ul class="box">
+			<li class="menu">
+				<p>菜单1</p>
+				<ul class="small-box">
+					<li>子菜单1</li>
+					<li>子菜单2</li>
+					<li>子菜单3</li>
+					<li>子菜单4</li>
+				</ul>
+			</li>
+			<li class="menu">
+				<p>菜单1</p>
+				<ul class="small-box">
+					<li>子菜单1</li>
+					<li>子菜单2</li>
+					<li>子菜单3</li>
+					<li>子菜单4</li>
+				</ul>
+			</li>
+			<li class="menu">
+				<p>菜单1</p>
+				<ul class="small-box">
+					<li>子菜单1</li>
+					<li>子菜单2</li>
+					<li>子菜单3</li>
+					<li>子菜单4</li>
+				</ul>
+			</li>
+			<li class="menu">
+				<p>菜单1</p>
+				<ul class="small-box">
+					<li>子菜单1</li>
+					<li>子菜单2</li>
+					<li>子菜单3</li>
+					<li>子菜单4</li>
+				</ul>
+			</li>
+		
+		</ul>
+		<script>
+			/*
+			 	思路：
+			 		第一步：获取所要操作的节点对象
+			 		第二步：为p标签节点对象添加一个鼠标点击事件
+			 		第三步：点击事件中
+			 				伸
+			 					改变li标签的高度为 p的高度 + ul的高度
+			 				缩
+			 					改变li标签的高度为p的高度
+			 */
+			var ps = document.querySelectorAll("p");
+			for(var i = 0;i<ps.length;i++){
+				ps[i].flag = true;
+				ps[i].onclick = function(){
+					var pHeight = this.offsetHeight;
+					var ulHeight = this.nextElementSibling.offsetHeight;
+					var li = this.parentNode;
+					if(this.flag){
+						this.flag = false;
+						animate(li,{height:ulHeight + pHeight},10);
+					}else{
+						this.flag = false;
+						animate(li,{height:pHeight},10);
+					}
+				}
+			}
+		</script>
+	</body>
+	
+</html>

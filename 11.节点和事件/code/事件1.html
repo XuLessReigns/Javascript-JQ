@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	#box{
+		height:250px;
+		width:260px;
+	}
+	#box img{
+		height:250px;
+		width:260px;
+	}
+  </style>
+  <script>
+	window.onload = function(){
+		var box = document.getElementById("box");
+		box.onmouseover = function(){
+			var change = document.getElementById("change");
+			change.src = "../images/dream1.png";
+		}
+		box.onmouseout = function(){
+			change.src = "../images/awe.jpg";
+		}
+
+	}
+  </script>
+ </head>
+ <body>
+  <div id="box">
+	<img id="change" src="../images/awe.jpg"/>
+  </div>
+ </body>
+</html>

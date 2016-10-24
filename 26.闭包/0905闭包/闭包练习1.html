@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习1</title>
+</head>
+<body>
+	<script>
+		//创建一个函数 函数名为：count，
+		//让该函数支持无限调用，例如：count(1)(2)(3)(4)(5)(6)
+		//当对该函数取出返回值时候将依次传递实参的乘积输出
+		//例如：alert(count(2)(3)(5))   输出30
+		//在函数内部使用return 返回自身上下文
+
+		var i = 1;
+		function count(n){
+			i *= n;
+			return count;
+		}
+
+		count.toString = function(){
+			return i;
+		}
+
+		alert(count(1)(2)(3)(4));
+	</script>
+</body>
+</html>

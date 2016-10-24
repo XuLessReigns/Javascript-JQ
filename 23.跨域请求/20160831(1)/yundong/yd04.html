@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background-color: green;
+				position: absolute;
+				left:0px;
+				top:50px
+			}
+			#dv{
+				opacity: 0.1;
+				filter: alpha(opacity=10);
+			}
+			
+			#dv2{
+				top:160px;
+			}
+			#dv3{
+				top:270px;
+			}
+			
+			#dv4{
+				top:380px;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn">运动</button>
+		<div class="box" id="dv"></div>
+		<div class="box" id="dv2"></div>
+		<div class="box" id="dv3"></div>
+		<div class="box" id="dv4"></div>
+		<script>
+			var  btn = document.getElementById("btn");
+			var dv = document.getElementById("dv");
+			var dv2= document.getElementById("dv2");
+			var dv3= document.getElementById("dv3");
+			var dv4= document.getElementById("dv4");
+			btn.onclick = function(){
+				animate(dv,"width",200);
+			}
+			
+			
+			/*
+			 	动画
+			 		运动属性
+			 		透明度    1-100
+			 	参数：
+			 		dom：要运动的节点对象
+			 		propertyName:  width  height  left top...
+			 		target:目标值
+			 */
+			function animate(dom,propertyName,target){
+				clearInterval(dom.termId);
+				//step
+				var step = 1;  //步长
+				dom.termId = setInterval(function(){
+					if(propertyName=="opacity"){  //透明度
+						var currentValue = getStylePropertyValue(dom,"opacity")*100
+					}else{  //其他
+						var currentValue =parseInt(getStylePropertyValue(dom,propertyName))
+					}
+					/*判断是否已经达到目标*/
+					if(currentValue==target){
+						clearInterval(dom.termId); //停止定时器
+						return;//结束本次函数的执行
+					}
+					
+					/*改变样式属性的值*/
+					if(propertyName=="opacity"){  //透明度处理
+						currentValue+=step;
+						dom.style["opacity"] = currentValue/100;  
+						dom.style["filter"] = "alpha(opacity="+currentValue+")";
+					}else{//其他情况处理
+						currentValue+=step;
+						console.log(currentValue)
+						dom.style[propertyName] = currentValue + "px";
+					}
+					
+				},10)
+			}
+			
+			
+			
+	 /*
+		功能：获取指定节点样式属性的值
+		参数：dom 表示的指定的节点对象  propertyName 表示是样式属性名
+	 */
+
+	 function getStylePropertyValue(dom,propertyName){
+		//var dom,propertyName
+		if(window.getComputedStyle){
+			return getComputedStyle(dom,null)[propertyName];  
+		}else{  //IE
+			return dom.currentStyle[propertyName];
+		}
+		
+	 }
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

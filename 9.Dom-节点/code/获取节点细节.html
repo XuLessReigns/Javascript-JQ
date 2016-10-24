@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+	<style>
+		html,body,div,ul,li{margin:0;padding:0;}
+		ul li{height:50px;background:cyan;margin:10px 0;}
+	</style>
+   <script>
+		window.onload = function(){
+			var list1 = document.getElementsByTagName("li");
+			//alert(list1.length);
+			var div = document.getElementById("div");
+			var list2 = div.getElementsByTagName('li');
+			//alert(list2.length);
+			for(var i = 0;i<list2.length;i++){
+				list2[i].onclick = function(){
+					alert(this.innerHTML);
+				}
+			}
+		}
+   </script>
+ </head>
+ <body>
+	<div id="div">
+		<ul>
+			<li>1今天你吃了吗</li>
+			<li>2今天你约了吗</li>
+			<li>3今天你睡了吗</li>
+			<li>4今天你玩了吗</li>
+			<li>5今天你跑了吗</li>
+		</ul>
+	</div>
+	<ul>
+		<li>6今天你吃了吗</li>
+		<li>7今天你约了吗</li>
+		<li>8今天你睡了吗</li>
+		<li>9今天你玩了吗</li>
+		<li>10今天你跑了吗</li>
+	</ul>
+	
+ </body>
+</html>

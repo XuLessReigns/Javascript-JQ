@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        //以下写法类似原生JS中的onload事件
+        //JQ预加载函数中采用的是DOMContentLoaded事件
+        //$(fn);叫做JQ预加载函数，等待页面中所有DOM元素加载完毕后触发
+        //以下是JQ预加载函数的简写形式
+        $(function(){
+            //当调用$()函数并传递的参数是字符串时，就是调用了JQ中的选择器功能
+            //该功能可以选择到匹配的元素
+            //当定义一个变量接收的JQ对象中方法的返回值的话，建议将
+            //该变量名首字母用$开头
+
+            //$("#div1").get(0); 或  $("#div1")[0];
+            //JQuery获取到的元素对象可以通过下标或get方法来转换为原生DOM对象
+
+            //ID选择器
+            //console.log($("#div1"));
+            //标签选择器
+            //$("div").css("background","red");
+            //类选择器
+            //console.log($(".d1"));
+            //通配选择器
+            //console.log($("*"));
+            //复合选择器
+            //console.log($("#div1,.d1,body"));
+
+            //后代元素选择器
+            //console.log($(".d1 .sp1"));
+            //console.log($("div span"));
+
+            //子元素选择器
+            //console.log($(".d1>span"));
+
+            //相邻元素选择器（匹配的是必须紧跟第一个选择器后面的元素）
+            //console.log($(".d1+a"))
+
+            //同辈元素选择器
+            //console.log($("#div1~p"));
+
+            //基本过滤选择器（过滤出第一个元素）
+            //console.log($("p:first"));
+
+            //当独立使用:first或:last过滤选择器时查找起始点为html
+            //console.log($(":first"));
+            //console.log($(":last"));
+
+            //基本过滤选择器（过滤出最后一个元素）
+            //console.log($("p:last"));
+
+            //匹配p元素中不包含not()括号中选择器的元素
+            //在使用not不包含过滤选择器时不要在括号内部使用''单引号或者双引号""
+            //console.log($("p:not(:last)"));
+
+            //基本过滤选择器（过滤偶数行和过滤奇数行）index索引值从0开始
+            //第一行为偶数行
+            //console.log($("ul>li:even"));
+            //console.log($("ul>li:odd"));
+            // $("ul>li:odd").css("background","red");
+            // $("ul>li:even").css("background","green");
+
+            //:eq过滤选择器的index是从0开始的并且支持负数，index为负数的话
+            //则从后往前匹配（倒数）
+            //console.log($(".p1:eq(-2)"));
+
+            //:gt过滤选择器的index是从0开始的，匹配大于第index个的元素
+            //console.log($("ul>li:gt(2)"));
+
+            //:lt过滤选择器的index是从0开始的，匹配小于第index个的元素
+            //console.log($("ul>li:lt(2)"));
+
+            //匹配所有P元素并且拥有class属性的
+            //console.log($("p[class]"))
+
+            //匹配所有P元素中并且class=p2的元素
+            //console.log($("p[class=p2]"));
+
+            //匹配所有P元素中并且class不等于p2的元素
+            //（其中若P元素没有class属性也属于不等于p2）
+            //console.log($("p[class!=p2]"));
+
+            //匹配页面所有元素中并且class属性值以p开头的元素
+            //console.log($("[class^=p]"));
+
+            //匹配页面所有元素中并且class属性值以1结束的元素
+            //console.log($("[class$=1]"));
+
+
+            //匹配页面所有元素中并且id属性值中包含i的元素
+            //console.log($("[id*=i]"));
+
+            //复合属性过滤选择器
+            //先匹配class包含1的元素
+            //从第一次结果中再次匹配class以p开头的元素
+            //从第二次结果中再次匹配attr=a1的元素
+            //console.log($("[class*=1][class^=p][attr=a1]"));
+
+
+            //内容过滤选择器
+            //对匹配元素进行文本(标签之间的内容)包含过滤
+            //console.log($("ul>li:contains(li)"));
+
+            //过滤不包含文本的或者不包含子节点的元素
+            //console.log($("ul>li:empty"));
+
+            //过滤包含文本的或者包含子节点的元素
+            //console.log($("ul>li:parent"));
+
+            //匹配包含:has()选择器中的元素（上级元素）
+            //console.log($(":has(#sp1,li)"));
+
+
+            //匹配body后代元素中的隐藏元素（visibility:hidden的元素不是隐藏元素）
+            // console.log($("body :hidden"));
+
+            //匹配body后代元素中的显示元素
+            //console.log($("body div:visible"));
+
+            //匹配身份为子元素的元素，过滤器中支持index、even、odd\equation模式
+            // $("ul>li:nth-child(even)").css("background","green");
+            // $("ul>li:nth-child(odd)").css("background","red");
+
+            //匹配身份为子元素的并且自身序号为3的倍数的元素
+            //另外一种方程式：3n+1
+            //console.log($("ul>li:nth-child(3n)"));
+
+            //匹配身份为唯一子元素的元素
+            //console.log($(":only-child"))
+
+            //console.log($(":button"));
+
+            //匹配页面上所有可用的表单元素
+            //console.log($(":enabled"))
+
+            //匹配页面上所有不可用的表单元素
+            //console.log($(":disabled"))
+
+            //匹配页面上所有被选中的表单元素（checkbox、radio）
+            //console.log($(":checked"));
+
+            //匹配页面上所有选中的选项元素(option)
+            //console.log($(":selected").text());
+
+            //当元素属性值中有特殊字符时应该在JQ选择器中特殊字
+            //符的前面使用双反斜线进行转义
+            //console.log($("#di\\#v1"));
+        });
+
+        //以下是JQ预加载函数的完整形式
+        // $(document).ready(function(){
+        //
+        // });
+
+
+    </script>
+</head>
+<body>
+    <div id="di#v1" style="width:100px; height:100px;"></div>
+    <div class="d1">
+        <span id="sp1">我是span标签1</span>
+    </div>
+    <p id="p1">我是第一个P标签</p>
+    <div>
+        <a href="">超链接</a>
+    </div>
+    <p class="p2"></p>
+    <p class="p1" attr="a1">我是第二个P标签</p>
+    <p class="p1" attr="a2">我是最后一个P标签</p>
+    <span>我是span标签2</span>
+    <ul>
+        <li>UL1我是li1</li>
+        <li>UL1我是li2</li>
+        <li>UL1我是li3</li>
+        <li>UL1我是li4</li>
+        <li>UL1我是li5</li>
+        <li>UL1我是li6</li>
+    </ul>
+    <ul>
+        <li>UL2我是li1</li>
+    </ul>
+    <div style="display:none;" id="div2"></div>
+    <input type="hidden">
+    <div style="visibility:hidden;" id="div3"></div>
+    <input type="text">
+    <input type="button">
+    <input type="file">
+    <input type="radio" class="radio2" >
+    <input type="radio" id="r1" class="radio1" disabled="disabled">
+    <div><input type="radio" id="r2" class="radio1"></div>
+    <input type="checkbox" checked="checked">
+    <textarea name="" id="" cols="30" rows="10">
+
+    </textarea>
+    <select name="" id="">
+        <option value="A">我是第一项</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+    </select>
+</body>
+</html>

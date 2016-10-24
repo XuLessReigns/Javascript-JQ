@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//http://www.baidu.com/shangcheng/images/p4.jpg
+	//var reg = /^http:\/\/www\.[a-z]{3,8}\.[a-z]{2,3}[\/0-9a-z]*[\/0-9a-z]*\/[0-9a-z]+\.(jpg|png|gif)$/i;
+	//var reg = /^http:\/\/www\.[a-z]{3,8}\.[a-z]{2,3}[\/[0-9a-z]+]*\/[0-9a-z]+\.(jpg|png|gif)$/i;
+	var reg = /^http:\/\/www\.[a-z]{3,8}\.[a-z]{2,3}(\/[0-9a-z]+)*\/[0-9a-z]+\.(jpg|png|gif)$/i;
+	var str = "http://www.baidu.com/shangcheng/images/p4.jpg";
+	var str1 = "http://www.baidu.com/p4.jpg";
+	var str2 = "http://www.baidu.com/shangcheng/p4.jpg";
+	//alert(reg.test(str));
+	//alert(reg.test(str1));
+	//alert(reg.test(str2));
+	
+	var str = "1aaa";
+	var reg = /^[0-9]a/;
+	alert(reg.test(str));
+	
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

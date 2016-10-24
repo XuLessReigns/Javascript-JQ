@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //如何构建对象(属性、方法)
+
+        //1、使用工厂方法构建对象
+        //基类
+        // var person = new Object();
+        // person.name = "张三";
+        // person.age = 18;
+        // person.sex = "男";
+        // person.eat = function(){
+        //     console.log("吃饭");
+        // }
+        // person.say = function(){
+        //     console.log("说话");
+        // }
+
+        //Function()  Array()  Object()  Date()
+        // function createObject(name,age,sex){
+        //     var person = new Object();
+        //     person.name = name;
+        //     person.age = age;
+        //     person.sex = sex;
+        //     person.eat = function(){
+        //         console.log("吃饭");
+        //     }
+        //     person.say = function(){
+        //         console.log("说话");
+        //     }
+        //     return person;
+        // }
+
+        //使用function关键字定义的函数都是Function对象的实例，只是这个实例化过程
+        //new Function()由浏览器自动处理
+        // var fn = new Function("str","str1","alert(str+'-'+str1)");
+        // fn("OK","no");
+        // console.log(createObject instanceof Function);
+
+        // 使用工厂方法构建对象属于JS中创建对象较老的方式，由于使用该方法无法进行
+        // 实例归属检测所以此种方法构建对象有弊端。(JS中提供的内置对象都是支持实
+        // 例归属检测的)
+        // var person1 = createObject("张三",18,"男");
+        // var person2 = createObject("李四",28,"女");
+        // console.log(person1.name);
+        // console.log(person2.name);
+
+        //instanceof操作符可以用来检测一个实例是否利于某个对象
+        //若返回true则是断言成功，false为断言失败
+        // var arr = [];
+        // console.log(arr instanceof Array);
+
+        //2、使用字面量形式构建对象
+        // {}等同于new Object();
+        //使用字面量形式创建对象书写简单、结构清晰，但同样无法检测实例归属，
+        //目前也是使用比较广泛的一种构建对象方式。
+        // var person1 = {
+        //     name:"张三",
+        //     age:18,
+        //     sex:"男",
+        //     eat:function(){
+        //         console.log("吃饭");
+        //     },
+        //     say:function(){
+        //         console.log("说话");
+        //     }
+        // };
+        // console.log(person1);
+        // console.log(person1.name);
+        // person1.eat();
+
+        //var arr = [1,2,3];
+        // var str = "ok";
+        // var str = new String("ok");
+        //console.dir(str);
+
+
+        //3、使用构造函数构建对象
+        var Person = function(){
+            console.log(this);
+            this.name = "张三";
+            this.age = 18;
+            this.sex = "男";
+            this.eat = function(){
+                console.log("吃饭");
+            }
+            this.say = function(){
+                console.log("说话");
+            }
+            // return {
+            //     name:"李四"
+            // };
+        }
+
+        //面向切面AOP
+
+        //new操作符：
+        //使用new操作符调用一个函数时，该函数会变为构造函数
+        //首先该构造函数内部的this指向会指向自己实例本身（该对象自己）
+        //其次该构造函数返回值会返回一个对象的实例
+        //1、默认返回对象实例本身
+        //2、也可以返回一个自定义对象
+        //注意：若书写return 则return后面必须为对象(object类型)，若是
+        //基本数据则还是返回实例本身
+        // var person = new Person();
+        // console.log(person);
+        // console.log(person.name);
+        // person.eat();
+        //console.log(person instanceof Person);
+    </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	button{
+		width:200px;
+		height:100px;
+		background:cyan;
+	}
+  </style>
+  <script>
+	//函数体验
+	
+	function pin(){
+
+		document.write("我已经拼了一遍" + "<br/>");
+		document.write("我已经拼了二遍" + "<br/>");
+		document.write("我已经拼了三遍" + "<br/>");
+	}
+	document.write("你好啊" + "<br/>");
+	pin();
+	document.write("你好啦" + "<br/>");
+	pin();
+	document.write("你好么" + "<br/>");
+	pin();
+	
+	//函数的创建
+	//1.函数声明
+	//2.函数表达式
+	//引用数据类型：函数
+	function pin(){
+		document.write("哈哈哈哈" + "<br/>");
+		document.write("哈哈哈哈" + "<br/>");
+		document.write("哈哈哈哈" + "<br/>");
+	}
+	pin();//写下哪都行
+	var pin1 = function (){
+		document.write("哈哈哈哈1" + "<br/>");
+		document.write("哈哈哈哈2" + "<br/>");
+		document.write("哈哈哈哈3" + "<br/>");
+	}
+	pin1();//只能写在函数表达式的下方否则会报错
+
+	//事件驱动函数
+	function dianji(){
+		alert("主人，不要点击人家啦！");
+	}
+	function mo(){
+		alert("主人，不要摸人家啦！");
+	}
+	// 程序预编译和执行
+		/*
+		程序预编译-->程序执行
+			先准备：
+			变量声明提升
+			1.会把程序中的var关键字所声明变量名提神到但前环境下的顶部
+			**只提升var所声明的变量名  赋值并不提升
+			函数名提升
+			2.会吧好程序中的function关键字所声明的函数声明提升至当前执行环境的顶部，（整体）
+			
+		*/
+		guangbo();
+		function guangbo(){
+			document.write("<h1>------------------------</h1>");
+			document.write("<h2>你们好，程序猿</h2>");
+			document.write("<h2>你们好，攻城狮</h2>");
+			document.write("<h2>你们好，屌丝们</h2>");
+			document.write("<h1>-------------------------</h1>");
+		}
+		//程序预编译后的代码
+		
+		//var fn;
+		//fn();会报错
+		//fn =function guangbo(){}
+		var fn = function guangbo(){
+			document.write("<h1>------------------------</h1>");
+			document.write("<h2>你们好，程序猿</h2>");
+			document.write("<h2>你们好，攻城狮</h2>");
+			document.write("<h2>你们好，屌丝们</h2>");
+			document.write("<h1>-------------------------</h1>");
+		}
+		fn();
+		//检测
+		/* 预编译前
+			document.write(num);//undefined
+			var num = 123;
+		*/
+
+		/* 预编译后
+			var num;
+			document.write(num);
+			num = 123;
+		*/
+		//函数的参数
+		/*
+		洗衣机
+		function 函数名(参数1,参数2...){
+			 var 参数1; =>数据
+			 var 参数2; =>数据
+			 ...
+		}
+		在定义函数的时候，括号里的参数， 被称之为 【形参】
+		函数名(数据,数据....);
+		在调用函数的时候，括号里的参数，被称之为	【实参】
+		*/
+		//秋两个数的和
+		function add(a,b){
+			var sum = a + b;
+			document.write(sum + "<br/>");
+			alert(arguments.length);
+		}
+		add(1,2,3,4,5);
+		alert(add.length);
+		//alert(函数名.length);打印出当前环境下的形参个数
+		//alert(arguments.length);打印出当前环境下的实参的个数
+		//返回值
+		function ji(num1,num2,num3,num4){
+			var sum = num1*num2*num3*num4;
+			return sum;
+		}
+		document.write(ji(1,2,3,4,5) + "<br/>");
+		alert(ji(1,2,3,4,5) );
+		console.log(ji(1,2,3,4,5) );
+		//检测
+		function test(num){
+			if(num%3==0){
+				return num;
+			}
+
+			var result = num*num;
+			alert(result);
+		}
+
+		var r = test(9);//9
+		document.write(r + "<br/>");//9
+		//返回值的相关问题
+		/*
+		函数返回值
+		->单一职能原则
+		return 
+			作用1：把函数内的结果返回出去
+			作用2：结束当前函数的执行
+		*/
+
+	function ji1(num1,num2,num3,num4,num5){
+		var result = num1*num2*num3*num4*num5; //120
+		return result; //120
+		alert("主人你不要我了吗？为什么不执行我");
+	}
+	ji1(1,2,3,4,5); //120
+	//document.write(result);//会报错未定义
+	//作用域：局部作用域和全局作用域
+	//一个函数就是一个独立的局部作用域
+	var a = 456;//全局变量
+	function test1(){
+		//var a;
+		document.write("局部作用域中的a:" + a + "<br/>");//undefined
+		var a = 123;//局部变量 a = 123;
+		document.write("局部作用域中的a:" + a + "<br/>");//123
+	}
+	test1();
+	document.write("全局作用域中的a:" + a + "<br/>"); //456
+	//检测
+	var count = 3;
+	var sum = 0;
+	function demo(){
+		//var sum;
+		for(var i =0;i<count;i++){
+			sum+=i;
+		}
+		var sum = 10;
+		return sum;
+	}
+	demo();
+	document.write(sum + "<br/>");//0
+	document.write(count + "<br/>");//3
+	//js没有块级作用域
+	 var num = 123;
+	 if(num>=100){
+		var sum = num + 100;
+	 }
+	 document.write(sum);  //223
+	 //with语句(对象){//对象就是一个工具库}
+	 with(document){
+		write("Hello World");
+	 }
+	 //递归
+	 /*
+		10  12  14  16  18  20 ..... n
+		1 10
+		2 12 
+	 */
+	function getAge(index){
+		if(index==1){
+			return 10;
+		}else{
+			return getAge(index-1) + 2;
+		}
+	}
+	alert(getAge(5) );
+  </script>
+ </head>
+ <body>
+	<button onclick="dianji()" onmouseover="mo()">主人，快来点我啦！
+	</button>
+ </body>
+</html>

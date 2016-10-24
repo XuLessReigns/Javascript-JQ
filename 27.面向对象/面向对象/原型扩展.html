@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+	/*
+        var arr = [];
+        //获取数组里的某项数据
+        Array.prototype.get = function(index){
+            return this[index];
+        }
+
+        //向数组中添加数据并支持传递数组
+        Array.prototype.mypush = function(){
+            for(var i = 0; i < arguments.length; i++){
+                if(arguments[i] instanceof Array){
+                    for(var j = 0; j < arguments[i].length; j++){
+                        this[this.length] = arguments[i][j];
+                    }
+                }
+                else{
+                    this[this.length] = arguments[i];
+                }
+            }
+        }
+        arr.mypush(1,2,3,4,[0,1],true,{name:12});
+		console.log(arr);
+		*/
+
+		//数组去重  性能高
+		var arr = [1,2,3,4,3];
+           Array.prototype.unique = function(){
+            console.time("去重1");
+            var arr = [];
+            var obj = {};
+
+            for(var i = 0; i < this.length; i++){
+                if(!obj[this[i]]){	
+                    arr.push(this[i]);
+                    obj[this[i]] = 1;
+                }
+            }
+            console.timeEnd("去重1");
+            return arr;
+        }
+		console.log(arr.unique());
+
+/*
+     Array.prototype.unique1 = function(){
+            console.time("去重2");
+            var arr = [];
+            for(var i = 0; i < this.length; i++){
+                if(arr.indexOf(this[i]) == -1){
+                    arr.push(this[i]);
+                }
+            }
+            console.timeEnd("去重2");
+            return arr;
+        }
+
+        var arr2 = [];
+        for(var i = 0; i < 5; i++){
+            arr2.push(parseInt(Math.random() * 14) + 1);
+        }
+*/
+       //  console.log(arr2.unique());
+       //console.log(arr2.unique1());
+
+
+    </script>
+</body>
+</html>

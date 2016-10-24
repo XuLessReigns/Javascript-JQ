@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: #000;
+				overflow: hidden;
+			}
+			.box{
+				width: 400px;
+				height: 400px;
+				background-color: #ccc;
+				position: absolute;
+			}
+			.box p{
+				width:100%;
+				font:bold 22px/40px "宋体";
+				text-align: center;
+				cursor: move;
+				background-color: #aaa;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box">
+			<p id="p">欧巴，请带我走吧O(∩_∩)O哈！</p>
+			<a href="javascript:;" id="hf">回放</a>
+		</div>
+		<script>
+			/*
+				思路：
+					第一步：获取所要操作的节点对象
+					第二步：为p添加一个onmousedown事件
+					第三部：在鼠标按下事件里为document添加一个鼠标移动事件onmousemove
+					第四部：在移动过程中，根据鼠标的坐标更改box盒子的坐标
+					第五步：当鼠标弹起的时候，移除document的onmousemove事件
+			*/
+			var box = document.getElementById("box");
+			var p = document.getElementById("p");
+			var hf = document.getElementById("hf");
+			var arr = [];
+			p.onmousedown = function(e){
+				var e1 = window.event||e;
+				var x1 = e1.offsetX;
+				var y1 = e1.offsetY;
+				document.onmousemove = function(e){
+					var e2 = window.event||e;
+					var x2 = e2.clientX-x1;
+					var y2 = e2.clientY-y1;
+					box.style.left = x2 + "px";
+					box.style.top = y2 + "px";
+					var obj = {left:x2,top:y2};
+					arr.push(obj);
+				}
+				document.onmouseup = function(){
+					//垃圾清除器
+					document.onmousemove = null;
+				}
+			}
+
+			hf.onclick = function(){
+				var termId = setInterval(function(){
+					var obj = arr.shift();
+					console.log(obj);
+					if(!obj){
+						clearInterval(termId);
+						return;
+					}
+					box.style.left = obj.left + "px";
+					box.style.top = obj.top + "px";
+				},10);
+			}
+		</script>
+	</body>
+</html>

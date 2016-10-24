@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	.box{
+		width:300px;
+		height:200px;
+		/* border:1px solid #000; */
+		box-shadow:5px 5px 15px rgba(0,0,0,.7);
+		position:absolute;
+		left:50%;
+		top:50%;
+		margin-left:-250px;
+		margin-top:-200px;
+		padding:100px;
+	}
+  </style>
+  
+ </head>
+ <body>
+	<div id="box" class="box">
+		<p>
+			系统当前时间为：<span id="currentTime"></span>
+		<p>
+		<p>
+			当前页面已停留时间：<span id="stayTime"></span>
+		</p>
+		<p>
+			请输入字符<input id="txt" type="text" value=""/><button id="btn">执行</button>
+		</p>
+		<p>
+			你输入的字符是"<span id="charStr"></span>",它的ASCII码为"<span id="codeStr"></span>"
+		</p>
+	</div>
+	<script>
+		var currentTime = document.getElementById("currentTime");
+		var stayTime = document.getElementById("stayTime");
+		setInterval(function(){
+			var date = new Date();
+			var year = date.getFullYear();
+			var month = date.getMonth() + 1;
+			var day = date.getDate();
+			var hh = date.getHours();
+			var mm = date.getMinutes();
+			var ss = date.getSeconds();
+			var str = year + "-" + month + "-" + day + " " + hh + ":" + mm + ":" + ss;
+			currentTime.innerHTML = str;
+			
+		},1000)
+		
+		/*
+		 	思路：
+		 		第一步：当页面加载完后，记录页面加载后的那一刻的时间。
+		 		第二步：让当前时间减去那一刻的时间
+		 		
+		 */
+		/*
+			功能：获取两个日期的时间差
+			参数：
+				start:表示起始的时间
+				end:表示终止的时间
+		*/
+		function getDiff(start,end){
+			var time1 = start.getTime();  //获取现在时间的毫秒
+			var time2 = end.getTime();    //获取未来时间的毫秒
+	
+			var diff = time2-time1;  //相差毫秒值
+			//document.write(diff);
+			var s = parseInt(diff/1000);  //总秒
+			var ls = s%60; //表示剩下的秒
+			var m = parseInt(s/60);    //总分种
+			var lm = m%60;  //表示的是剩下的分钟
+			var h = parseInt(m/60);    //总小时
+			var lh = h%24;  //剩余的小时
+			var d = parseInt(h/24);  //总天数
+	
+			var str = d + "天" + lh + "小时" + lm + "分钟" + ls + "秒";
+			return str;
+		}
+		
+		var openDate = new Date(); //表示页面打开后时间
+		
+		setInterval(function(){
+			var date = new Date();  //当前的时间
+			stayTime.innerHTML = getDiff(openDate,date);
+			
+		},1000)
+		
+		
+		/*
+		  思路：
+		  	第一步：获取所要操作的节点对象
+		  	第二步：为按钮添加一个点击事件
+		  	第三步：获取文本框的 内容
+		  	第四步：循环遍历文本框内容的每一个字符，并解析出每一个字符的ASCII码
+		  	第五步：把内展示在最后一个p中
+		 */
+		var btn = document.getElementById("btn");
+		var txt = document.getElementById("txt");
+		var charStr = document.getElementById("charStr");
+		var codeStr = document.getElementById("codeStr");
+		btn.onclick = function(){
+			var str = txt.value;
+			var codes = '';
+			for(var i = 0;i<str.length;i++){
+				codes+=str.charCodeAt(i) + " ";
+			}
+			charStr.innerHTML = str;
+			codeStr.innerHTML = codes;
+			
+		}
+		
+	
+	</script>
+ </body>
+</html>

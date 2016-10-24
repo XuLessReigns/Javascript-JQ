@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//计算89小时是多少天多少小时
+	document.write("<h2>计算89小时是多少天多少小时</h2>");
+	var num = 89;
+	var day =parseInt(num/24);
+	var hour = num%24;
+	document.write(day + "天" + hour + "小时");
+	document.write("<br />")
+	//计算宽高为20的矩形周长和面积
+	document.write("<h2>计算宽高为20的矩形周长和面积</h2>");
+	var height = 20;
+	var width = 20;
+	var area = height*width;
+	var circle = 2*(height+width);
+	document.write("宽高为20的矩形面积为：" + area);
+	document.write("<br />")
+	document.write("宽高为20的矩形周长为：" + circle);
+	document.write("<br />")
+	//计算80华摄氏度
+	document.write("<h2>计算80华摄氏度</h2>");
+	var temp1 = 80;
+	var temp2 = parseFloat(5/9.0*(temp1-32) );
+	var temp3 = parseInt(5/9.0*(temp1-32) );
+	var temp4 = Math.round(5/9.0*(temp1-32) );
+	document.write("华摄氏度：" + temp1 + "<br />" + "摄氏度：" + temp2 + "<br />");
+	document.write("华摄氏度：" + temp1 + "<br />" + "摄氏度(取整)：" + temp3 + "<br />");
+	document.write("华摄氏度：" + temp1 + "<br />" + "摄氏度（四舍五入）：" + temp4 + "<br />");
+	//计算三位数689的个十百位上的数是？
+	document.write("<h2>计算三位数689的个十百位上的数是？</h2>");
+	var num1 = 689;
+	var hundred = parseInt(num1/100);
+	var ten = parseInt( (num1-hundred*100)/10);
+	var ge = parseInt(num1-hundred*100-ten*10);
+	document.write("689的百位为：" + hundred + "<br />");
+	document.write("689的十位为：" + ten + "<br />");
+	document.write("689的个位为：" + ge + "<br />");
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

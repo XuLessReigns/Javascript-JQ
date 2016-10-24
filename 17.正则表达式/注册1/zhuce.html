@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{margin:0;padding:0}
+	a{text-decoration:none;color:black;}
+	#top,#content{width:1000px;margin:0 auto;}
+	#top_back{height:100px;background:#eee;border-bottom:2px solid black;}
+	#top{height:100px;}
+	.top_left{height:50px;width:160px;margin-top:25px;background:url(icon.png);float:left;}
+	.top_right{height:100px;float:left;}
+	.top_right a{float:left;hieght:30px;width:60px;background:cyan;line-height:30px;text-align:center;margin-top:40px;margin-left:20px;}
+
+	#content_back{height:800px;background:pink;}
+	#content{text-align:center;}
+	#content form{padding-top:50px;background:cyan;}
+	#content form .box{height:70px;width:400px;margin-left:300px;}
+	#content form .box div{height:40px;width:400px;text-align:center;border:1px solid black;}
+	#content .borderbottom{border-bottom:1px solid black;}
+	#content div span{height:40;width:100px;line-height:40px;float:left;}
+	#content div input{height:40px;width:260px;border:0;float:left;}
+	#content div i{float:left;height:40px;width:40px;background:url(right.png) center center no-repeat;display:none;}
+	#content div .active{display:block;}
+	h2{height:30px;line-height:30px;width:400px;font-weight:normal;font-size:14px;color:#ccc;}
+	.hide{background:url(default.png) left center no-repeat;display:none;}
+	.show{display:block;}
+	.ruo{background:url(ruo.png) left center no-repeat;}
+	.zhong{background:url(zhong.png) left center no-repeat;}
+	.qiang{background:url(qiang.png) left center no-repeat;}
+	.error{background:url(error.png) left center no-repeat;}
+	#content div .bigbox{height:20px;width:20px;}
+	#btn{margin-left:300px;line-height:50px;text-align:center;height:50px;width:400px;background:red;font-size:24px;}
+	#btn1{line-height:30px;text-align:center;margin-left:450px;height:30px;width:150px;background:green;border:0;margin-bottom:10px;}
+  </style>
+ </head>
+ <body>
+	<!--top-->
+	<div id="top_back">
+		<div id="top">
+			<div class="top_left">
+			</div>
+			<div class="top_right">
+				<a href="#">注册</a>
+			</div>
+		</div>
+	</div>
+	
+	<!--content-->
+	<div id="content_back">
+		<div id="content">
+			<form>
+				<div class="box">
+					<div>
+						<span>用户名</span>
+						<input type="text" id="user" value=""/>
+						<i></i>
+					</div>
+					<h2 class="hide">不能有特殊符号，开头不能是数字，且要6-20个字符</h2>
+				</div>
+				<div class="box">
+					<div>
+						<span>密码</span>
+						<input type="password" id="pas" value=""/>
+						<i></i>
+					</div>
+					<h2 class="hide">其由数字和字母组成，且要6-20个字符</h2>
+				</div>
+				<div class="box">
+					<div>
+						<span>确认密码</span>
+						<input type="password" id="tpas" value=""/>
+						<i></i>
+					</div>
+					<h2 class="hide">一定要与上面的密码一样</h2>	
+				</div>
+				<div class="box">
+					<div>
+						<span>邮箱</span>
+						<input type="text"  id="mailbox" value=""/>
+						<i></i>
+					</div>
+					<h2 class="hide">标准的邮箱格式</h2>
+				</div>	
+				<div class="box">
+					<div>
+						<span>手机号</span>
+						<input type="text" id="phone" value=""/>
+						<i></i>
+					</div>
+					<h2 class="hide">开头以1,2,3，共11位数</h2>
+				</div>
+				<div class="box">
+					<div>
+						<span>验证码</span>
+						<input type="text" id="yzm" value=""/>
+						<i></i>
+					</div>
+					<h2 class="hide">验证码</h2>
+				</div>
+				<div id="btn1">abc12</div>
+				<div class="box">
+					<input class="bigbox" id="checkbox" type="checkbox" />我同意此协议《京东商城注册协议》
+					<h2 class="hide">你要看清楚协议了！</h2>
+				</div>
+				<div id="btn">注册</div>
+			</form>
+		</div>
+	</div>
+	<script>
+		//获取所要操作的节点对象
+		var inputs = document.querySelectorAll("input");
+		var hides = document.querySelectorAll(".hide");
+		var user = document.getElementById("user");
+		var pas = document.getElementById("pas");
+		var tpas = document.getElementById("tpas");
+		var mailbox = document.getElementById("mailbox");
+		var phone = document.getElementById("phone");
+		var yzm = document.getElementById("yzm");
+		var checkbox = document.getElementById("checkbox");	
+		var btn = document.getElementById("btn");	
+		var btn1 = document.getElementById("btn1");	
+		var arr2 = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+		/*
+		for(var i = 0,len = inputs.length;i<len;i++){
+			inputs[i].index = i;
+			inputs[i].onfocus = function(){
+				hides[this.index].style.display = "block";
+			}
+			inputs[i].onblur = function(){
+				hides[this.index].style.display = "none";
+			}
+		}
+		*/
+		// 用户验证
+		user.onfocus = function(){
+			var box = this.parentNode.parentNode;
+			var arr = box.children;
+			if(arr[1].className=="error"){
+				arr[1].className = "error";
+			}else{
+				arr[1].className = "show";
+			}
+			
+		}
+		user.onblur = function(){
+			var box = this.parentNode.parentNode;
+			var arr = box.children;
+			arr[1].className = "hide";
+			var reg = /^[A-z_][0-9A-z_]{5,19}$/;
+			var str = user.value;
+			var result = reg.test(str);
+			if(result){
+				var i = this.parentNode.lastElementChild;
+				i.className = "active";
+				arr[1].className = "hide";
+			}else{
+				var i = this.parentNode.lastElementChild;
+				i.className = "";
+				arr[1].className = "show";
+				arr[1].className = "error";
+			}
+		}
+		//密码验证
+		pas.onfocus = function(){
+			var box = this.parentNode.parentNode;
+			var arr = box.children;
+			if(arr[1].className=="error"){
+				arr[1].className = "error";
+			}else{
+				arr[1].className = "show";
+			}
+			
+		}
+		pas.onblur = function(){
+			var box = this.parentNode.parentNode;
+			var arr = box.children;
+			arr[1].className = "hide";
+			var reg = /^.{6,20}$/i;
+			var str = pas.value;
+			var result = reg.test(str);
+			if(result){
+				var i = this.parentNode.lastElementChild;
+				i.className = "active";
+				arr[1].className = "show";
+				
+				for(var i = 0;i<str.length;i++){
+					if(str.charCodeAt(i)>129){
+						arr[1].className = "qiang";
+						break;
+					}else if(str.charCodeAt(i)>=65){
+						arr[1].className = "zhong";
+						break;
+					}else{
+						arr[1].className = "ruo";
+						break;
+					}
+				}
+				
+			}else{
+				var i = this.parentNode.lastElementChild;
+				i.className = "";
+				arr[1].className = "show";
+				arr[1].className = "error";
+			}
+		}
+		//验证确认密码
+		tpas.onfocus = function(){
+			var box = this.parentNode.parentNode;
+			var arr = box.children;
+			if(arr[1].className=="error"){
+				arr[1].className = "error";
+			}else{
+				arr[1].className = "show";
+			}
+			
+		}
+		tpas.onblur = function(){
+			var box = this.parentNode.parentNode;
+			var arr = box.children;
+			arr[1].className = "hide";
+			var str = tpas.value;
+			if(str==pas.value){
+				var i = this.parentNode.lastElementChild;
+				i.className = "active";
+				arr[1].className = "hide";
+			}else{
+				var i = this.parentNode.lastElementChild;
+				i.className = "";
+				arr[1].className = "show";
+				arr[1].className = "error";
+			}
+		}
+		//验证邮箱
+		mailbox.onfocus = function(){
+			var box = this.parentNode.parentNode;
+			var arr = box.children;
+			if(arr[1].className=="error"){
+				arr[1].className = "error";
+			}else{
+				arr[1].className = "show";
+			}
+			
+		}
+		mailbox.onblur = function(){
+			var box = this.parentNode.parentNode;
+			var arr = box.children;
+			arr[1].className = "hide";
+			var reg = /^[0-9a-z_]{6,20}@(163|126|qq)\.(com|cn|net)$/i;
+			var str = mailbox.value;
+			var result = reg.test(str);
+			if(result){
+				var i = this.parentNode.lastElementChild;
+				i.className = "active";
+				arr[1].className = "hide";
+			}else{
+				var i = this.parentNode.lastElementChild;
+				i.className = "";
+				arr[1].className = "show";
+				arr[1].className = "error";
+			}
+		}
+		//验证手机号
+		phone.onfocus = function(){
+			var box = this.parentNode.parentNode;
+			var arr = box.children;
+			if(arr[1].className=="error"){
+				arr[1].className = "error";
+			}else{
+				arr[1].className = "show";
+			}
+			
+		}
+		phone.onblur = function(){
+			var box = this.parentNode.parentNode;
+			var arr = box.children;
+			arr[1].className = "hide";
+			var reg = /^[1-3]\d{10}$/;
+			var str = phone.value;
+			var result = reg.test(str);
+			if(result){
+				var i = this.parentNode.lastElementChild;
+				i.className = "active";
+				arr[1].className = "hide";
+			}else{
+				var i = this.parentNode.lastElementChild;
+				i.className = "";
+				arr[1].className = "show";
+				arr[1].className = "error";
+			}
+		}
+		//  获取验证码
+		btn1.onclick = function(){
+			var str = "";
+			for(var i = 0;i<5;i++){
+				var index = parseInt(Math.random()*arr2.length)
+				str+=arr2[index];
+			}
+			this.innerHTML = str;
+		}
+		//验证验证码
+		yzm.onfocus = function(){
+			var box = this.parentNode.parentNode;
+			var arr = box.children;
+			if(arr[1].className=="error"){
+				arr[1].className = "error";
+			}else{
+				arr[1].className = "show";
+			}
+			
+		}
+		yzm.onblur = function(){
+			var box = this.parentNode.parentNode;
+			var arr = box.children;
+			arr[1].className = "hide";
+			var str1 = yzm.value;
+			var str = btn1.innerHTML;
+			var reg = new RegExp("^" + str + "$","ig");
+			var result = reg.test(str1);
+			if(result){
+				var i = this.parentNode.lastElementChild;
+				i.className = "active";
+				arr[1].className = "hide";
+			}else{
+				var i = this.parentNode.lastElementChild;
+				i.className = "";
+				arr[1].className = "show";
+				arr[1].className = "error";
+			}
+		}
+		//协议
+		
+		//注册按钮
+		btn.onclick = function(){
+			if(!checkbox.checked){
+				checkbox.nextElementSibling.className = "show";
+				checkbox.nextElementSibling.className = "error";
+				return;
+			}
+			checkbox.nextElementSibling.className = "hide";
+			if(!user.value){
+				user.parentNode.nextElementSibling.className = "show";
+				user.parentNode.nextElementSibling.className = "error";
+				return;
+			}
+			user.nextElementSibling.className = "hide";
+			if(!pas.value){
+				pas.parentNode.nextElementSibling.className = "show";
+				pas.parentNode.nextElementSibling.className = "error";
+				return;
+			}
+			user.nextElementSibling.className = "hide";
+			if(!tpas.value){
+				tpas.parentNode.nextElementSibling.className = "show";
+				tpas.parentNode.nextElementSibling.className = "error";
+				return;
+			}
+			tpas.nextElementSibling.className = "hide";
+			if(!mailbox.value){
+				mailbox.parentNode.nextElementSibling.className = "show";
+				mailbox.parentNode.nextElementSibling.className = "error";
+				return;
+			}
+			mailbox.nextElementSibling.className = "hide";
+			if(!phone.value){
+				phone.parentNode.nextElementSibling.className = "show";
+				phone.parentNode.nextElementSibling.className = "error";
+				return;
+			}
+			phone.nextElementSibling.className = "hide";
+			if(!yzm.value){
+				yzm.parentNode.nextElementSibling.className = "show";
+				yzm.parentNode.nextElementSibling.className = "error";
+				return;
+			}
+			yzm.nextElementSibling.className = "hide";
+			if(checkbox.nextElementSibling.className!="error"&&user.parentNode.nextElementSibling.className!="error"&&pas.parentNode.nextElementSibling.className!="error"&&tpas.parentNode.nextElementSibling.className!="error"&&mailbox.parentNode.nextElementSibling.className!="error"&&yzm.parentNode.nextElementSibling.className!="error"){
+				alert("注册成功");
+			}
+					//alert("注册成功");
+		}
+	</script>
+ </body>
+</html>

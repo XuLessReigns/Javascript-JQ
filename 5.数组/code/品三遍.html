@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//对象的创建
+	var obj = new Object();
+	obj.name = "鲁迅";
+	obj.happy = "名著";
+	obj.say = function(){
+		alert("民主");
+	}
+	obj.say();
+	document.write(obj.name);
+	document.write(obj.happy);
+	//同类型的对象相等吗？
+	var obj1 = new Object();
+	obj1.name = "张三";
+	var obj2 = new Object();
+	obj2.name = "李四";
+	var flag = obj1==obj2;
+	alert(flag);
+	//document.write(obj1.happy);//undefined
+	//对象的操作
+	obj1.happy = "看书";//增
+	document.write(obj1.happy);//查
+	delete obj1.name;//删
+	document.write(obj1.name);
+	obj2.name = "王二";//改
+	document.write(obj2.name);
+	//关于Object类型对象的第二种方式
+	var obj3 = {name:"张国伟",happy:"看美女"};
+	obj3.say = function (){
+		alert("好好学习天天向上");
+	}
+	document.write(obj3.name);
+	document.write(obj3.happy);
+	obj3.say();
+	obj3["name"] = "zhangguowei";
+	obj3["happy"] = "kanmeinv";
+	var a = "say";
+	document.write(obj3.name);
+	document.write(obj3.happy);
+	//obj3.a();//会报错
+	obj3[a]();
+	//数组初次体验
+	//var arr = new Array();//  var arr = [];
+	var arr = [1,2,3,4,5,6,7,8,9];
+	var sum = 0;
+	var avg;
+	var x = 0;
+	for(var i = 0;i<arr.length;i++){
+		sum+=arr[i];
+		if(arr[i]>2){
+			x++;
+		}
+	}
+	avg = sum/arr.length;
+	document.write(sum);
+	document.write(avg);
+	document.write("大于2的个数：" + x);
+	//数组的第二种创建方式
+	var arr1 = new Array();//不常用
+	//instanceof//判断引用数据类型，返回值为boolean类型
+	//typeof//判断基本数据类型
+	var flag1  = arr1 instanceof Array;
+	document.write(flag1);
+	//数组的遍历
+	/*
+		数组的遍历
+			for in
+			for(var 变量名 in 数组){    //变量名  索引
+				
+			}
+	*/
+	var arr = [2,4,1,5,6,3,7,true,"你好"];
+
+	for(var item in arr){
+		document.write(arr[item] + "<br/>");
+	}
+	/*
+		forEach的应用
+	*/
+
+	var arr = [2,4,1,5,6,3,7];
+	var fn = function(a,b,c){
+		//a 值   b 索引    c 数组本身
+		/*
+		document.write("<h1>------------------------</h1>");
+		document.write("a:" + a + "<br/>");
+		document.write("b:" + b + "<br/>");
+		document.write("c:" + c + "<br/>");
+		document.write("<h1>------------------------</h1>");
+		*/
+		if(a>5){
+			document.write(a + "<br/>");
+		}
+	}
+
+	arr.forEach(fn);
+	//回调函数
+	function test(a){
+		// var a = sayLove;
+
+		/*
+			var a = function(talk){
+					alert(talk);
+				}
+		*/
+		a("你造吗？");
+	}
+	
+	var sayLove = function(talk){
+		alert(talk);
+	}
+	//test(function(talk){
+	//	alert(talk);
+	//});
+	test(sayLove);
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

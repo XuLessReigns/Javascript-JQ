@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//Json
+	var obj = {name:"bruce"}
+	var steObj = '{"name":"bruce"}';
+	var obj2 = {
+		datas:[
+			{pid:"1001",price:"100",pName:"小米1"},
+			{pid:"1002",price:"200",pName:"小米2"},
+			{pid:"1003",price:"300",pName:"小米3"},
+			{pid:"1004",price:"400",pName:"小米4"},
+			{pid:"1005",price:"500",pName:"小米5"},
+		]
+	};
+	var goodsList = obj2.datas;
+	for(var i = 0;i<goodsList.length;i++){
+		var pid = goodsList[i].pid;
+		var price = goodsList[i].price;
+		var pName = goodsList[i].pName;
+		document.write("编号：" + pid + " 价格：" + price + " 名称：" + pName + "<br/>");
+	}
+	//'{"datas":""}'
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

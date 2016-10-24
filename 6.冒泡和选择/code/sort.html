@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var a = [12,3,56,89,5,9,6];
+	a.sort();//默认是二进制排序
+	document.write(a + "<br/>");
+
+	a.sort(function(a,b){
+		return a-b;//从小到大 升序
+	});
+	document.write(a + "<br/>");
+	a.sort(function(a,b){
+		return b-a;//从大到小 降序
+	});
+	document.write(a + "<br/>");
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

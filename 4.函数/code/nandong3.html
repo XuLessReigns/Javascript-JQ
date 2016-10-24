@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var n = 1;
+	function fn(){
+		document.write(n+"\n");//局部作用域的a
+		var n = 12;//程序预编译var n;-->会到局部作用域的顶部 n = 12;
+		document.write(n+"\n");//局部作用域的a
+	}
+	fn(); //实参  
+	document.write(n+"\n");//全局作用域的a
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

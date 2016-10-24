@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="code/leigegeCookie.js"></script>
+  <script>
+	alert(getCookie("stuName"));
+	removeCookie({
+		name:"stuName",
+	});   //若删除的cookie的路径的层级比当前文件要高，则必须指定cookie的路径来删除，否则无法删除
+	alert(getCookie("stuName"));
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		2.1- && 且  两边条件都是true时，且逻辑成立并返回true。其他情况返回false
+		
+		2.2- || 或  两边条件若有一个满足（有一个为true），则逻辑成立并返回true。其他情况返回false
+
+		2.3 - !  非（否），取反  
+	*/
+
+	var age = 18;
+	var gender = "男";
+	//var flag = age>=18&&gender=="男";
+	//var flag = age>=18&&gender=="女";
+	//var flag = age<18&&gender=="女";
+	//alert(flag);
+	//true&&true   //true
+	//true&&false  //false
+	//false&&false //false
+
+
+	//var falg = age>=18||gender=="女"; 
+	 var falg = age<18||gender=="女"; 
+	alert(!falg);
+	//true false   true
+	//false false  false   !false=>true
+
+	//什么是表达式?
+	1;
+	var sum = 1 + 1;
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

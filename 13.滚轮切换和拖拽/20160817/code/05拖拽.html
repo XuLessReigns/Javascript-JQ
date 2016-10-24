@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: #000;
+				overflow: hidden;
+			}
+			.box{
+				width: 400px;
+				height: 400px;
+				background-color: #ccc;
+				position: absolute;
+			}
+			.box p{
+				width:100%;
+				font:bold 22px/40px "宋体";
+				text-align: center;
+				cursor: move;
+				background-color: #aaa;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box">
+			<p id="p">欧巴，请带我走吧O(∩_∩)O哈！</p>
+			<a href="javascript:;" id="hf">回放</a>
+		</div>
+		<script>
+			/*
+				思路：
+					第一步：获取所要操作的节点对象
+					第二步：为p标签节点对象添加一个鼠标按下事件（onmousedown）
+					第三步：在鼠标按下事件程序中为document添加一个鼠标移动事件（onmousemove）
+					第四步：
+						在鼠标移动的过程中，根据鼠标的坐标更改box盒子的坐标
+					
+					第五步：
+						当鼠标弹起，移除document的onmousemove事件
+			*/
+			//获取box盒子节点对象
+			var box = document.getElementById("box");
+			//获取p节点对象
+			var p = document.getElementById("p");
+			//获取回放节点对象
+			var hf = document.getElementById("hf");
+			var steps = [];
+			p.onmousedown = function(e){
+				var _e0 = window.event||e;
+				var x0 = _e0.offsetX;
+				var y0 = _e0.offsetY;
+				document.onmousemove = function(e){
+					var _e = window.event||e;
+					var x = _e.clientX-x0;
+					var y = _e.clientY-y0;
+					box.style.left = x + "px";
+					box.style.top = y + "px";
+					var obj = {left:x,top:y};
+					steps.push(obj);
+				}
+				document.onmouseup = function(){
+					/*
+						为什么要写个null?
+						因为javascript编程机制中有一个   垃圾回收器
+						垃圾回收器 会自动的清理无用数据
+					*/
+					document.onmousemove = null;
+				}
+			}
+
+			hf.onclick = function(){
+				var termId = setInterval(function(){
+					var obj = steps.shift();
+					console.log(obj);
+					if(!obj){
+						clearInterval(termId);
+						return;
+					}
+
+					box.style.left = obj.left + "px";
+					box.style.top = obj.top + "px";
+					
+				},50);
+			}
+		</script>
+	</body>
+</html>

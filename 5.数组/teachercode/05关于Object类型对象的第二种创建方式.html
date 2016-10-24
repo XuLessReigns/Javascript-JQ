@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		var 对象名 = {};//常用的方式！       =>var 对象名 = new Object();
+
+	*/
+	//var obj = {};  //{属性名:值,属性名:值...}
+	var obj = {gender:"男",salary:"3000000"};  //委屈鲁迅先生了
+	obj.uName = "鲁迅";
+	obj.talk = "教育根植于爱";
+
+
+	//alert(obj.talk);
+
+	var obj2 = {};
+	var a = "uName";
+	obj[a] = "张国伟";
+	alert(obj[a]);
+	obj2["uName"] ="Bruce.Lee";  
+	obj2["gongFu"] = "截拳道";
+	obj2["paiDingYing"] = function(){
+		alert("Acticon....");
+		alert("Ka....");
+	}
+
+	//alert(obj2.uName);
+	//alert(obj2["gongFu"]);
+
+	//obj2.paiDingYing();
+	//obj2["paiDingYing"]();
+
+	var propertyName = "paiDingYing";
+	//obj2.propertyName(); //报错
+	obj2[propertyName]();  //正常执行
+
+
+
+
+	
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

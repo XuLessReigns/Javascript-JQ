@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var year = 0;
+	var month = 0;
+	var date2 = 0;
+	var hours = 0;
+	var minutes = 0;
+	var seconds = 0;
+	var value = 0;
+	function result(){
+		var date = new Date();
+		var date1 = new Date("2016-11-18");
+		value = date1.getTime()-date.getTime();
+		year = parseInt(value/1000/60/60/24/365);
+		month = parseInt(value/1000/60/60/24/31%12);
+		date2 = parseInt(value/1000/60/60/24%31);
+		hours = parseInt(value/1000/60/60%24);
+		minutes = parseInt(value/1000/60%60);
+		seconds = parseInt(value/1000%60);
+		document.write("剩余时间：" + year + "年" + month + "月" + date2 + "日" + hours + "时" + minutes + "分" + seconds + "秒" + "<br/>");
+	}
+	window.setInterval("result()",1000);
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

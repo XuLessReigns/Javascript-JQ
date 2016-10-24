@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包1</title>
+</head>
+<body>
+	<input type="button" id="btn1" value="保存">
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+	<script>
+		//仅标签（DOM元素）加载完成后执行
+		//DomConetntLoaded
+
+		//闭包的定义
+		//允许在一个作用域中访问其自身以外的变量或函数。
+
+		//当函数创建后并执行就会产生作用域（安全气泡）
+
+		//此时访问不到a的变量，因为函数执行后悔产生作用域导致了全局访问不到a变量
+		// function fn(){
+		// 	var a = 10;
+		// }
+		// fn();
+		// console.log(a);
+
+
+
+		//闭包(closure)原理
+		//当函数执行时，解释器会检测该作用域内是否引用除其自身外的变量，若引用了会产生一个
+		//闭包对象，并且将该闭包对象封闭在自身作用域中，这样就形成了作用域可以访问除其自身
+		//外的变量。
+
+		// function outer(){
+		// 	var i = 10;
+		// 	var a = 1000;
+		// 	function inner(){
+		// 		var str = "OK";
+		// 		console.log(i,a);
+		// 	}
+		// 	inner();
+		// }
+		// outer();
+
+
+
+
+		//闭包的副作用
+		//当把内部函数交给一个全局变量时，相当于全局变量引用了内部函数并且内部函数使用了除自身作用域
+		//外的变量此时就会造成闭包对象中的变量不被GC（垃圾回收器）回收。若想回收应该把全局变量的指向清空
+		//因为GC回收机制是靠引用计数判定的。（主要就是看该内存地址是否有引用）
+		// function outer(){
+		// 	var i = 10;
+		// 	return function(){
+		// 		console.log(++i);
+		// 	}
+		// }
+		// var o = outer();
+		// o();
+		// o();
+		// o();
+		// o();
+		// o();
+		// o();
+		// o = null;
+		
+
+		//会造成i的变量不再内存释放（垃圾回收器回收）
+
+		// function fn(){
+		// 	var i = 10;
+		// 	console.log(++i);
+		// }
+		// fn();
+		// fn();
+		// fn();
+
+		
+		//闭包的作用
+
+		// 1、用闭包解决循环值不正确的一个方案
+		// var liList = document.getElementsByTagName("li");
+		// for(var i = 0; i < liList.length; i++){
+		// 	function outer(i){
+		// 		liList[i].onclick = function(){
+		// 			alert(i);
+		// 		}
+
+		// 	}
+		// 	outer(i);
+		// }
+
+
+		// 2、用闭包解决循环值不正确的一个方案
+		// var liList = document.getElementsByTagName("li");
+		// for(var i = 0; i < liList.length; i++){
+		// 	function outer(i){
+		// 		return function(){
+		// 			alert(i);
+		// 		}
+		// 	}
+		// 	liList[i].onclick = outer(i); 
+		// }
+
+		//3、用闭包解决循环值不正确的一个方案
+		// var liList = document.getElementsByTagName("li");
+		// for(var i = 0; i < liList.length; i++){
+		// 	(function(i){
+		// 		liList[i].onclick = function(){
+		// 			alert(i);
+		// 		}
+		// 	})(i);
+		// }
+
+
+		// 4、用闭包解决循环值不正确的一个方案
+		// var liList = document.getElementsByTagName("li");
+		// for(var i = 0; i < liList.length; i++){
+		// 	liList[i].onclick = (function(i){
+		// 		return function(){
+		// 			alert(i);
+		// 		}
+		// 	})(i);
+		// }
+
+
+		// 2、动态创建属性解决循环值不正确的一个方案
+		// var liList = document.getElementsByTagName("li");
+		// for(var i = 0; i < liList.length; i++){
+		// 	liList[i].index = i;
+		// 	liList[i].onclick = function(){
+		// 		alert(this.index);
+		// 	}
+		// }
+
+
+		//动态属性：有则覆盖，无则创建
+		// liList[0].shakjshqjkwlhdjkashdjkashdjkahajkshjkasdsa = "ok";
+		// console.dir(liList[0]);
+
+
+		// function outer(){
+
+		// }
+		// outer();
+
+		// (function(str){
+		// 	//自执行函数（即时函数）
+		// 	alert(str);
+		// })("ABC");
+
+	</script>
+</body>
+</html>

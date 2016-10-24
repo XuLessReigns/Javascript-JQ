@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		需求：封装cookie操作
+			添加
+			修改
+			删除
+			查找
+			封装的依据：
+				完整形式：[]中是可选项
+				document.cookie  = “name=value[;expires=date][;path=path-to-resource][;domain=域名][;secure]”
+	*/
+	
+	//传对象 添加和修改
+	function setCookie(obj){
+		//var name,value,expires,path,domain,secure
+		var cookieStr = encodeURIComponent(obj.name) + "=" + encodeURIComponent(obj.value);
+		if(obj.expires){
+			cookieStr+=";expires=" + obj.expires; 
+		}
+		if(obj.path){
+			cookieStr+=";path=" + obj.path; 
+		}
+		if(obj.domain){
+			cookieStr+=";domain=" + obj.domain; 
+		}
+		if(obj.secure){
+			cookieStr+=";secure"; 
+		}
+		document.cookie = cookieStr;
+	}
+	var obj = {
+		name:"age",
+		value:"17",
+		path:"/D:/mysite/second/day14/code/",
+		expires:new Date("2116/8/18")
+	};
+	setCookie(obj);
+	//alert(document.cookie);
+
+	
+	//删除工具
+	
+	function removeCookie(cname){
+		var date = new Date();
+		date.setSeconds(-1);
+		setCookie({
+		name:cname,
+		expires:date
+		});
+	}
+	removeCookie("age");
+	//alert(document.cookie);
+	//查找功能
+	function getCookie(cname){
+		var str = document.cookie;
+		var arr1 = str.split("; ");
+		for(var i = 0;i<arr1.length;i++){
+			var arr2 = arr1[i].split("=");
+			if(cname==decodeURIComponent(arr2[0]) ){
+				return decodeURIComponent(arr2[1]);
+			}
+		}
+		return "";
+	}
+	setCookie({name:"gender",value:"boy"});
+	setCookie({name:"money",value:"$10000000"});
+	setCookie({name:"email",value:"110@126.com"});
+	setCookie({name:"是否已婚",value:"单身"});
+	alert(getCookie("gender") );
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

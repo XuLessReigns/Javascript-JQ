@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	img{
+		width:300px;
+		height:300px;
+	}
+  </style>
+  <script></script>
+ </head>
+ <body>
+	<img id="mm" src="awe.jpg"/>
+	<script>
+		var mm = document.getElementById("mm");
+		mm.onmouseenter = function(){
+			mm.src="fj.jpg";
+		}
+
+		//onmouseleave
+
+		mm.onmouseleave = function(){
+			mm.src = "awe.jpg";
+		}
+	</script>
+ </body>
+</html>

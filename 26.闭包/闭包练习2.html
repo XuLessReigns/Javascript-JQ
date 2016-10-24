@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+	var j = 1;
+	function count(i){
+		j *= i;
+		console.log(i);
+		return count;
+	}
+	count.toString = function(){
+		return j;
+	}
+	//count(1)(2)(3)(4);//返回的一直都市函数本身
+	alert(count(1)(2)(3)(4));//count(1)(2)(3)(4)会自动调用toString();
+  </script>
+ </body>
+</html>

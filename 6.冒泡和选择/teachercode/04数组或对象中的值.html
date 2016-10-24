@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		值：可以是任何数据类型的值
+	*/
+	var obj = {datas:{uname:"张三"},other:"莫名其妙"};
+	//obj.datas.uname
+
+	//数组：容器
+	var arr = [1,2,{uname:"李四"},[true],function(){
+		alert("没见过，没写过");
+	}];
+
+	document.write(arr[3][0]);  //arr[3] --> [true]
+	arr[4]();   //arr[4] -->  function(){lert("没见过，没写过");}
+	
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

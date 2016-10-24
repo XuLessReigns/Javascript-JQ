@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	<div id="dv" userName="张三" title="truth">不虚空的人生，有信、有望、有爱</div>
+	<script>
+		var dv = document.getElementById("dv");
+		//alert(dv.getAttribute("id"));
+		//dv.setAttribute("class","box");
+		//dv.removeAttribute("title");
+		//alert(dv.userName);//undefined
+		//alert(dv.id);
+		
+		dv.setAttribute("userName","李四");
+		alert(dv.getAttribute("userName"));//李四
+   </script>
+ </body>
+</html>

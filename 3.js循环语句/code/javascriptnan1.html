@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+
+	//100-200之间的素数
+	/*
+	for(var i = 100;i<=200;i++){
+		var flag = true;
+		for(var j = 2; j<i;j++){
+			if(i%j==0){
+				flag = false;
+				break;
+			}
+		}
+		if(flag){
+			document.write(i + " ");
+		}
+	}
+	*/
+	//100-200之间的素数
+	for(var i = 100;i<=200;i++){
+		var flag = true;
+		for(var j = 2;j<i;j++){
+			if(i%j==0){
+				flag = false;
+				break;
+			}
+		}
+		if(flag){
+			document.write(i + " ");
+		}
+	}
+  </script>
+
+ </head>
+ <body>
+  
+ </body>
+</html>

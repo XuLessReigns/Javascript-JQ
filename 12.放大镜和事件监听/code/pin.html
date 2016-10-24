@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+   <script>
+	document.onmousemove = function(e){
+		//函数的形参的第一个参数    会被赋值一个事件对象，所以参数e就是我们的时间对象
+		//兼容问题在ie里面饮用事件对象，window.event
+		e = window.event||e;
+		var x = e.clientX;//client表示可视区域窗口，当前可视区域的x坐标
+		var y = e.clientY;//当前可视区域的y坐标
+		//console.log("X:" + x + "Y:" + y);
+		//通过js来控制title(固定方式)
+		document.title = "X:" + x + "Y:" + y;
+	}
+  </script>
+  <script>
+	window.onload = function(){
+		var btn = document.getElementById("btn");
+		btn.onclick = function(e){
+			e = window.event||e;//兼容
+			//var t = e.target||e.srcElement;
+			
+			//alert(t.id);//btn
+			//this也可以解决兼容问题
+			//alert(this.id);
+			//alert(e.type);//事件类型
+			
+		}
+		
+/*
+		btn.onclick = fn;
+		btn.onmouseenter = fn;
+		function fn(e){
+			e = window.event||e;//兼容
+			alert(e.type);//事件类型
+		}
+*/
+		document.oncontextmenu = function(e){
+			e = window.event||e;
+			alert(0);
+			//e.preventDefault();//ie不支持
+			//e.returnValue = false;//ie里固定用法
+			if(e.preventDefault){
+				e.preventDefault();
+			}else{
+				e.returnValue = false;
+			}
+		}
+		document.onkeydown = function(){
+			e = window.event||e;
+			//alert(e.which||e.keyCode);
+		}
+	}
+  </script>
+  <script>
+	window.onload = function(){
+		
+		var btn = document.getElementById("btn");
+		/*
+		btn.addEventListener("click",function(){
+			alert("坚持不懈");
+		});
+		btn.addEventListener("click",function(){
+			alert("Don't give up");
+		});
+		*/
+		btn.addEventListener("click",fn1);
+		btn.addEventListener("click",fn2);//相同的只会显示一个
+		btn.addEventListener("click",fn2);//顺序从上往下输出
+		btn.removeEventListener("click",fn2);//全删
+		function fn1(){
+			alert("坚持不懈");
+		}
+		function fn2(){
+			alert("Don't give up");
+		}
+		
+		//ie的监听
+		/*
+		btn.attachEvent("onclick",function(){
+			alert("坚持不懈");
+		})
+		btn.attachEvent("onclick",function(){
+			alert("Don't give up");
+		});
+		*/
+		btn.attachEvent("onclick",fn1);
+		btn.attachEvent("onclick",fn2);//相同的会显示多个
+		btn.attachEvent("onclick",fn2);//顺序从下往上输出
+		btn.detachEvent("onclick",fn2);//只删一个
+	}
+  </script>
+ </head>
+ <body>
+  <button id="btn">按钮</button>
+ </body>
+</html>

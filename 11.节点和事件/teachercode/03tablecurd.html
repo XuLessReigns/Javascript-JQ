@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	table{
+		width:800px;
+	}
+
+  </style>
+  <script>
+	/*
+		第一步：当页面加载完后，获取所要操作的修改按钮节点对象
+		第二步：为按钮添加一个点击事件
+		第三步：实现功能：
+					修改：
+						修改->确定
+						通过按钮找到对应tr节点对象
+						操作tr的子节点（td）除了最后一个
+						将所要操作的子节点td里的文本变化为文本框表示
+						td.innerHTML = '<input type="text" value=""/>'
+
+					确定：
+						确定->修改
+						通过按钮找到对应tr节点对象
+						操作tr的子节点（td）除了最后一个
+						将所要操作的子节点td里的文本框变化为文本表示
+						td.innerHTML = '文本'
+					
+					删除：
+						通过删除按钮找到当前行 parentNode  tr
+						通过当前行找到 tbody
+						tboyd.removeChild(tr);
+
+
+	*/
+
+	window.onload = function(){
+		//获取所有的修改按钮
+		var eidts = document.querySelectorAll(".edit");
+		//获取所有的删除按钮
+		var dels = document.querySelectorAll(".del");
+		/*循环遍历为每一个修改按钮添加点击事件*/
+		for(var i = 0;i<eidts.length;i++){
+			/*
+				修改按钮实现的功能
+			*/
+			eidts[i].onclick = function(){
+				//获取tr
+				var tr = this.parentNode.parentNode;
+				//该tr所有的td
+				var tds = tr.children;
+				if(this.innerHTML=="修改"){
+					this.innerHTML = "确定";
+					for(var j = 0;j<tds.length-1;j++){
+						var txt = tds[j].innerHTML;  //内容
+						tds[j].innerHTML = '<input type="text" value="' + txt + '"/>'
+
+					}
+
+				}else{  //确定
+
+					this.innerHTML = "修改"
+					for(var j = 0;j<tds.length-1;j++){
+						var txt = tds[j].firstElementChild.value;
+						tds[j].innerHTML = txt;
+					}
+				}
+			}
+
+			/*实现删除按钮的功能*/
+			dels[i].onclick = function(){
+				//此时这里的this 表示的是当前的删除按钮节点对象
+				var b = confirm("你是否真的要删除？");
+				//b表示的是否删除 true 删除 false表示不删除
+				if(b){
+					//通过删除按钮获取到当前的tr节点对象
+					var tr = this.parentNode.parentNode;
+					//通过tr节点对象找到tr的父节点对象tbody
+					var tbody = tr.parentNode;
+					//通过tbody节点对象删除其子节点对象tr
+					tbody.removeChild(tr);
+				}
+			}
+		}	//for循环 End
+	}  //window.onload End
+  </script>
+
+	
+ </head>
+ <body>
+	<table border="1">
+		<thead>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>性别</th>
+			<th>操作</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>小明</td>
+				<td>18</td>
+				<td>男</td>
+				<td class="control">
+					<button class="del">删除</button>
+					<button class="edit">修改</button>
+				</td>
+			</tr>
+			<tr>
+				<td>小明</td>
+				<td>16</td>
+				<td>男</td>
+				<td class="control">
+					<button class="del">删除</button>
+					<button class="edit">修改</button>
+				</td>
+			</tr>
+			<tr>
+				<td>小明</td>
+				<td>13</td>
+				<td>男</td>
+				<td class="control">
+					<button class="del">删除</button>
+					<button class="edit">修改</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+ </body>
+</html>

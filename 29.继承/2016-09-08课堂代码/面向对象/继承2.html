@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var extend = function(obj1,obj2){
+            for(var attrName in obj2){
+                //obj1.prototype[attrName] = obj2.prototype[attrName];
+                obj1[attrName] = obj2[attrName];
+            }
+            return obj1;
+        };
+
+
+
+
+        var fn1 = function(name,age){
+            this.name = name;
+            this.age = age;
+        }
+
+        fn1.prototype = {
+            eat:function(){
+                console.log("OK");
+            }
+        }
+
+        //原型继承+call或者apply继承（称之为组合式继承）
+        //实例化子类时可以向父类构造函数中传递参数
+        //并且父类构造函数只会执行一次（这一次是继承实例属性时发生的）
+        var fn2 = function(name,age,sex){
+            //用call方法继承实例属性
+
+            //借用构造函数式继承
+            fn1.call(this,name,age);
+            this.sex = sex;
+        }
+
+        //用重写原型属性继承原型属性
+
+        //原型式继承
+        //当使用借用构造函数式继承和原型式继承时称为组合式继承
+        //组合寄生式继承，如下： object(fn2,fn1);
+        // var object = function(super,sub){
+        //     sub.prototype = extend(sub.prototype,super.prototype);
+        // }
+        fn2.prototype = {
+            say:function(){
+                console.log("说话");
+            }
+        }
+        //由于使用原型式继承时，会覆盖子类原型中原有的属性，所以利用对象循环遍历属性
+        //实现属性浅拷贝的功能来解决属性覆盖问题。
+        //浅拷贝方法具体请查看extend函数
+
+        fn2.prototype = extend(fn2.prototype,fn1.prototype);
+        var f2 = new fn2("张三",18,"男");
+        //console.log(f2.eat());
+        console.dir(f2);
+
+
+
+    
+    </script>
+</body>
+</html>

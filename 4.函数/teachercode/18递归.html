@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		10  12  14  16  18  20 ..... n
+		1 10
+		2 12 
+
+	*/
+
+
+	function getAge(index){
+		if(index==1){ //边界条件
+			return 10;
+		}else{
+			return getAge(index-1) + 2;
+			//getAge(1) + 2;
+		}
+	}
+
+	alert(getAge(2));
+
+	/*
+	
+	*/
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

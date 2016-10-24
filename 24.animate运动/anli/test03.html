@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				border: none;
+				/*text-decoration: none;*/
+			}
+			ul{
+				list-style: none;
+			}
+			.big-box{
+				width: 764px;
+				height: 360px;
+				margin: 0 auto;
+				position: relative;
+			}
+			.big-box .box{
+				width: 764px;
+				height: 360px;
+				overflow: hidden;
+				margin: 0 auto;
+			}
+			.big-box .box .box-item{
+				opacity: 0;
+				filter: alpha(opacity=0);
+				display: none;
+			}
+			.big-box .box .box-item.active{
+				display: block;
+				
+			}
+			.big-box .box .box-item.default{
+				opacity: 1;
+				filter: alpha(opacity=100);
+			}
+			.controls{
+				width:164px;
+				position: absolute;
+				bottom:10px;
+				right: 20px;
+			}
+			ul li{
+				width: 20px;
+				height: 20px;
+				border: 3px solid #aaa;
+				border-radius: 13px;    
+				float: left;
+				cursor: pointer;
+				
+			}
+			ul li.active{
+				background-color: white;
+				
+			}
+			
+			ul li+li{
+				margin-left: 20px;
+			}
+		</style>
+		<script type="text/javascript" src="animate.js" ></script>
+		<!--<script type="text/javascript" src="js/animate.js" ></script>-->
+	</head>
+	<body>
+		<div class="big-box" id="big_box">
+			<div class="box" id="box">
+				<div class="box-item active default">
+					<a href="###">
+						<img src="lbt/lbt01.jpg" alt="" />
+					</a>
+				</div>
+				<div class="box-item">
+					<a href="###">
+						<img src="lbt/lbt02.jpg" alt="" />
+					</a>
+				</div>
+				<div class="box-item">
+					<a href="###">
+						<img src="lbt/lbt03.jpg" alt="" />
+					</a>
+				</div>
+				<div class="box-item">
+					<a href="###">
+						<img src="lbt/lbt04.jpg" alt="" />
+					</a>
+				</div>
+			
+			</div>
+			<div class="controls">
+				<ul>
+					<li class="active"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>			
+		</div>
+		<script>
+			/*
+			 	思路：
+			 		第一步：获取所要操作的节点对象
+			 		第二步：为每一个控制按钮添加一个鼠标浮动事件onmouseenter
+			 				切换图片
+			 					透明度渐变的的方式
+			 		第三步：
+			 				开启一个定时器
+			 				切换图片
+			 					透明度渐变的的方式
+			 		关键点：索引
+			 */
+			var boxItems = document.querySelectorAll("#big_box #box .box-item");
+			var lis = document.querySelectorAll("#big_box .controls ul li");
+			var box = document.getElementById("box");
+			var currentIndex = 0; //当前控制切换的索引
+			for(var i = 0,len=lis.length;i<len;i++){
+				lis[i].index = i;
+				lis[i].onmouseenter = function(){
+					// this   代表当前的节点对象
+					//this.index
+					currentIndex = this.index;
+					changeItem();
+				}
+			}
+			
+			var termId;  //定时器的标识  （线程标识）
+			function autoPlay(){
+				termId = setInterval(function(){
+					currentIndex++;
+					//currentIndex=currentIndex%4;
+					currentIndex%=4;
+					changeItem();	
+				},2000)
+			}
+			
+			
+			function changeItem(){
+				// this   代表当前的节点对象
+				//this.index
+				for(var j = 0;j<len;j++){
+						boxItems[j].className = "box-item";
+						boxItems[j].style.opacity = "0";
+						boxItems[j].style.filter = "alpha(opacity=0)";
+						lis[j].className = "";
+				}
+				lis[currentIndex].className = "active";
+				boxItems[currentIndex].className = "box-item active";
+				animate(boxItems[currentIndex],{opacity:100},30);
+			}
+		
+			box.onmouseenter = function(){  //停止定时器
+				clearInterval(termId);
+			}
+			box.onmouseleave = function(){//开启定时器
+				autoPlay();
+			}
+			
+			autoPlay();
+		</script>
+	</body>
+</html>

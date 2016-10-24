@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/* 预编译前
+		document.write(num);
+		var num = 123;
+	*/
+
+	/* 预编译后
+		var num;
+		document.write(num);
+		num = 123;
+	*/
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

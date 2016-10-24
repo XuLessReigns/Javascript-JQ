@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	#box{height:200px;width:200px;background:cyan;color:black;font-size:20px;text-align:center;line-height:200px;margin:50px auto;}
+  </style>
+  <script>
+	window.onload = function(){
+		var box = document.getElementById("box");
+		var date1 = new Date("2016/11/18");
+		setInterval(function(){
+			var date = new Date();
+			box.innerHTML = getResult(date1,date);
+		},1000);
+	}
+	/*
+		//计算还剩多少时间
+	*/
+	function getResult(a,b){
+		var times = parseInt( (a.getTime()-b.getTime() )/1000);
+		//alert(times);
+		var year = parseInt(times/60/60/24/30/12);
+		var month = parseInt(times/60/60/24/30%12);
+		var day = parseInt(times/60/60/24%30);
+		var hours = parseInt(times/60/60%24);
+		var minutes = parseInt(times/60%60);
+		var seconds = times%60;
+		var str = year + "年" + month + "月" + day + "天" + " " + hours + ":" + minutes + ":" + seconds;
+		return str;
+	}
+  </script>
+ </head>
+ <body>
+	<div id="box"></div>
+ </body>
+</html>

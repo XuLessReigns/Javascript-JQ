@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		对象的操作（对对象属性的增删改查）
+			对象名.属性名 = 值
+			对象名["属性名"] = 值
+		查找对象属性的值
+			对象名.属性名
+			对象名["属性名"]
+		修改对象属性的值
+			对象名.属性名 = 值
+			对象名["属性名"] = 值
+		删除对象的属性
+			delete 对象名.属性名
+			delete 对象名["属性名"]
+	*/
+	var obj = new Object();
+	obj.name = "陈寅恪";
+	obj.talk = "张国伟给我死过来";
+	//alert(obj.name);
+	obj.name = "chenyinke";
+	//alert(obj.name);
+	obj.say = function(){
+		alert("say goodbye");
+	}
+	document.write(obj.talk + "<br/>");
+	delete obj.talk;
+	document.write(obj.talk + "<br/>");
+	obj.say();
+	delete obj.say;
+	document.write(obj.say + "<br/>");
+  </script>
+
+ </head>
+ <body>
+  
+ </body>
+</html>

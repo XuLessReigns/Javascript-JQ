@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		对象的操作（对对象属性的增删改查）
+		增加对象属性
+			对象名.属性名 = 值
+			对象名["属性名"] = 值
+		查找对象属性的值
+			对象名.属性名
+			对象名["属性名"]
+		修改对象属性的值
+			对象名.属性名 = 值
+			对象名["属性名"] = 值
+		删除对象的属性
+			delete 对象名.属性名
+			delete 对象名["属性名"]
+	*/
+
+	var obj = new Object();  //对象 obj
+	obj.uName = "陈寅恪";
+	obj.talk = "独立之精神，自由之思想";
+
+	//alert(obj.uName);
+	obj.uName = "ChenYinKe";
+	//alert(obj.uName);
+
+
+	document.write(obj.talk + "<br/>");
+	delete obj.talk;
+	document.write(obj.talk + "<br/>");
+
+
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

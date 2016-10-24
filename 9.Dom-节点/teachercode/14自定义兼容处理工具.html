@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	div{
+		width:200px;
+		height:400px;
+		background-color:red;
+		position:absolute;
+		left:20px;
+	}
+  </style>
+  <script>
+	 /*
+		需求：创造兼容处理的工具
+			getComputedStyle(节点对象,null)["样式属性名"];  
+			
+			节点对象.currentStyle["样式属性名"]    
+	 */
+
+	
+	 /*
+		功能：获取指定节点样式属性的值
+		参数：dom 表示的指定的节点对象  propertyName 表示是样式属性名
+	 */
+
+	 function getStylePropertyValue(dom,propertyName){
+		//var dom,propertyName
+		if(window.getComputedStyle){
+			return getComputedStyle(dom,null)[propertyName];  
+		}else{  //IE
+			return dom.currentStyle[propertyName];
+		}
+		
+	 }
+
+	 window.onload = function(){
+		var dv = document.getElementById("dv");
+		var h = getStylePropertyValue(dv,"height")
+		var w = getStylePropertyValue(dv,"width")
+		var c = getStylePropertyValue(dv,"backgroundColor")
+		var l = getStylePropertyValue(dv,"left")
+		alert(c);
+		alert(l);
+		//dv.style.left = 20 + "px";
+		alert(dv.style.left);//空
+
+	 }
+  </script>
+ </head>
+ <body>
+	<div id="dv"></div>
+ </body>
+</html>

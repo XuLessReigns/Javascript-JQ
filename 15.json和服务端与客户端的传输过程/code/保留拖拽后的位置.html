@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: #000;
+				overflow: hidden;
+			}
+			.box{
+				width: 400px;
+				height: 400px;
+				background-color: #ccc;
+				position: absolute;
+			}
+			.box p{
+				width:100%;
+				font:bold 22px/40px "宋体";
+				text-align: center;
+				cursor: move;
+				background-color: #aaa;
+			}
+		</style>
+		<script src="wenCookie.js"></script>
+	</head>
+	<body>
+		<div class="box" id="box">
+			<p id="p">欧巴，请带我走吧O(∩_∩)O哈！</p>
+			<a href="javascript:;" id="hf">回放</a>
+		</div>
+		
+		<script>
+			/*
+				思路：
+					第一步：获取所要操作的节点对象
+					第二步：为p添加一个onmousedown事件
+					第三部：在鼠标按下事件里为document添加一个鼠标移动事件onmousemove
+					第四部：在移动过程中，根据鼠标的坐标更改box盒子的坐标
+					第五步：当鼠标弹起的时候，移除document的onmousemove事件
+			*/
+			//获取节点对象
+			var box = document.getElementById("box");
+			var p = document.getElementById("p");
+			var hf = document.getElementById("hf");
+			var arr = [];
+			//为p添加一个onmousedown事件
+			p.onmousedown = function(e){
+				//alert("我点击了");
+				var e0 = window.event||e;//处理兼容问题
+				//var x0 = e0.offsetX;//正确位置与错误位置之间的距离
+				//var y0 = e0.offsetY;//火狐有兼容问题
+				var x0 = e0.clientX-box.offsetLeft;
+				var y0 = e0.clientY-box.offsetTop;
+				document.onmousemove = function(e){
+					//console.log(new Date() );
+					var e = window.event||e;
+					var x = e.clientX-x0;//移动之后box盒子的坐标
+					var y = e.clientY-y0;
+					box.style.left = x + "px";
+					box.style.top = y + "px";
+					var obj = {left:x,top:y};
+					arr.push(obj);
+				}
+				document.onmouseup = function(){
+					/*
+						为什么要写个null？
+						因为javascript编程机制中有一个 垃圾回收器
+						垃圾回收器  会自动的清理无用数据
+					*/
+					document.onmousemove = null;
+					
+					var x = box.offsetLeft;
+					var y = box.offsetTop;
+					setCookie({
+						name:"box",
+						value:"var obj = {x:" + x + ",y:" + y + "};",
+						expires:new Date("2116/8/19")
+					});
+					
+				}
+			}
+			var str = getCookie("box");
+			//alert(str);
+			if(str){
+				eval(str);
+				//alert(obj.x);
+				box.style.left = obj.x + "px";
+				box.style.top = obj.y + "px";
+			}
+
+			hf.onclick = function(){
+				var termId = setInterval(function(){
+					var obj = arr.shift();
+					console.log(obj);
+					if(!obj){
+					//if(!arr.shift()){
+						clearInterval(termId);
+						return;
+					}
+					box.style.left = obj.left + "px";
+					box.style.top = obj.top + "px";
+					//box.style.left = arr.shift().left + "px";//有问题？
+					//box.style.top = arr.shift().top + "px";
+				},10);
+			}
+			
+		</script>
+	</body>
+</html>

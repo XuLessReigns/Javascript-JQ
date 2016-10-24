@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	<script>
+		var Person = function(name,age){
+			this.name = name;
+			this.age = age;
+		}
+
+		var Child = function(){
+			//Person.call(this,"张三",17);
+			Person.apply(this,arguments)
+			this.sex = "男";
+		}
+		//Child.prototype = new Person();
+		var child = new Child("张三",17);
+		console.dir(child);
+	</script>  
+ </body>
+</html>

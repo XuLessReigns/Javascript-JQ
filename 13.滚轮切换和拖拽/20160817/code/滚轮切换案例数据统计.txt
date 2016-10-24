@@ -1,0 +1,6 @@
+viewHeight   799
+фад╩1 ё╨top:0*viewHeight  
+фад╩2 ё╨top:1*viewHeight   
+фад╩3 ё╨top:2*viewHeight 
+фад╩4 ё╨top:3*viewHeight  
+фад╩4 ё╨top:4*viewHeight  

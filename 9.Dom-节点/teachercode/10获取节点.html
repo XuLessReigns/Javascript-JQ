@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	ul{
+		list-style:none;
+		color:#fff;
+	}
+	ul li{
+		line-height:50px;
+		background-color:green;
+	}
+	ul li+li{
+		/* +表示获取下一个兄弟元素*/
+		margin-top:20px;
+	}
+  </style>
+  <script>
+	window.onload = function(){
+		var lis = document.getElementsByClassName("list");
+		alert(lis.length);
+		//鼠标浮动事件  onmouseenter
+		for(var i = 0;i<lis.length;i++){
+			lis[i].onmouseenter = function(){
+				//this 代表当前节点对象
+				alert(this.innerHTML);
+			}
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<ul>
+		<li class="list">li01</li>
+		<li class="list">li02</li>
+		<li class="list">li03</li>
+		<li class="list">li04</li>
+		<li class="list">li05</li>
+
+	</ul>
+ </body>
+</html>

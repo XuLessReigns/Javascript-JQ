@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+		window.onload = function(){
+			var dvs = document.getElementsByTagName("div");
+			//dvs 类似一个数组  含有数组的特性  索引 从0 开始
+			//alert(dvs.length)    //获取元素的个数
+			/*
+			dvs[0].onclick = function(){
+				//innerHTML = 值
+				//innerHTML
+				alert(dvs[0].innerHTML);
+			}    
+			//dvs[1]可以拿到第二个div
+			dvs[1].onclick = function(){
+				//innerHTML = 值
+				//innerHTML
+				alert(dvs[1].innerHTML);
+			}   
+			//dvs[1]可以拿到第二个div
+			dvs[2].onclick = function(){
+				//innerHTML = 值
+				//innerHTML
+				alert(dvs[1].innerHTML);
+			} */
+			
+			for(var index = 0;index<dvs.length;index++){
+				//index 0 1 2 3 4 5
+				//dvs[index].onclik = 函数  此时这个index是变化中的
+				dvs[index].onclick = function(){
+					//this 指的是当前的对象   dvs[index] 
+					//alert(this.innerHTML);
+					//dvs[index].innerHTML  此时点击事件后的index是循环后的结果 index 5
+					alert(dvs[index].innerHTML);  //报错
+				}
+			}
+			//alert(index);
+		}
+  </script>
+ </head>
+ <body>
+	
+	<div>01</div>
+	<div>02</div>
+	<div>03</div>
+	<div>04</div>
+	<div>05</div>
+ </body>
+</html>

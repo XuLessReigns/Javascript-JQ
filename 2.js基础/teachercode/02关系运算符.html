@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		关系运算符：>、==(等于)、===（全等）、<、>=、<=、!=（不等于）、!==
+		关于关系运算符的运算，始终返回的都是boolean类型的值
+		===（全等） 除了比较值之外，还要比较数据类型
+	*/
+
+	var num1 = 10;
+	var num2 = 20;
+	//var flag = num1>num2;  //false
+	//var flag = num1==num2;//false
+	var flag = num1!=num2; //true
+	//alert(数据);  //弹出框
+	//alert(flag);
+
+	var num3 = "3";//string自动的转换为number
+	var num4 = 3;//number 3
+	//var flag = num3==num4;
+	//var flag = num3===num4;
+
+	var num5 = 4;
+	var num6 = 4;
+
+	//var flag = num5===num6; //true
+	//var flag = num5!==num6;//false
+
+	//var flag = NaN===NaN;//任何数据和NaN做等值运算时，所得结果都是false,包括它自己和自己比较也是false;
+	//var flag = undefined==undefined;
+
+
+	var flag = "你">"我";//实际上所比较的是系统上的码表所对应的二进制码
+	var flag = 'undefined'>"null";
+
+	alert(flag);
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

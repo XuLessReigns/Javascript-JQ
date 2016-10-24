@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	img{
+		width:100px;
+		position:absolute;
+	}
+  </style>
+  <script>
+	/*
+		思路：
+			第一步：当页面加载完后，获取所要操作的节点对象
+			第二步：为document节点对象添加一个鼠标移动事件
+			第三步：从鼠标移动事件中获取事件对象，从事件对象中获取当前鼠标的坐标 clientX clienY
+			第四步:改变图片坐标（left、top）
+	*/
+	window.onload = function(){
+		//获取图片节点对象
+		var awe = document.getElementById("awe");
+		//为文档添加一个鼠标移动事件
+		document.onmousemove = function(e){
+			var _e = window.event||e;  //事件对象兼容处理
+			var x = _e.clientX; //获取鼠标x坐标
+			var y = _e.clientY; //获取鼠标y坐标
+			awe.style.left = x + "px";   //更改图片的x坐标
+			awe.style.top = y + "px";    //更改图片的y坐标
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<img id="awe"  src="awe.jpg" />
+ </body>
+</html>

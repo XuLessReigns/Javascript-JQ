@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	var arr = [{name:"雷哥哥",age:18},
+		{name:"Bruce.Lee",age:15},
+		{name:"Andy",age:28},
+		{name:"Nike",age:19},
+		{name:"雨哥哥",age:18}];
+	arr.sort(function(a,b){
+		if(a.age==b.age){
+			//return a.name.charCodeAt(0)-b.name.charCodeAt(0);
+			return getValue(a.name)-getValue(b.name);
+		}
+		return a.age-b.age;
+	});
+	for(var i =0;i<arr.length;i++){
+		document.write(arr[i].name + arr[i].age + "<br/>");
+	}
+	function getValue(str){
+		var sum = 0;
+		for(var j = 0;j<str.length;j++){
+			sum+=str.charCodeAt(j);
+		}
+		return sum;
+	}
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

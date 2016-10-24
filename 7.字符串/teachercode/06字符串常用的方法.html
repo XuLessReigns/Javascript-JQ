@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		正则表达式
+			规定字符串的规则
+			定好规则之后，你就可以使用正则对象所提供的工具匹配所符合规则字符串
+	*/
+
+	/*
+		扩展：
+			定义正则：
+			var 正则名 = /规则/
+	*/
+	/*
+	var reg = /it/;  //规则定义  
+	var str="Visit w3cShool!"
+	var result = str.search(reg);
+	alert(result);
+	*/
+
+
+
+	var str = "没有情人的情人节";
+	var result = str.match("情人"); //result 接收的结果是一个数组
+	//document.write(typeof result);
+	//alert(result[0]);
+	//console.log(result);
+
+	var reg = /情人/g;   //g表示全局的
+	var result = str.match(reg);
+	//document.write(result);
+	//console.log(result);
+
+
+	var str = "老公，你真棒，棒棒哒，能拿这么高的薪资";
+	var reg = /棒/g;
+	var result = str.replace(reg,"牛");
+	//document.write(result);
+
+
+	var str = "abcAbcAAcab";  //恩
+	//i  忽略大小写
+	var reg = /a/ig;
+	var result = str.replace(reg,"恩");
+	//document.write(result);
+
+
+	var str1 = "奥";
+	var str2 = "林";
+	var str3 = "匹";
+	var str4 = "克";
+	var str5 = "更高、更快、更强";
+	var result = str1.concat(str2,str3,str4,str5);
+	//alert(result);
+
+
+	var str = "123";  //string
+	
+	
+	/*
+		自定写在程序总的对象，并不是临时对象
+	*/
+	var strObj = new String("123");   //object
+	
+
+	document.write("str:" + str + "<br/>");
+	//strObj  在这里默认的调用本身toString()方法
+	document.write("strObj:" + strObj + "<br/>");
+
+	//var flag = str==strObj;
+	var flag = str===strObj;
+	//alert(flag);
+
+
+	var  str = "以无法为有法，以无限为有限";
+	var result = str.substring(4,6);   //前包后不包
+	//alert(result);
+
+
+	var str="熊一样的力量-蛇一样的速度-猫一样的灵巧";
+	var result = str.split("-");
+	//document.write(result);
+	//console.log(result);
+
+	//toLowerCase、toUpperCase
+
+	//var str = "BRUCE";
+	var str = "lee";
+	//var reuslt = str.toLowerCase();
+	var reuslt = str.toUpperCase();
+	alert(reuslt);
+	
+	
+	
+
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

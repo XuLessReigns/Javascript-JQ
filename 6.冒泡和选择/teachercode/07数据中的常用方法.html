@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		数组对象.slice(index); 会从当前索引切到最后
+		数组对象.slice(startIndex,endIndex); 前包后不包
+											
+	*/
+	var arr = [1,4,2,5,3,6,9,11,8,7,10];
+	//var arr1 = arr.slice(1,5);
+	//document.write(arr);
+	
+	/*
+		splice(index1,index2)
+		从index1的位置开始删除，删index2个
+		splice(index1,index2,inde3);
+		index3所表示的是添加或替换后的元素
+	*/
+	//arr.splice(4,1,"hi",888,true,"hello");
+	//arr.reverse();
+
+    arr.sort(function(c,d){
+		//c-d 表示的是从小到大排序  升序
+		//d-c 表示的是从大到小排序  倒序
+		return c-d;
+	});
+
+
+	var datas = [{name:"小明1",age:18},{name:"小明2",age:13},{name:"小明3",age:19},{name:"小明4",age:11},{name:"小明5",age:22},{name:"小明6",age:14},{name:"小明7",age:99},{name:"小明8",age:32}];
+
+	document.write("-----------排序前-------------" + "<br/>");
+	for(var i = 0;i<datas.length;i++){
+		document.write("姓名：" + datas[i].name + ", 年龄：" + datas[i].age);
+		document.write("<br/>");
+	}
+
+	datas.sort(function(a,b){
+		return a.age-b.age;
+	});
+
+	document.write("-----------排序后-------------" + "<br/>");
+	for(var i = 0;i<datas.length;i++){
+		document.write("姓名：" + datas[i].name + ", 年龄：" + datas[i].age);
+		document.write("<br/>");
+	}
+	
+
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

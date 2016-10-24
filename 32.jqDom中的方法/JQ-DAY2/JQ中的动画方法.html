@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .d1{
+            width:300px; height:300px; background:red;
+        }
+        .d2{
+            width:300px; height:300px; background:green;
+        }
+    </style>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            $(":button").click(function(){
+                //针对高度进行运动，高度减少直到隐藏为止
+                //$("div").slideUp(200);
+
+                //针对高度进行运动，高度增加直到完全显示为止
+                //$("div").slideDown(600);
+
+
+                //针对透明度进行运动，透明增加直到完全显示为止
+                //$("div").fadeIn(600);
+                //针对透明度进行运动，透明减少直到完全隐藏为止
+                //$("div").fadeOut(600);
+
+                // slow = 600
+                // normal = 400
+                // fast = 200
+                //$("div").toggle("fast");
+
+                //所有动画快捷方法全部都支持第二个参数为callback回调函数
+
+
+                //toggleClass()用于切换CSS样式，参数为class名
+                //切换的class名有责删除，无责追加
+                //$("div").toggleClass("d2");
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="button" value="点击">
+    <div class="d1"></div>
+</body>
+</html>

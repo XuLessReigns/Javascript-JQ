@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	html,body{
+		width:100%;
+		height:100%;
+		overflow:hidden;
+	}
+	.big-box{
+		width:100%;
+		height:500%;
+		color:white;
+		position:absolute;
+		left:0;
+		top:0;
+	}
+	.box{
+		width:100%;
+		height:20%;
+	}
+	.box1{
+		background-color:blue;
+	}
+
+	.box2{
+		background-color:yellow;
+	}
+
+	.box3{
+		background-color:red;
+	}
+
+	.box4{
+		background-color:purple;
+	}
+
+	.box5{
+		background-color:black;
+	}
+
+	.controls{
+		position:absolute;
+		right:20px;
+		top:20%;
+
+	}
+	ul{
+		list-style:none;
+	}
+
+	li{
+		width:50px;
+		height:50px;
+		background-color:pink;
+		margin-bottom:10px;
+		font:bold 22px/50px "宋体";
+		text-align:center;
+	}
+	li.active{
+		background-color:white;
+	}
+
+  </style>
+  <script>
+		/*
+			需求：当鼠标滚轮，滚动的时候，分别切换控制按钮li 和改变 big_box.top的值。
+				第一步：当页面加载完后分别获取所有的控制按钮节点对象 和 big_box节点对象 以及其下的所有的 box；
+				第二步：为document对象注册鼠标滚轮事件
+				第三步：鼠标滚轮触发时，页面内容切换，并且控制按钮也跟着切换。
+
+		 */
+		window.onload = function(){
+			//事件监听
+			function addEvent(dom,event,fn){
+				if(dom.addEventListener){
+					dom.addEventListener(event,fn);
+				}else{
+					event = "on" + event;
+					dom.attachEvent(event,fn);
+				}
+			}
+			//获取索要操作的节点对象
+			var lis = document.getElementsByTagName("li");
+			//alert(lis.length);
+			//添加滚轮事件
+			addEvent(document,"mousewheel",run);
+			addEvent(document,"DOMMouseScroll",run);
+			//run事件函数
+			var flag = true;
+			var index = 0;//记住li的索引
+			function run(e){//e事件对象
+				if(flag){
+					//开关思想，当滚轮超过范围的时候设flag为false
+					var e = window.event||e; //处理兼容问题
+					var height = document.body.clientHeight;//699可视化高度
+					//alert(height);
+					var num = e.wheelDelta||e.detail; //方向值
+					//var direction = "up"; //方向默认为滚轮向上滚
+					flag = false;
+					//判断滚轮是往哪滚并作出正确的行为
+					if(num==120||num==-3){
+					//	direction = "up";
+						//控制索引
+						if(index<=0){
+							index = 0;
+							flag = true;
+							return;
+						}
+						index--;
+					}else{
+					//	direction = "down";
+						//控制索引
+						if(index>=lis.length-1){
+							index = lis.length-1;
+							flag = true;
+							return;
+						}
+						index++;
+					}
+
+					/*先清除所有的li控制按钮样式*/
+					for(var i = 0;i<lis.length;i++){
+						lis[i].className = "";
+					}
+					lis[Math.abs(index)].className = "active";  //改变当前控制按钮样式;
+					big_box.style.top = -1*index*height+"px";//往上/下移动一个屏幕的高度到下/上一个div
+					//一秒后执行
+					setTimeout(function(){flag = true},1000);
+				}
+			}
+		}
+  </script>
+ </head>
+ <body>
+	<div class="big-box" id="big_box">
+		<div class="box box1">
+			<h1>box01</h1>
+		</div>
+
+		<div class="box box2">
+			<h1>box02</h1>
+		</div>
+
+		<div class="box box3">
+			<h1>box03</h1>
+		</div>
+
+		<div class="box box4">
+			<h1>box04</h1>
+		</div>
+
+		<div class="box box5">
+			<h1>box05</h1>
+		</div>
+	</div>
+
+	<div class="controls">
+		<ul>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+ </body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//倒计时！剩余：2小时59分59秒
+	
+	var time = 3*60*60;
+	var hours = 0;
+	var minutes = 0;
+	var seconds = 0;
+	var stop = setInterval(function(){
+		time--;
+		hours = Math.floor(time/60/60);
+		minutes = Math.floor(time/60%60);
+		seconds = time%60;
+		//document.write(hours + "小时" + minutes + "分" + seconds +"秒" + "<br/>");
+		var txt = document.getElementById("txt");
+		txt.innerHTML="剩余时间：" + hours + '小时' + minutes + '分' + seconds +'秒';
+		if(time==0){
+			clearInterval(stop);
+			alert("时间到了！");
+		}
+	},1000);
+  </script>
+ </head>
+ <body>
+  <div id="txt"></div>
+ </body>
+</html>

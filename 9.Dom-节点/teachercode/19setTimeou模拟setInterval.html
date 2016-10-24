@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//用setTimeout 模拟 setInterval 数数！
+
+	var num = 0; //从0开始数
+
+	function shuShu(){
+		console.log(num);
+		num++;
+		setTimeout(shuShu,1000);
+	}
+
+	shuShu()
+	
+	
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

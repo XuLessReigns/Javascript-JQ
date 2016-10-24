@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				width:850px;
+				margin: 10px auto;
+				list-style: none;
+				overflow: hidden;
+			}
+			li{
+				width:190px;
+				height: 138px;
+				float: left;
+				margin-right: 20px;
+				border: 1px solid #ccc;
+				overflow: hidden;
+				position: relative;
+			}
+			img{
+				position: absolute;
+				left:0px;
+			}
+		</style>
+		<script type="text/javascript" src="animate.js" ></script>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<img src="jiuxianwang/jiu01.jpg" alt="" />
+			</li>
+			<li>
+				<img src="jiuxianwang/jiu02.jpg" alt="" />
+			</li>
+			<li>
+				<img src="jiuxianwang/jiu03.jpg" alt="" />
+			</li>
+			<li>
+				<img src="jiuxianwang/jiu04.jpg" alt="" />
+			</li>
+		</ul>
+		<script>
+			/*	
+			 	1.获取所要操作的节点对象
+			 	2.给每个li添加onmouseenter、onmouseover事件，并实现运动
+			 */
+			var lis = document.querySelectorAll("ul li");
+			var imgs = document.querySelectorAll("img");
+			for(var i = 0;i<lis.length;i++){
+				lis[i].index = i;
+				lis[i].onmouseenter = function(){//事件对象
+					//var img = this.firstElementChild;
+					//animate(img,{left:-60},1);
+					animate(imgs[this.index],{left:-60},1);
+				}
+				lis[i].onmouseleave = function(){//事件对象
+					//var img = this.firstElementChild;
+					//animate(img,{left:0},1);
+					animate(imgs[this.index],{left:0},1);
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+	function test(a){
+		document.write(a);
+	}
+	var sayHi = "你好";
+
+	test(sayHi);
+	test("你好");
+	*/
+
+
+	
+	function test(a){
+		//var a = sayLove;
+		a("Hello");
+	}
+
+	var sayLove = function(talk){
+		alert(talk);
+	}
+	//sayLove("你好");
+	
+	//test(sayLove);
+	
+	
+	test(function(talk){
+		alert(talk);
+	});
+	
+	
+
+
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

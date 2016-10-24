@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="ajax.js"></script>
+ </head>
+ <body>
+	<button id="btn">请求</button>
+	<script>
+		var btn = document.getElementById("btn");
+		btn.onclick = function(){
+			ajax({
+				method:"get",
+				url:"http://127.0.0.1:8888/web02/a.txt",
+				isAsyC:true,
+				success:function(data){
+					alert(data);
+				},
+				error:function(mes){
+					alert(mes);
+				}
+			});
+		}
+	</script>
+ </body>
+
+</html>

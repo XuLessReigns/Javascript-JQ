@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	#btn{height:40px;width:100px;background:cyan;border:0;}
+  </style>
+  <script>
+	window.onload = function(){
+		var btn = document.getElementById("btn");
+		var arr = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+		
+		btn.onclick = function(){
+			//alert(arr.length);
+			var str = "";
+			for(var i = 1;i<=5;i++){
+				
+				var index =parseInt(arr.length*Math.random() );
+				str+=arr[index];
+			}
+			this.innerHTML = str;
+		}
+		
+	}
+  </script>
+ </head>
+ <body>
+	<button id="btn"></button>
+ </body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//创建一个新的节点对象h1
+	var h = document.createElement("h1");
+	//h.innerHTML = "认真的拼搏一次";
+	//创建一个新的文本节点对象
+	var txt = document.createTextNode("活着开心一点");
+	//把文本节点对象添加到h1节点对象中
+	h.appendChild(txt);
+	//document.body  获取body节点对象
+	window.onload = function(){
+		//获取body节点对象
+		var b = document.body;
+		//把h1节点对象添加到body节点对象中
+		b.appendChild(h);
+		
+	}
+  </script>
+ </head>
+ <body>
+	
+ </body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	window.onload = function(){
+		
+		var btn = document.getElementById("btn");
+		/*
+		btn.addEventListener("click",function(){
+			alert("坚持不懈");
+		});
+		btn.addEventListener("click",function(){
+			alert("Don't give up");
+		});
+		*/
+		btn.addEventListener("click",fn1);
+		btn.addEventListener("click",fn2);//相同的只会显示一个
+		btn.addEventListener("click",fn2);//顺序从上往下输出
+		btn.removeEventListener("click",fn2);//全删
+		function fn1(){
+			alert("坚持不懈");
+		}
+		function fn2(){
+			alert("Don't give up");
+		}
+		
+		//ie的监听
+		/*
+		btn.attachEvent("onclick",function(){
+			alert("坚持不懈");
+		})
+		btn.attachEvent("onclick",function(){
+			alert("Don't give up");
+		});
+		*/
+		btn.attachEvent("onclick",fn1);
+		btn.attachEvent("onclick",fn2);//相同的会显示多个
+		btn.attachEvent("onclick",fn2);//顺序从下往上输出
+		btn.detachEvent("onclick",fn2);//只删一个
+	}
+  </script>
+ </head>
+ <body>
+  <button id="btn">按钮</button>
+ </body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+		var arr = [
+			{name:"雷哥哥",age:18},
+			{name:"Bruce.Lee",age:15},
+			{name:"Andy",age:28},
+			{name:"Nike",age:19},
+			{name:"雨哥哥",age:18}
+		];
+
+		document.write("------排序前---------" + "<br/>");
+		for(var i = 0;i<arr.length;i++){
+			document.write("姓名：" + arr[i].name + "---" + "年龄：" + arr[i].age + "<br/>");
+		}
+
+		
+		arr.sort(function(a,b){
+			if(a.age==b.age){
+				return getSumByName(a.name) - getSumByName(b.name)
+			}
+			return a.age-b.age;
+		});
+	document.write("------排序后---------" + "<br/>");
+		for(var i = 0;i<arr.length;i++){
+			document.write("姓名：" + arr[i].name + "---" + "年龄：" + arr[i].age + "<br/>");
+		}
+
+		/*
+			创造一个工具，专门计算名字的编码和
+		*/
+		function getSumByName(str){  //"李四"
+			var sum = 0;  //111  
+			for(var i = 0;i<str.length;i++){
+				sum+=str.charCodeAt(i);  //222
+			}
+			return sum;
+		}
+		
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

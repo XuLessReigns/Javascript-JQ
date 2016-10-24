@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	// start   
+	// end 
+
+	var start = new Date();  //现在时间
+	var end = new Date("2016/8/12 22:22:22");  //现在时间
+	/*
+	var time1 = start.getTime();  //获取现在时间的毫秒
+	var time2 = end.getTime();    //获取未来时间的毫秒
+
+	var diff = time2-time1;  //相差毫秒值
+	//document.write(diff);
+	var s = parseInt(diff/1000);  //总秒
+	var ls = s%60; //表示剩下的秒
+	var m = parseInt(s/60);    //总分种
+	var lm = m%60;  //表示的是剩下的分钟
+	var h = parseInt(m/60);    //总小时
+	var lh = h%24;  //剩余的小时
+	var d = parseInt(h/24);  //总天数
+
+	var str = d + "天" + lh + "小时" + lm + "分钟" + ls + "秒"
+
+	document.write(str);
+	*/
+
+	/*
+		功能：获取两个日期的时间差
+		参数：
+			start:表示起始的时间
+			end:表示终止的时间
+	*/
+	function getDiff(start,end){
+		var time1 = start.getTime();  //获取现在时间的毫秒
+		var time2 = end.getTime();    //获取未来时间的毫秒
+
+		var diff = time2-time1;  //相差毫秒值
+		//document.write(diff);
+		var s = parseInt(diff/1000);  //总秒
+		var ls = s%60; //表示剩下的秒
+		var m = parseInt(s/60);    //总分种
+		var lm = m%60;  //表示的是剩下的分钟
+		var h = parseInt(m/60);    //总小时
+		var lh = h%24;  //剩余的小时
+		var d = parseInt(h/24);  //总天数
+
+		var str = d + "天" + lh + "小时" + lm + "分钟" + ls + "秒";
+		return str;
+	}
+	
+	
+	
+  </script>
+ </head>
+ <body>
+	<div id="dv"></div>
+	<script>
+		var dv = document.getElementById("dv");
+		var e = new Date("2016/8/14");
+		setInterval(function(){
+			var s = new Date();  //因为是变化的，所以要每秒种获取一次当前系统时间
+			
+			dv.innerHTML = getDiff(s,e);
+			
+		},1000)
+	</script>
+ </body>
+</html>

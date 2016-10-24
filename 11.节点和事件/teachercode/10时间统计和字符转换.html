@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	.box{
+		width:300px;
+		height:200px;
+		/* border:1px solid #000; */
+		box-shadow:5px 5px 15px rgba(0,0,0,.7);
+		position:absolute;
+		left:50%;
+		top:50%;
+		margin-left:-250px;
+		margin-top:-200px;
+		padding:100px;
+	}
+  </style>
+  <script type="text/javascript">
+	/*
+		获取指定格式的时间
+	*/
+	function getDateStr(date){  //date
+		 //var date = date
+		//2016年5月11日   12:12:00
+		var year = date.getFullYear();//年
+		var month = date.getMonth() + 1;//月
+		var day = date.getDate();//日
+		var hours = date.getHours();//时
+		var minutes = date.getMinutes();//分
+		var seconds = date.getSeconds();//秒
+		var str =  year + "-" +  month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+		return str;
+	 }
+
+	 /*
+		功能：计算两个日期差
+		参数：
+			startTime：起始时间
+			endTime:   结束时间
+	*/
+	function getDiff(startTime,endTime){
+		var startMs = startTime.getTime();  //起始时间的毫秒数
+		var endMs = endTime.getTime();  //结束时间的毫秒数
+		var diff = endMs-startMs; //时间差
+		var ms = diff%1000; //剩余的毫秒；
+		var ss = parseInt(diff/1000%60); //剩余的秒数
+		var mm = parseInt(diff/1000/60%60); //剩余的分钟
+		var hh = parseInt(diff/1000/60/60); //剩余的小时
+
+		var format = hh + "小时" + mm + "分钟" + ss + "秒";
+		
+		
+		
+		return format;
+	}
+	 /*
+		思路：
+			第一步：当页面加载完后，获取所要操作的节点对象（系统当前时间节点对象、页面停留时间节点对象、文本框节点对象、按钮节点对象、文本内容节点对象、ASCII码节点对象）
+			第二步：获取系统当前时间（每秒种更新一下）
+					用setInterval定时器来定义每秒执行的环境
+					在定时器里改变系统当前时间节点对象里的内容
+			第三步：确定页面加载进来时的时间，确定当前的时间。计算时间差。这个时间差就是页面停留的时间。每秒种更新一次页面停留时间节点对象的内容。
+					用setInterval定时器来定义每秒执行的环境
+					在定时器里改变页面停留时间节点对象的内容
+			第四步：给按钮节点对象注册（添加）一个点击事件
+					获取文本框中用户所输入的内容
+					把所获取的内容赋值给文本内容节点对象
+					循环遍历每一个字符，并解析出每一个字符所对象ASCII码
+					拼接并赋值ASCII码节点对象
+	 */
+
+	 //当页面加载完后，获取所要操作的节点对象（系统当前时间节点对象、页面停留时间节点对象、文本框节点对象、按钮节点对象、文本内容节点对象、ASCII码节点对象）
+	 window.onload = function(){
+		//系统当前时间节点对象
+		var currentTime = document.getElementById("currentTime");
+		//页面停留时间节点对象
+		var stayTime = document.getElementById("stayTime");
+		//文本框节点对象
+		var txt = document.getElementById("txt");
+		//按钮节点对象
+		var btn = document.getElementById("btn");
+		//文本内容节点对象
+		var charStr = document.getElementById("charStr");
+		//ASCII码节点对象
+		var codeStr = document.getElementById("codeStr");
+		//页面加载进来时的时间
+		var dateLoad = new Date(); 
+		currentTime.innerHTML = getDateStr(dateLoad);  //页面加载进来是给定一个时间
+		stayTime.innerHTML = getDiff(dateLoad,dateLoad);
+		//定义一个定时器环境
+		setInterval(function(){
+			var date = new Date();  //当前时间
+			//改变系统当前时间节点对象里的内容
+			currentTime.innerHTML = getDateStr(date); 
+			//改变页面停留时间节点对象的内容
+			stayTime.innerHTML = getDiff(dateLoad,date);
+
+		},1000);
+
+		btn.onclick = function(){
+			var v = txt.value;
+			charStr.innerHTML = v;
+			var str = "";
+			for(var i = 0;i<v.length;i++){
+				str+=v.charCodeAt(i) + " ";  
+			}
+			codeStr.innerHTML = str;
+		}
+
+
+	 }
+  </script>
+ </head>
+ <body>
+	<div id="box" class="box">
+		<p>
+			系统当前时间为：<span id="currentTime"></span>
+		<p>
+		<p>
+			当前页面已停留时间：<span id="stayTime"></span>
+		</p>
+		<p>
+			请输入字符<input id="txt" type="text" value=""/><button id="btn">执行</button>
+		</p>
+		<p>
+			你输入的字符是"<span id="charStr"></span>",它的ASCII码为"<span id="codeStr"></span>"
+		</p>
+	</div>
+ </body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	window.onload = function(){
+		
+		document.onkeydown = function(e){
+			var _e = window.event||e;
+			//2016/8/16alert(_e.altKey);
+			//alert(_e.ctrlKey);
+			alert(_e.which||_e.keyCode);
+		}
+
+		document.onclick = function(e){
+			var _e = window.event||e;
+			alert(_e.button);
+		}
+
+		document.oncontextmenu = function(e){
+			var _e = window.event||e;
+			alert(_e.button);
+		}
+	}
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

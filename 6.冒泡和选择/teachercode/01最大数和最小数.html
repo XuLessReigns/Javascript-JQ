@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		求数组的最大数和最小数；
+	*/
+	var arr = [2,5,1,1,0,7,8,3,4,9,6]
+	/*
+		思路：
+			第一步：把数组中的一项看做是最小数，用变量保存，此时这个变量所表示的就是最小数
+			第二步：让这个变量所保存的最小数和数组中每一项做比较，若比该变量的数据小，则替换该变量的值，否则遍历下一项。
+			第三步：打印最小数
+			
+	*/
+	var min = arr[0]; //最小数
+	var max = arr[0]; //最大数
+	var minIndex = 0;  //最小数小标
+	for(var i = 0;i<arr.length;i++){
+		if(arr[i]<min){
+			min = arr[i];
+			minIndex = i;
+			
+		}
+
+		if(arr[i]>max){
+			max = arr[i];
+		}
+	}
+	document.write("最小数：" + min + "<br/>");
+	document.write("最大数：" + max + "<br/>");
+	document.write("最小数的下标：" + minIndex + "<br/>");
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

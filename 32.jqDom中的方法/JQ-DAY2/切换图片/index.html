@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>切换图片</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		#banner{
+			margin: 50px auto;
+			position: relative;
+		}
+		li{
+			width: 100%;
+			height: 480px;
+			list-style: none;
+			display: none;
+		}
+		.b1{
+			background: url(images/banner1.jpg) no-repeat center;
+		}
+		.b2{
+			background: url(images/banner2.jpg) no-repeat center;
+		}
+		.b3{
+			background: url(images/banner3.jpg) no-repeat center;
+		}
+		.prev{
+			width:48px;
+			height: 60px;
+			position: absolute;
+			left:10px;
+			top: 200px;
+			background:url(images/btn.png);
+			z-index: 20;
+		}
+		.next{
+			width:48px;
+			height: 60px;
+			position: absolute;
+			right:10px;
+			top: 200px;
+			background:url(images/btn.png);
+			background-position: -48px 0;
+			z-index: 20;
+		}
+		.dot{
+			position: absolute;
+			left:580px;
+			top: 440px;
+		}
+		.dot span{
+			display: block;
+			background: url(images/dot.png);
+			width:18px;
+			height:16px;
+			float: left;
+			margin-left: 10px;
+			background-position: 0 -16px;
+		}
+		.dot span.on{
+			background-position: 0 0;
+		}
+	</style>
+	<script src="../js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			var setDot = function(currIndex){
+				$(".dot>span")
+				.removeClass("on")
+				.eq(currIndex)
+				.addClass("on");
+			}
+			$("ul>li:eq(0)").show();
+			var currIndex = 0;
+			$(".next").click(function(){
+				currIndex++;
+				if(currIndex == 3){
+					currIndex = 0;
+				}
+				$("ul>li").eq(currIndex - 1).hide();
+				$("ul>li").eq(currIndex).fadeIn(400);
+
+				setDot(currIndex);
+
+				// if(currIndex == 3){
+				// 	currIndex = 0;
+				// }
+				// $("ul>li").hide().eq(currIndex).fadeIn(400);
+			});
+
+			$(".prev").click(function(){
+				currIndex--;
+				$("ul>li").eq(currIndex + 1).hide();
+				if(currIndex == -1){
+					currIndex = 2;
+				}
+				$("ul>li").eq(currIndex).fadeIn(400);
+
+				setDot(currIndex);
+
+				// if(currIndex == -1){
+				// 	currIndex = 2;
+				// }
+				// $("ul>li").hide().eq(currIndex).fadeIn(400);
+			});
+
+			$(".dot>span").click(function(){
+				var $index = $(this).index();
+				$("ul>li").hide().eq($index).fadeIn(400);
+				setDot($index);
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="banner">
+		<a href="javascript:;" class="prev"></a>
+		<a href="javascript:;" class="next"></a>
+		<ul>
+			<li class="b1"></li>
+			<li class="b2"></li>
+			<li class="b3"></li>
+		</ul>
+		<div class="dot">
+			<span class="on"></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+</body>
+</html>

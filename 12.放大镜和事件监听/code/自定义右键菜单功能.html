@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{margin:0;padding:0;}
+	ul{height:60px;width:100px;background:#ccc;display:none;position:absolute;}
+	li{height:20px;width:100px;list-style:none;}
+	.active1{background:#000;color:#fff;}
+	.active{display:block;}
+  </style>
+  <script>
+	 /*
+		思路：1、获取ul节点对象
+			  2、给document添加一个右键点击菜单事件，从右键点击菜单事件获取事件对象，从事件对象获取当前鼠标的坐标，然后显示ul（添加类名）
+			  
+			  3、获取所有的li节点对象
+			  4、给所有的li节点对象添加onmouseenter事件（for循环遍历）
+			  5、先清除所有li的样式，（for循环遍历）然后单独给this触发事件的节点对象添加样式。
+			  6、给document节点对象添加点击事件，即隐藏ul（改变类名）
+	 */
+	 window.onload = function(){
+		 //获取ul节点对象
+		var list = document.getElementById("list");
+		//给document添加右键点击菜单事件
+		document.oncontextmenu = function(e){
+			//处理兼容问题
+			var e = window.event||e;
+			//获取当前鼠标的坐标	
+			var x = e.clientX;
+			var y = e.clientY;
+			//改变ul的类名（修改其样式）即展现出来不再隐藏
+			list.className = "active";
+			//改变ul的坐标
+			list.style.left = x + "px";
+			list.style.top = y + "px";
+			//除去鼠标右键菜单的默认样式
+			if(e.preventDefault){
+				e.preventDefault();
+			}else{
+				e.returnValue = false;
+			}
+		}
+		
+
+		//获取li节点对象
+		var lis = document.querySelectorAll("li");
+		//alert(lis.length);
+		//遍历li节点对象给每个li添加鼠标进入事件
+		for(var i = 0;i<lis.length;i++){
+			lis[i].onmouseenter = function(){
+				//清除所有li的样式
+				for(var j = 0;j<lis.length;j++){
+					lis[j].className = "";
+				}
+				//alert(this.nodeName);
+				//单独给触发事件的节点对象添加类名（改变样式）
+				this.className = "active1";
+			}
+		}
+
+		//给document节点对象添加点击事件 即隐藏ul
+		document.onclick = function(){
+			list.className = "";
+			//lis.className = "";
+		}
+	 }
+
+
+  </script>
+ </head>
+ <body>
+	<ul id="list">
+		<li>菜单1</li>
+		<li>菜单2</li>
+		<li>菜单3</li>
+	</ul>
+ </body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	div{height:300px;width:300px;background:red;}
+  </style>
+  <script>
+	/*
+	需求：创造兼容处理的工具
+		getComputedStyle(节点对象,null)["样式属性名"];
+		节点对象.currentStyle["样式属性名"];
+	*/
+	function getStyle(a,b){
+		/*
+		if(a.currentStyle){
+			return a.currentStyle[b];
+		}else{
+			return getComputedStyle(a,null)[b];
+		}
+		*/
+		if(window.getComputedStyle){
+			return getComputedStyle(a,null)[b];
+		}else{
+			return a.currentStyle[b];
+		}
+		
+	}
+	window.onload = function(){
+		var dv = document.getElementById("dv");
+		var h = getStyle(dv,"width");
+		var w = getStyle(dv,"height");
+		//var c = getStyle(dv,"color");
+		alert(h);
+		alert(w);
+		//alert(c);
+
+	}
+  </script>
+ </head>
+ <body>
+  <div id="dv">你懂了吗</div>
+ </body>
+</html>

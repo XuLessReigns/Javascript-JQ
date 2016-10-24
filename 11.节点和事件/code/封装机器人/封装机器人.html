@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css"  href="all.css">
+ </head>
+ <body>
+	<div id="box" class="box">
+		<div id="content" class="content">
+			<ul id="talkList">
+				<li class="mm">
+					<div class="logo-head"> 
+						<img src="images/mm.jpg"/>
+					</div>
+					<span class="talk">
+						Hi,主人！我是您最贴心的小娜!
+					</span>
+				</li>
+				<li class="mm">
+					<div class="logo-head"> 
+						<img src="images/mm.jpg"/>
+					</div>
+					<span class="talk">
+						我可以陪您聊天哦！O(∩_∩)O
+					</span>
+				</li>
+				<li class="gg">
+					<div class="logo-head">
+						<img src="images/gg.jpg"/>
+					</div>
+					<span class="talk">
+						o(≧v≦)o~~
+					</span>
+				</li>
+				<li class="gg">
+					<div class="logo-head">
+						<img src="images/gg.jpg"/>
+					</div>
+					<span class="talk">
+						你好
+					</span>
+				</li>
+				<li class="mm">
+					<div class="logo-head"> 
+						<img src="images/mm.jpg"/>
+					</div>
+					<span class="talk">
+						ლ(°◕‵ƹ′◕ლ)
+					</span>
+				</li>
+				
+			</ul>
+		</div>
+
+		<div class="control">
+			<textarea id="txt" rows="2" cols="40"></textarea>
+			<a href="javascript:;" id="send">发送</a>
+		</div>
+	</div>
+
+	  <script>
+		 /*
+			思路：
+				第一步：获取所要操作的节对象
+				第二步：为按钮节点对象添加一个点击事件
+				第三步：获取文本域中内容   input系列
+				第四步：创建li节对象，把内容包装起来，追加在ul最后面
+						gg
+						mm
+		 */
+			
+		 //获取ul节点对象
+		 var talkList = document.getElementById("talkList");
+		 //获取文本域节点对象
+		 var txt = document.getElementById("txt");
+		 //发送按钮节点对象
+		 var send = document.getElementById("send");
+		 
+		 /*为按钮添加一个点击事件*/
+
+		 send.onclick = function(){
+/*
+			var data = txt.value;  //获取文本域中内容 value属性
+			//创建一个li节点对象表示GG
+			var liGG = document.createElement("li");  
+			liGG.className = "gg";
+
+			liGG.innerHTML = '<div class="logo-head">' + 
+								'<img src="images/gg.jpg"/>' + 
+							 '</div>' + 
+							 '<span class="talk">' + 
+								data + 
+							'</span>';
+			talkList.appendChild(liGG);
+			//scrollIntoView 把需要显示的节对象显示在可视区域中
+			liGG.scrollIntoView();
+			txt.value = '';
+
+
+			setTimeout(function(){
+				//创建一个li节点对象表示MM
+				var liMM = document.createElement("li"); 
+				liMM.className = "mm";
+
+				liMM.innerHTML = '<div class="logo-head">' + 
+									'<img src="images/mm.jpg"/>' + 
+								 '</div>' + 
+								 '<span class="talk">' + 
+									'亲，请升级，充值10000000' + 
+								'</span>';
+				talkList.appendChild(liMM);
+				//scrollIntoView 把需要显示的节对象显示在可视区域中
+				liMM.scrollIntoView();
+			},1000);
+*/
+			var data = txt.value;  //获取文本域中内容 value属性
+			//创建一个li节点对象表示GG
+			getResult("gg",data);
+			txt.value = '';
+			setTimeout(function(){
+				getResult("mm","亲，请升级，充值10000000");
+			},1000);
+			
+		 }
+
+		/*
+			创建对话	
+		*/
+			function getResult(people,tit){
+				//创建一个li节点对象表示GG/mm
+				var li = document.createElement("li");
+				li.className = people;
+				li.innerHTML = '<div class="logo-head">' + 
+									'<img src="images/' + people + '.jpg"/>' + 
+								 '</div>' + 
+								 '<span class="talk">' + 
+									tit + 
+								'</span>';
+				talkList.appendChild(li);
+				li.scrollIntoView(); 
+			}
+
+	  </script>
+ </body>
+</html>

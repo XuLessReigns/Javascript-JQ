@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}
+			.box{height: 100px;width: 100px;position: absolute;background: green;left:0;}
+			#dv1{margin-top: 110px;opacity: 0.5;filter: alpha(opacity=50);}
+			#dv2{margin-top: 220px;}
+			#dv3{margin-top: 330px; opacity: 1;filter: alpha(opacity=50);}
+		</style>
+		<script type="text/javascript" src="animate.js" ></script>
+	</head>
+	<body>
+		<button id="btn">运动</button>
+		<div id="dv" class="box"></div>	
+		<div id="dv1" class="box"></div>	
+		<div id="dv2" class="box"></div>	
+		<div id="dv3" class="box"></div>	
+	</body>
+	<script>
+		var btn = document.getElementById("btn");
+		var dv = document.getElementById("dv");
+		var dv1 = document.getElementById("dv1");
+		var dv2 = document.getElementById("dv2");
+		var dv3 = document.getElementById("dv3");
+		
+		btn.onclick = function(){	
+			animate(dv,{width:300,opacity:50},100);
+		}
+	</script>
+</html>

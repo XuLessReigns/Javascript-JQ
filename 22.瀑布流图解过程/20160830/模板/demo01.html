@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.container{
+				width: 1200px;
+				margin: 0 auto;
+			}
+			ul{
+				list-style: none;
+			}
+			.box{
+				width: 400px;
+				margin: 10px auto;
+			}
+			.box .search{
+				width: 400px;
+				height: 50px;
+				border: 1px solid #ccc;
+				line-height: 50px;
+			}
+			.box .search input{
+				width: 300px;
+				outline: none;
+				border: none;
+				font:400 20px/50px "微软雅黑";
+				padding: 0 10px;
+			}
+			.box ul{
+				width: 400px;
+				border: 1px solid #CCCCCC;
+				border-top:none ;
+				display: none;
+			}
+			.box ul li{
+				font:bold 22px/30px "微软雅黑";
+				cursor: default;
+				padding: 0 10px;
+			}
+			.box ul li:hover{
+				background-color: lightgoldenrodyellow
+			}
+			.box ul.active{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="box">
+				<div class="search">
+					<input type="text" placeholder="请输入关键字" />
+				</div>
+				<ul class="active">
+					<li>李小龙</li>
+					<li>李四</li>
+					<li>李斯</li>
+					<li>李世民</li>
+				</ul>
+			</div>
+	
+		</div>
+		
+	</body>
+</html>

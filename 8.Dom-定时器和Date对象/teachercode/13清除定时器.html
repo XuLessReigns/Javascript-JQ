@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	/*
+		temerId 这个变量接收的是 对应定时器的 标识
+		用于清除定时器而使用
+	*/
+	var temerId = setTimeout(function(){
+		alert("爆炸了！！！！！！！！");
+	},5000);
+
+	var temerId2 = setTimeout(function(){
+		alert("碉堡了！！！！！！！！");
+	},5000);
+
+	//alert(temerId2);
+
+	
+	
+	/*等页面加载完之后*/
+	window.onload = function(){
+		var btn = document.getElementById("btn");
+		btn.onclick = function(){
+			clearTimeout(temerId);
+			clearTimeout(temerId2);
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<button>红线</button>
+	<button id="btn">红线下面的金属线</button>
+	<button>蓝线</button>
+ </body>
+</html>

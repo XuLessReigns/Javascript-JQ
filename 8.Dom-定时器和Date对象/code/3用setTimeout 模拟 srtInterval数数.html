@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	div{height:50px;width:50px;background:cyan;color:black;border:0;padding:25px;font-size:20px;}
+	#btn{float:left;height:30px;width:100px;background:pink;color:black;border:0;}
+  </style>
+  <script>
+	//用setTimeout 模拟 srtInterval数数
+	window.onload = function(){
+		var btn = document.getElementById("btn");
+		var div = document.getElementById("div");
+		var value;
+		var flag = false;
+		btn.onclick = function(){
+			clearTimeout(a);
+			if(btn.innerHTML=="开始"){
+				btn.innerHTML = "停止";
+				start();
+			}else{
+				btn.innerHTML = "开始";
+				flag = true;
+			}
+		}
+	}
+	var num = 0;
+	var a;
+	function start(){
+		start1();
+		//a = setTimeout(start1,1000);
+		
+	}
+	function start1(){
+		//setTimeout(function(){
+			div.innerHTML = num;
+			num++;
+		//},1);
+		a = setTimeout(start,1000);
+		//start();
+		if(flag){
+			clearTimeout(a);//断点
+		}
+	}
+		
+	
+  </script>
+ </head>
+ <body>
+	<div id="div">开始数数</div>
+	<button id="btn">开始</button>
+  
+ </body>
+</html>
